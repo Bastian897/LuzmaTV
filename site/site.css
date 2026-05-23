@@ -1,0 +1,126 @@
+/* LuzmaTV UI Kit — site-specific tweaks layered on top of design tokens */
+
+* { box-sizing: border-box; }
+
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  background: #fff;
+  font-family: var(--font-body);
+  color: var(--fg);
+  scroll-behavior: smooth;
+}
+
+a { color: inherit; text-decoration: none; }
+button { cursor: pointer; font-family: inherit; }
+
+img { display: block; max-width: 100%; }
+
+/* Hero comic outline text */
+.lzm-comic-text {
+  -webkit-text-stroke: 2.5px var(--luzma-ink);
+  paint-order: stroke fill;
+  text-shadow: 6px 6px 0 var(--luzma-ink);
+  color: var(--luzma-paper);
+}
+
+/* Generic outlined surface */
+.lzm-card {
+  background: #fff;
+  border: 3px solid var(--luzma-ink);
+  border-radius: 16px;
+  box-shadow: 6px 6px 0 var(--luzma-ink);
+  overflow: hidden;
+}
+
+/* Pop on hover (interactive cards) */
+.lzm-pop {
+  transition: transform 200ms cubic-bezier(.34,1.56,.64,1),
+              box-shadow 200ms cubic-bezier(.34,1.56,.64,1);
+}
+.lzm-pop:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 8px 8px 0 var(--luzma-ink);
+}
+.lzm-pop:active {
+  transform: translate(0, 0);
+  box-shadow: 2px 2px 0 var(--luzma-ink);
+}
+
+/* Halftone background */
+.lzm-halftone {
+  background-color: var(--luzma-blue);
+  background-image: radial-gradient(circle, rgba(255,255,255,.16) 1.5px, transparent 2px);
+  background-size: 22px 22px;
+}
+
+.lzm-grad-hero {
+  background: linear-gradient(135deg, #0055FF 0%, #00AAFF 100%);
+}
+
+/* Spin */
+@keyframes lzm-spin-slow { to { transform: rotate(360deg); } }
+.lzm-spin-slow { animation: lzm-spin-slow 14s linear infinite; }
+
+/* Wiggle */
+@keyframes lzm-wiggle {
+  0%,100% { transform: rotate(0deg); }
+  25% { transform: rotate(-4deg); }
+  75% { transform: rotate(4deg); }
+}
+.lzm-wiggle { animation: lzm-wiggle 3s ease-in-out infinite; }
+
+/* Live dot pulse */
+@keyframes lzm-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%      { opacity: .55; transform: scale(1.15); }
+}
+.lzm-pulse { animation: lzm-pulse 1s ease-in-out infinite; }
+
+/* Bounce-in entry */
+@keyframes lzm-bounce-in {
+  0%   { opacity: 0; transform: scale(.7) translateY(20px); }
+  60%  { opacity: 1; transform: scale(1.06) translateY(-4px); }
+  100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+/* Layout shell */
+.lzm-shell { width: 100%; max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+
+/* Section wrapper */
+.lzm-section { padding: 80px 0; }
+.lzm-section-eyebrow {
+  font-family: var(--font-ui);
+  font-weight: 800;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  color: var(--luzma-blue);
+  margin-bottom: 8px;
+}
+.lzm-section-title {
+  font-family: var(--font-display);
+  font-size: clamp(40px, 5vw, 64px);
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: -.01em;
+  margin: 0 0 28px 0;
+  color: var(--luzma-ink);
+}
+
+/* Hide scrollbars for carousels */
+.lzm-scroll-x {
+  display: flex;
+  gap: 18px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  padding-bottom: 12px;
+}
+.lzm-scroll-x::-webkit-scrollbar { display: none; }
+
+/* Mobile */
+@media (max-width: 720px) {
+  .lzm-section { padding: 56px 0; }
+  .lzm-shell { padding: 0 16px; }
+}

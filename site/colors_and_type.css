@@ -1,0 +1,251 @@
+/* =========================================================
+   LuzmaTV — Design Tokens
+   "La señal que deja huella"
+   ========================================================= */
+
+/* ---------- Fonts (Google Fonts substitutions) ---------- */
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Black+Ops+One&family=Montserrat:wght@400;600;700;800;900&family=Nunito:wght@400;600;700;800;900&display=swap');
+
+:root {
+  /* =========================================================
+     COLOR — Brand palette
+     ========================================================= */
+
+  /* Primary — electric */
+  --luzma-blue:        #0055FF;
+  --luzma-sky:         #00AAFF;
+  --luzma-night:       #0A0F2C;
+
+  /* Neutrals */
+  --luzma-ink:         #111111;
+  --luzma-ink-soft:    #2A2A2A;
+  --luzma-paper:       #FFFFFF;
+  --luzma-cream:       #FFF8E7;
+  --luzma-fog:         #F2F4FB;
+  --luzma-stone:       #C9CEDA;
+
+  /* Logo accents — one per category */
+  --luzma-red:         #E53935;
+  --luzma-yellow:      #FDD835;
+  --luzma-green:       #43A047;
+  --luzma-cyan:        #29B6F6;   /* "M" letter */
+  --luzma-magenta:     #E91E8C;
+  --luzma-gold:        #FFD600;   /* star */
+
+  /* Semantic */
+  --bg:                var(--luzma-blue);
+  --bg-alt:            var(--luzma-night);
+  --surface:           var(--luzma-paper);
+  --surface-alt:       var(--luzma-cream);
+
+  --fg:                var(--luzma-ink);
+  --fg-soft:           var(--luzma-ink-soft);
+  --fg-on-dark:        var(--luzma-paper);
+  --fg-muted:          #5B6479;
+
+  --border:            var(--luzma-ink);
+  --border-soft:       #1F2A4A;
+
+  --live:              var(--luzma-red);
+  --success:           var(--luzma-green);
+  --highlight:         var(--luzma-gold);
+
+  /* Gradients */
+  --grad-hero:         linear-gradient(135deg, #0055FF 0%, #00AAFF 100%);
+  --grad-sunset:       linear-gradient(135deg, #E91E8C 0%, #FDD835 100%);
+  --grad-night:        linear-gradient(180deg, #0A0F2C 0%, #1A1A4E 100%);
+
+  /* =========================================================
+     SPACING (8-point)
+     ========================================================= */
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-5:  24px;
+  --space-6:  32px;
+  --space-7:  48px;
+  --space-8:  64px;
+  --space-9:  96px;
+  --space-10: 128px;
+
+  /* =========================================================
+     RADIUS
+     ========================================================= */
+  --radius-card:   12px;
+  --radius-bubble: 20px;
+  --radius-pill:   9999px;
+  --radius-none:   0px;
+
+  /* =========================================================
+     OUTLINES + HARD SHADOWS (the signature)
+     ========================================================= */
+  --outline:       3px solid var(--luzma-ink);
+  --outline-thick: 4px solid var(--luzma-ink);
+
+  --shadow-sm:     3px 3px 0 var(--luzma-ink);
+  --shadow:        6px 6px 0 var(--luzma-ink);
+  --shadow-lg:     8px 8px 0 var(--luzma-ink);
+  --shadow-xl:     12px 12px 0 var(--luzma-ink);
+  --shadow-press:  0px 0px 0 var(--luzma-ink);
+
+  /* =========================================================
+     MOTION
+     ========================================================= */
+  --ease-pop:       cubic-bezier(.34, 1.56, .64, 1);
+  --ease-out:       cubic-bezier(.22, .61, .36, 1);
+  --dur-fast:       120ms;
+  --dur:            200ms;
+  --dur-slow:       320ms;
+
+  /* =========================================================
+     TYPOGRAPHY — Families
+     ========================================================= */
+  --font-display:   'Bebas Neue', 'Impact', sans-serif;
+  --font-poster:    'Black Ops One', 'Bebas Neue', sans-serif;
+  --font-ui:        'Montserrat', system-ui, sans-serif;
+  --font-body:      'Nunito', system-ui, sans-serif;
+
+  /* Scale (mobile-first, scales up on .lg) */
+  --fs-display:     clamp(48px, 9vw, 112px);
+  --fs-h1:          clamp(36px, 6vw, 72px);
+  --fs-h2:          clamp(28px, 4.5vw, 52px);
+  --fs-h3:          clamp(22px, 3vw, 32px);
+  --fs-h4:          20px;
+  --fs-lg:          18px;
+  --fs-body:        16px;
+  --fs-sm:          14px;
+  --fs-xs:          12px;
+
+  --lh-tight:       1.02;
+  --lh-snug:        1.15;
+  --lh-body:        1.5;
+
+  --letter-display: -0.01em;
+  --letter-caps:    0.04em;
+}
+
+/* =========================================================
+   SEMANTIC TYPE — applied to bare HTML
+   ========================================================= */
+body {
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  color: var(--fg);
+  background: var(--surface);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1, .h1 {
+  font-family: var(--font-display);
+  font-size: var(--fs-h1);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--letter-display);
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.display {
+  font-family: var(--font-display);
+  font-size: var(--fs-display);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--letter-display);
+  text-transform: uppercase;
+}
+
+h2, .h2 {
+  font-family: var(--font-display);
+  font-size: var(--fs-h2);
+  line-height: var(--lh-tight);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-display);
+  margin: 0;
+}
+
+h3, .h3 {
+  font-family: var(--font-ui);
+  font-weight: 800;
+  font-size: var(--fs-h3);
+  line-height: var(--lh-snug);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-caps);
+  margin: 0;
+}
+
+h4, .h4 {
+  font-family: var(--font-ui);
+  font-weight: 700;
+  font-size: var(--fs-h4);
+  line-height: var(--lh-snug);
+  margin: 0;
+}
+
+.eyebrow {
+  font-family: var(--font-ui);
+  font-weight: 800;
+  font-size: var(--fs-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.poster {
+  font-family: var(--font-poster);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-caps);
+  line-height: var(--lh-tight);
+}
+
+p, .body {
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  margin: 0;
+}
+
+small, .caption {
+  font-family: var(--font-body);
+  font-size: var(--fs-sm);
+  color: var(--fg-muted);
+}
+
+code, kbd {
+  font-family: 'JetBrains Mono', 'SF Mono', Menlo, monospace;
+  font-size: 0.92em;
+  background: var(--luzma-fog);
+  padding: 2px 6px;
+  border-radius: 6px;
+  border: 1.5px solid var(--luzma-ink);
+}
+
+/* =========================================================
+   UTILITY — Comic outline + pop shadow primitives
+   ========================================================= */
+.lzm-outline { border: var(--outline); }
+.lzm-shadow  { box-shadow: var(--shadow); }
+.lzm-pop {
+  transition: transform var(--dur) var(--ease-pop),
+              box-shadow var(--dur) var(--ease-pop);
+}
+.lzm-pop:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 8px 8px 0 var(--luzma-ink);
+}
+.lzm-pop:active {
+  transform: translate(0, 0);
+  box-shadow: var(--shadow-press);
+}
+
+/* LIVE badge pulse */
+@keyframes lzm-live-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%      { opacity: 0.55; transform: scale(1.05); }
+}
+.lzm-live-dot {
+  animation: lzm-live-pulse 1s ease-in-out infinite;
+}
+
+/* Star slow spin */
+@keyframes lzm-spin-slow { to { transform: rotate(360deg); } }
+.lzm-spin { animation: lzm-spin-slow 12s linear infinite; }
