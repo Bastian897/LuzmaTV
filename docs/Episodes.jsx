@@ -7,7 +7,7 @@ function Episodes() {
       title="Últimos episodios"
       background="#fff"
       action={
-        <Button variant="ghost" size="sm" as="a" href="#episodios">
+        <Button variant="ghost" size="sm" as="a" href="#/programa/luzma-cachai">
           Ver todos <Icon name="chevronRight" size={14} />
         </Button>
       }

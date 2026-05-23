@@ -65,8 +65,19 @@ function ProgramPage({ id }) {
                 <a key={h.id} href={`https://instagram.com/${h.ig}`} target="_blank" rel="noreferrer"
                   className="lzm-card lzm-pop"
                   style={{ display: 'flex', alignItems: 'center', gap: 14, padding: '14px 18px', minWidth: 220 }}>
-                  <div style={{ width: 54, height: 54, background: h.bg, border: '3px solid #111', borderRadius: 12, display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: "'Black Ops One'", fontSize: 20, color: '#fff', WebkitTextStroke: '1.5px #111', flexShrink: 0 }}>
-                    {h.initials}
+                  <div style={{ width: 54, height: 54, background: h.bg, border: '3px solid #111', borderRadius: 12, overflow: 'hidden', flexShrink: 0, position: 'relative' }}>
+                    <img
+                      src={`assets/hosts/${h.id}.jpg`}
+                      alt={h.name}
+                      style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top' }}
+                      onError={(ev) => {
+                        ev.target.style.display = 'none';
+                        ev.target.nextSibling.style.display = 'flex';
+                      }}
+                    />
+                    <div style={{ display: 'none', position: 'absolute', inset: 0, alignItems: 'center', justifyContent: 'center', fontFamily: "'Black Ops One'", fontSize: 20, color: '#fff', WebkitTextStroke: '1.5px #111' }}>
+                      {h.initials}
+                    </div>
                   </div>
                   <div>
                     <div style={{ fontFamily: "'Bebas Neue'", fontSize: 24, textTransform: 'uppercase', lineHeight: 1 }}>{h.name}</div>
