@@ -104,11 +104,11 @@ const LZM_DATA = {
   ],
 
   hosts: [
-    { id: 'ariel-osses',   name: 'Ariel Osses',   role: 'Conductor · Luzma Cachai', bg: '#E91E8C', initials: 'AO', ig: 'luzmatvcl', sign: '🎬' },
-    { id: 'vicky-more',    name: 'Vicky More',    role: 'Luzma Cachai',              bg: '#FDD835', initials: 'VM', ig: 'luzmatvcl', sign: '🌟' },
-    { id: 'rodrigo-munoz', name: 'Rodrigo Muñoz', role: 'Luzma Cachai',              bg: '#0055FF', initials: 'RM', ig: 'luzmatvcl', sign: '🎭' },
-    { id: 'claudio-merlin',name: 'Claudio Merlin',role: 'Luzma Cachai',              bg: '#43A047', initials: 'CM', ig: 'luzmatvcl', sign: '🎤' },
-    { id: 'lita-melo',     name: 'Lita Melo',     role: 'Luzma Cachai',              bg: '#E53935', initials: 'LM', ig: 'luzmatvcl', sign: '💃' },
+    { id: 'ariel-osses',   name: 'Ariel Osses',   role: 'Conductor · Luzma Cachai', bg: '#E91E8C', initials: 'AO', ig: 'ariel_osses',      sign: '🎬' },
+    { id: 'vicky-more',    name: 'Vicky More',    role: 'Luzma Cachai',              bg: '#FDD835', initials: 'VM', ig: 'vickymoremusic',    sign: '🌟' },
+    { id: 'rodrigo-munoz', name: 'Rodrigo Muñoz', role: 'Luzma Cachai',              bg: '#0055FF', initials: 'RM', ig: 'chicomunozactor',   sign: '🎭' },
+    { id: 'claudio-merlin',name: 'Claudio Merlin',role: 'Luzma Cachai',              bg: '#43A047', initials: 'CM', ig: 'claudiomerlinn',    sign: '🎤' },
+    { id: 'lita-melo',     name: 'Lita Melo',     role: 'Luzma Cachai',              bg: '#E53935', initials: 'LM', ig: 'litamelocuenta',    sign: '💃' },
   ],
 
   catLabel: { talk: 'Talk Show', humor: 'Humor', entret: 'Entretenimiento', invitado: 'Invitados' },
