@@ -64,10 +64,18 @@ function Footer() {
               Síguenos
             </div>
             <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
-              {['kick','twitch','tiktok','instagram','youtube','tvmas','whatsapp'].map((p) => (
+              {[
+                { slug: 'kick',      url: 'https://kick.com/luzmatv' },
+                { slug: 'twitch',    url: 'https://twitch.tv/luzmatv' },
+                { slug: 'tiktok',    url: 'https://tiktok.com/@luzmatv' },
+                { slug: 'instagram', url: 'https://instagram.com/luzmatv' },
+                { slug: 'youtube',   url: 'https://youtube.com/@luzmatv' },
+                { slug: 'tvmas',     url: 'https://tvmas.cl' },
+                { slug: 'whatsapp',  url: 'https://wa.me/56940996090' },
+              ].map(({ slug: p, url }) => (
                 <a
                   key={p}
-                  href={`https://${p}.com`}
+                  href={url}
                   target="_blank"
                   rel="noreferrer"
                   className="lzm-pop"

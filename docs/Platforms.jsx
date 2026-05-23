@@ -1,12 +1,12 @@
 // Platforms.jsx — "¿Cómo vernos?"
 function Platforms() {
   const tiles = [
-    { slug: 'kick',      name: 'Kick',      handle: '@luzmatv',  bg: '#53FC18', fg: '#000', tag: 'Stream principal' },
-    { slug: 'twitch',    name: 'Twitch',    handle: '/luzmatv',  bg: '#9146FF', fg: '#fff', tag: 'Mirror live' },
-    { slug: 'tiktok',    name: 'TikTok',    handle: '@luzmatv',  bg: '#111',    fg: '#fff', tag: '180k seguidores' },
-    { slug: 'instagram', name: 'Instagram', handle: '@luzmatv',  bg: 'linear-gradient(135deg,#FFD600 0%,#E91E8C 50%,#7B2CBF 100%)', fg: '#fff', tag: 'Stories diarias' },
-    { slug: 'youtube',   name: 'YouTube',   handle: 'próximamente', bg: '#FF0000', fg: '#fff', tag: 'Episodios completos' },
-    { slug: 'tvmas',     name: 'TV Más',    handle: 'Canal abierto', bg: '#111', fg: '#FFD600', tag: 'Lun a Vie · 22hs' },
+    { slug: 'kick',      name: 'Kick',      handle: '@luzmatv',      url: 'https://kick.com/luzmatv',        bg: '#53FC18', fg: '#000', tag: 'Stream principal' },
+    { slug: 'twitch',    name: 'Twitch',    handle: '/luzmatv',      url: 'https://twitch.tv/luzmatv',       bg: '#9146FF', fg: '#fff', tag: 'Mirror live' },
+    { slug: 'tiktok',    name: 'TikTok',    handle: '@luzmatv',      url: 'https://tiktok.com/@luzmatv',     bg: '#111',    fg: '#fff', tag: '180k seguidores' },
+    { slug: 'instagram', name: 'Instagram', handle: '@luzmatv',      url: 'https://instagram.com/luzmatv',   bg: 'linear-gradient(135deg,#FFD600 0%,#E91E8C 50%,#7B2CBF 100%)', fg: '#fff', tag: 'Stories diarias' },
+    { slug: 'youtube',   name: 'YouTube',   handle: 'próximamente',  url: 'https://youtube.com/@luzmatv',    bg: '#FF0000', fg: '#fff', tag: 'Episodios completos' },
+    { slug: 'tvmas',     name: 'TV Más',    handle: 'Canal abierto', url: 'https://tvmas.cl',                bg: '#111', fg: '#FFD600', tag: 'Lun a Vie · 22hs' },
   ];
 
   return (
@@ -26,7 +26,7 @@ function Platforms() {
         {tiles.map((t) => (
           <a
             key={t.slug}
-            href={`https://${t.slug}.com`}
+            href={t.url}
             target="_blank"
             rel="noreferrer"
             className="lzm-pop"
