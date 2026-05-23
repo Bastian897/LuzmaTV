@@ -103,11 +103,14 @@ function EpisodePage({ id }) {
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(240px, 1fr))', gap: 14 }}>
               {related.map((r) => (
                 <a key={r.id} href={`#/episodio/${r.id}`} className="lzm-card lzm-pop" style={{ display: 'block' }}>
-                  <div style={{ aspectRatio: '16/9', background: `linear-gradient(135deg, ${r.color} 0%, #0A0F2C 130%)`, borderBottom: '3px solid #111', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative' }}>
-                    <div style={{ width: 48, height: 48, background: '#FDD835', border: '3px solid #111', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '4px 4px 0 #111' }}>
-                      <Icon name="play" size={20} color="#111" fill="#111" />
+                  <div style={{ aspectRatio: '16/9', background: `linear-gradient(135deg, ${r.color} 0%, #0A0F2C 130%)`, borderBottom: '3px solid #111', position: 'relative', overflow: 'hidden' }}>
+                    {r.youtubeId && <img src={`https://img.youtube.com/vi/${r.youtubeId}/maxresdefault.jpg`} alt={r.title} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} onError={ev => { ev.target.style.display='none'; }} />}
+                    <div style={{ position: 'absolute', inset: 0, background: 'rgba(0,0,0,.25)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                      <div style={{ width: 44, height: 44, background: '#FDD835', border: '3px solid #111', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '4px 4px 0 #111' }}>
+                        <Icon name="play" size={18} color="#111" fill="#111" />
+                      </div>
                     </div>
-                    <span style={{ position: 'absolute', bottom: 10, right: 10, padding: '3px 8px', background: '#111', color: '#fff', fontFamily: "'Montserrat'", fontWeight: 900, fontSize: 11, borderRadius: 5 }}>{r.duration}</span>
+                    <span style={{ position: 'absolute', bottom: 10, right: 10, padding: '3px 8px', background: 'rgba(0,0,0,.8)', color: '#fff', fontFamily: "'Montserrat'", fontWeight: 900, fontSize: 11, borderRadius: 5 }}>{r.duration}</span>
                   </div>
                   <div style={{ padding: 14 }}>
                     <div style={{ fontFamily: "'Nunito'", fontWeight: 800, fontSize: 14, color: '#111', lineHeight: 1.3 }}>{r.title}</div>
