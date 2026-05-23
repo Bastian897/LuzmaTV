@@ -43,40 +43,51 @@ function Programs() {
       </div>
 
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(240px, 1fr))', gap: 18 }}>
-        {list.map((p) => (
-          <div key={p.id} className="lzm-pop lzm-card" style={{ display: 'flex', flexDirection: 'column' }}>
-            <div style={{ position: 'relative', aspectRatio: '4 / 3', background: p.color, borderBottom: '3px solid #111', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 72 }}>
-              <span style={{ filter: 'drop-shadow(3px 3px 0 #111)' }}>{p.emoji}</span>
-              {p.isNew && <span style={{ position: 'absolute', top: 10, left: 10 }}><Pill color="#FFD600">⭐ NUEVO</Pill></span>}
-              <span style={{ position: 'absolute', bottom: 10, right: 10 }}><Pill color="#fff" size="xs">{p.time}</Pill></span>
+        {list.map((p) => {
+          const isSoon = p.status === 'soon';
+          return (
+            <div key={p.id} className="lzm-pop lzm-card" style={{ display: 'flex', flexDirection: 'column', opacity: isSoon ? 0.82 : 1 }}>
+              <div style={{ position: 'relative', aspectRatio: '4 / 3', background: p.color, borderBottom: '3px solid #111', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 72 }}>
+                <span style={{ filter: 'drop-shadow(3px 3px 0 #111)' }}>{p.emoji}</span>
+
+                {/* Badge AL AIRE o PRÓXIMAMENTE */}
+                <span style={{ position: 'absolute', top: 10, left: 10 }}>
+                  {isSoon
+                    ? <Pill color="#111" fg="#fff">🕐 Próximamente</Pill>
+                    : <Pill color="#FDD835">📡 Al aire</Pill>
+                  }
+                </span>
+
+                {!isSoon && (
+                  <span style={{ position: 'absolute', bottom: 10, right: 10 }}>
+                    <Pill color="#fff" size="xs">{p.time} hs</Pill>
+                  </span>
+                )}
+              </div>
+
+              <div style={{ padding: 16, display: 'flex', flexDirection: 'column', gap: 6, flex: 1 }}>
+                <div style={{ fontFamily: "'Bebas Neue'", fontSize: 28, lineHeight: 1, textTransform: 'uppercase' }}>{p.name}</div>
+                <div style={{ fontFamily: "'Montserrat'", fontWeight: 800, fontSize: 11, textTransform: 'uppercase', letterSpacing: '.08em', color: '#5B6479' }}>
+                  {p.day}{!isSoon && ` · ${p.time} hs`}
+                </div>
+                <div style={{ fontFamily: "'Nunito'", fontSize: 13, color: '#2A2A2A', marginTop: 4, flex: 1 }}>{p.desc}</div>
+
+                {isSoon ? (
+                  <div style={{ marginTop: 10, alignSelf: 'flex-start', fontFamily: "'Montserrat'", fontWeight: 900, fontSize: 11, textTransform: 'uppercase', letterSpacing: '.08em', color: '#5B6479', padding: '7px 14px', border: '2.5px dashed #bbb', borderRadius: 9999 }}>
+                    Próximamente
+                  </div>
+                ) : (
+                  <a
+                    href={`#/programa/${p.id}`}
+                    style={{ marginTop: 10, alignSelf: 'flex-start', fontFamily: "'Montserrat'", fontWeight: 900, fontSize: 11, textTransform: 'uppercase', letterSpacing: '.08em', background: '#111', color: '#FDD835', border: '2.5px solid #111', borderRadius: 9999, padding: '7px 14px', display: 'inline-block' }}
+                  >
+                    Ver episodios →
+                  </a>
+                )}
+              </div>
             </div>
-            <div style={{ padding: 16, display: 'flex', flexDirection: 'column', gap: 6, flex: 1 }}>
-              <div style={{ fontFamily: "'Bebas Neue'", fontSize: 28, lineHeight: 1, textTransform: 'uppercase' }}>{p.name}</div>
-              <div style={{ fontFamily: "'Montserrat'", fontWeight: 800, fontSize: 11, textTransform: 'uppercase', letterSpacing: '.08em', color: '#5B6479' }}>{p.day}</div>
-              <div style={{ fontFamily: "'Nunito'", fontSize: 13, color: '#2A2A2A', marginTop: 4, flex: 1 }}>{p.desc}</div>
-              <a
-                href={`#/programa/${p.id}`}
-                style={{
-                  marginTop: 10,
-                  alignSelf: 'flex-start',
-                  fontFamily: "'Montserrat'",
-                  fontWeight: 900,
-                  fontSize: 11,
-                  textTransform: 'uppercase',
-                  letterSpacing: '.08em',
-                  background: '#111',
-                  color: '#FDD835',
-                  border: '2.5px solid #111',
-                  borderRadius: 9999,
-                  padding: '7px 14px',
-                  display: 'inline-block',
-                }}
-              >
-                Ver episodios →
-              </a>
-            </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
     </Section>
   );
