@@ -53,15 +53,17 @@ function Programs() {
                   : <span style={{ filter: 'drop-shadow(3px 3px 0 #111)' }}>{p.emoji}</span>
                 }
 
-                {/* Badge AL AIRE o PRÓXIMAMENTE */}
-                <span style={{ position: 'absolute', top: 10, left: 10 }}>
-                  {isSoon
-                    ? <Pill color="#111" fg="#fff">🕐 Próximamente</Pill>
-                    : <Pill color="#FDD835">📡 Al aire</Pill>
-                  }
-                </span>
+                {/* Badge AL AIRE o PRÓXIMAMENTE — oculto si hay logo propio */}
+                {p.id !== 'luzma-cachai' && (
+                  <span style={{ position: 'absolute', top: 10, left: 10 }}>
+                    {isSoon
+                      ? <Pill color="#111" fg="#fff">🕐 Próximamente</Pill>
+                      : <Pill color="#FDD835">📡 Al aire</Pill>
+                    }
+                  </span>
+                )}
 
-                {!isSoon && (
+                {!isSoon && p.id !== 'luzma-cachai' && (
                   <span style={{ position: 'absolute', bottom: 10, right: 10 }}>
                     <Pill color="#fff" size="xs">{p.time} hs</Pill>
                   </span>
