@@ -12,8 +12,9 @@ function Episodes() {
         </Button>
       }
     >
+      <div className="lzm-carousel-wrap">
       <div className="lzm-scroll-x">
-        {LZM_DATA.episodes.map((e) => {
+        {LZM_DATA.episodes.map((e, i) => {
           const prog = LZM_DATA.programs.find((p) => p.id === e.programId);
           return (
             <a
@@ -28,6 +29,7 @@ function Episodes() {
                   <img
                     src={`https://img.youtube.com/vi/${e.youtubeId}/maxresdefault.jpg`}
                     alt={e.title}
+                    loading="lazy"
                     style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}
                     onError={(ev) => { ev.target.style.display = 'none'; }}
                   />
@@ -60,6 +62,7 @@ function Episodes() {
             </a>
           );
         })}
+      </div>
       </div>
     </Section>
   );

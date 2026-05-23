@@ -5,7 +5,8 @@ function App() {
   const [hash, setHash] = useStateApp(window.location.hash);
 
   useEffectApp(() => {
-    const handler = () => setHash(window.location.hash);
+    if (window.AOS) window.AOS.init({ duration: 500, once: true, offset: 50, easing: 'ease-out-cubic' });
+    const handler = () => { setHash(window.location.hash); if (window.AOS) window.AOS.refresh(); };
     window.addEventListener('hashchange', handler);
     return () => window.removeEventListener('hashchange', handler);
   }, []);

@@ -69,6 +69,7 @@ function ProgramPage({ id }) {
                     <img
                       src={`assets/hosts/${h.id}.jpg`}
                       alt={h.name}
+                      loading="lazy"
                       style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top' }}
                       onError={(ev) => {
                         ev.target.style.display = 'none';
@@ -94,10 +95,10 @@ function ProgramPage({ id }) {
           <div className="lzm-section-eyebrow" style={{ marginBottom: 16 }}>Episodios</div>
           {episodes.length > 0 ? (
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))', gap: 16 }}>
-              {episodes.map((ep) => (
-                <a key={ep.id} href={`#/episodio/${ep.id}`} className="lzm-card lzm-pop" style={{ display: 'block' }}>
+              {episodes.map((ep, i) => (
+                <a key={ep.id} href={`#/episodio/${ep.id}`} className="lzm-card lzm-pop" style={{ display: 'block' }} data-aos="fade-up" data-aos-delay={i * 60}>
                   <div style={{ aspectRatio: '16/9', background: `linear-gradient(135deg, ${ep.color} 0%, #0A0F2C 130%)`, borderBottom: '3px solid #111', position: 'relative', overflow: 'hidden' }}>
-                    {ep.youtubeId && <img src={`https://img.youtube.com/vi/${ep.youtubeId}/maxresdefault.jpg`} alt={ep.title} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} onError={ev => { ev.target.style.display='none'; }} />}
+                    {ep.youtubeId && <img src={`https://img.youtube.com/vi/${ep.youtubeId}/maxresdefault.jpg`} alt={ep.title} loading="lazy" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} onError={ev => { ev.target.style.display='none'; }} />}
                     <div style={{ position: 'absolute', inset: 0, background: 'rgba(0,0,0,.25)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                       <div style={{ width: 54, height: 54, background: '#FDD835', border: '3px solid #111', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '4px 4px 0 #111' }}>
                         <Icon name="play" size={22} color="#111" fill="#111" />

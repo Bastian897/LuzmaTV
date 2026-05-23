@@ -3,13 +3,14 @@ function HostsRow() {
   return (
     <Section id="equipo" eyebrow="Los rostros del canal" title="Conoce al equipo" background="#fff">
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 18 }}>
-        {LZM_DATA.hosts.map((h) => (
-          <div key={h.id} className="lzm-card lzm-pop" style={{ overflow: 'hidden' }}>
+        {LZM_DATA.hosts.map((h, i) => (
+          <div key={h.id} className="lzm-card lzm-pop" style={{ overflow: 'hidden' }} data-aos="fade-up" data-aos-delay={i * 80}>
             {/* Foto real */}
             <div style={{ aspectRatio: '1 / 1', position: 'relative', background: h.bg, borderBottom: '3px solid #111', overflow: 'hidden' }}>
               <img
                 src={`assets/hosts/${h.id}.jpg`}
                 alt={h.name}
+                loading="lazy"
                 style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top' }}
                 onError={(ev) => { ev.target.style.display = 'none'; }}
               />

@@ -86,33 +86,34 @@ function Header({ live = true, onNav }) {
       </div>
 
       {open && (
-        <div
-          className="lzm-mobile-only"
-          style={{
-            display: 'none',
-            background: '#fff',
-            borderTop: '3px solid #111',
-            padding: '16px 24px 22px',
-          }}
-        >
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
-            {nav.map(([id, label]) => (
-              <a
-                key={id}
-                href={`#${id}`}
-                onClick={(e) => { e.preventDefault(); setOpen(false); onNav?.(id); }}
-                style={{
-                  fontFamily: "'Bebas Neue', sans-serif",
-                  fontSize: 28,
-                  textTransform: 'uppercase',
-                  color: '#111',
-                }}
-              >
-                {label}
-              </a>
-            ))}
+        <>
+          <div
+            onClick={() => setOpen(false)}
+            style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,.45)', zIndex: -1 }}
+          />
+          <div style={{ background: '#fff', borderTop: '3px solid #111', padding: '20px 24px 28px' }}>
+            <div style={{ display: 'flex', flexDirection: 'column' }}>
+              {nav.map(([id, label]) => (
+                <a
+                  key={id}
+                  href={`#${id}`}
+                  onClick={(e) => { e.preventDefault(); setOpen(false); onNav?.(id); }}
+                  style={{
+                    fontFamily: "'Bebas Neue', sans-serif",
+                    fontSize: 34,
+                    textTransform: 'uppercase',
+                    color: '#111',
+                    padding: '10px 0',
+                    borderBottom: '2px solid #f0f0f0',
+                    lineHeight: 1,
+                  }}
+                >
+                  {label}
+                </a>
+              ))}
+            </div>
           </div>
-        </div>
+        </>
       )}
 
       <style>{`
