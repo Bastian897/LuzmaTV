@@ -27,26 +27,27 @@ function Intro({ onDone }) {
 
     setContentVisible(false);
 
-    // Liberar scroll cuando termina el fade
-    setTimeout(() => { document.body.style.overflow = ''; }, 900);
+    // Liberar scroll inmediato
+    setTimeout(() => { document.body.style.overflow = ''; }, 350);
 
     const el = logoRef.current;
     if (!el) {
       setOverlayFading(true);
-      setTimeout(onDone, 700);
+      setTimeout(onDone, 280);
       return;
     }
 
     void el.offsetHeight;
-    el.style.transition = 'transform 720ms cubic-bezier(.77,0,.18,1), opacity 380ms 300ms';
+    // Animaciones mas rapidas: logo viaja y fade simultaneo, sin esperas
+    el.style.transition = 'transform 480ms cubic-bezier(.77,0,.18,1), opacity 280ms 100ms';
 
     const heroLogo = document.getElementById('lzm-hero-logo');
     if (heroLogo) {
       heroLogo.style.opacity = '0';
       setTimeout(() => {
-        heroLogo.style.transition = 'opacity 350ms';
+        heroLogo.style.transition = 'opacity 250ms';
         heroLogo.style.opacity = '1';
-      }, 600);
+      }, 380);
 
       const from = el.getBoundingClientRect();
       const to = heroLogo.getBoundingClientRect();
@@ -59,13 +60,22 @@ function Intro({ onDone }) {
     }
     el.style.opacity = '0';
 
-    // Inicia fade del backdrop negro a los 350ms (deja que el logo viaje un poco primero)
-    setTimeout(() => setOverlayFading(true), 350);
+    // Fade del backdrop arranca casi inmediato
+    setTimeout(() => setOverlayFading(true), 60);
 
-    setTimeout(onDone, 1100);
+    setTimeout(onDone, 560);
   }
 
-  // Trigger startExit cuando termina el video (curtinas completamente abiertas)
+  // Detecta cuando las cortinas estan casi totalmente abiertas (3.0s en el video de 4s)
+  // y arranca el exit en ese momento — no espera al onEnded
+  function onTimeUpdate(e) {
+    if (exitStarted.current) return;
+    const v = e.target;
+    if (v && v.currentTime >= 3.0) {
+      startExit();
+    }
+  }
+
   function onVideoEnded() {
     startExit();
   }
@@ -85,7 +95,7 @@ function Intro({ onDone }) {
         position: 'fixed', inset: 0, zIndex: 9999, cursor: 'pointer',
         backgroundColor: '#000',
         opacity: overlayFading ? 0 : 1,
-        transition: 'opacity 600ms ease-out',
+        transition: 'opacity 320ms ease-out',
         overflow: 'hidden',
       }}
     >
@@ -97,6 +107,7 @@ function Intro({ onDone }) {
         muted
         playsInline
         preload="auto"
+        onTimeUpdate={onTimeUpdate}
         onEnded={onVideoEnded}
         style={{
           position: 'absolute', inset: 0,
