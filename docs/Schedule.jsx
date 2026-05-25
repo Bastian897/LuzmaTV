@@ -5,11 +5,14 @@ const SLOTS = [
   {
     time: '10:00\n12:00',
     shows: ['Luzma Cachai', 'Luzma Cachai', 'Luzma Cachai', 'Luzma Cachai', 'Luzma Cachai', null, null],
-    color: '#E91E8C',
+  },
+  {
+    time: '18:00\ntarde',
+    shows: [null, 'Cara a Cara', null, 'Cara a Cara', null, null, null],
   },
 ];
 
-const SHOW_COLORS = { 'Luzma Cachai': '#E91E8C' };
+const SHOW_COLORS = { 'Luzma Cachai': '#E91E8C', 'Cara a Cara': '#7B2CBF' };
 
 function Schedule() {
   return (
@@ -60,8 +63,9 @@ function Schedule() {
           <span style={{ width: 18, height: 18, background: '#E91E8C', border: '2.5px solid #111', borderRadius: 5 }} />
           Luzma Cachai — Lun a Vie · 10:00 a 12:00 hs
         </span>
-        <span style={{ fontFamily: "'Nunito'", fontSize: 13, color: '#5B6479', fontWeight: 700 }}>
-          Más programas próximamente
+        <span style={{ display: 'inline-flex', alignItems: 'center', gap: 8, fontFamily: "'Montserrat'", fontWeight: 700, fontSize: 12, textTransform: 'uppercase', letterSpacing: '.04em' }}>
+          <span style={{ width: 18, height: 18, background: '#7B2CBF', border: '2.5px solid #111', borderRadius: 5 }} />
+          Cara a Cara — Mar y Jue · tarde
         </span>
       </div>
     </Section>

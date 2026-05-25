@@ -1,23 +1,136 @@
 <!doctype html>
-<html lang="es">
+<html lang="es-CL">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>LuzmaTV — La señal que deja huella</title>
-  <meta name="description" content="LuzmaTV — talk shows, humor y entretenimiento en vivo desde Chile. Miranos en Kick, Twitch, TikTok e Instagram.">
+  <title>LuzmaTV — La señal que deja huella | Canal chileno en vivo</title>
+  <meta name="description" content="LuzmaTV es el canal chileno de talk shows, humor y entretenimiento en vivo. Luzma Cachai (Lun–Vie 10:00), Cara a Cara (Mar y Jue tarde). Míranos en Kick, Twitch, YouTube, TikTok e Instagram.">
+  <meta name="keywords" content="LuzmaTV, canal chileno, streaming Chile, Luzma Cachai, Cara a Cara, talk show Chile, TV en vivo Chile, Kick Chile, entretenimiento chileno, Ariel Osses, Vicky More">
+  <meta name="author" content="LuzmaTV">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="theme-color" content="#0055FF">
+  <meta name="application-name" content="LuzmaTV">
+  <link rel="canonical" href="https://bastian897.github.io/LuzmaTV/">
 
   <!-- Open Graph -->
   <meta property="og:type"        content="website">
+  <meta property="og:locale"      content="es_CL">
   <meta property="og:url"         content="https://bastian897.github.io/LuzmaTV/">
-  <meta property="og:title"       content="LuzmaTV — La señal que deja huella">
-  <meta property="og:description" content="Talk shows, humor y entretenimiento en vivo desde Chile. Miranos en Kick, Twitch, TikTok e Instagram.">
+  <meta property="og:title"       content="LuzmaTV — La señal que deja huella | Canal chileno en vivo">
+  <meta property="og:description" content="Canal chileno de talk shows, humor y entretenimiento en vivo. Luzma Cachai, Cara a Cara y más. Míranos en Kick, Twitch, YouTube, TikTok e Instagram.">
   <meta property="og:image"       content="https://bastian897.github.io/LuzmaTV/assets/luzmatv-logo.png">
+  <meta property="og:image:width"  content="800">
+  <meta property="og:image:height" content="200">
+  <meta property="og:site_name"   content="LuzmaTV">
 
   <!-- Twitter Card -->
   <meta name="twitter:card"        content="summary_large_image">
+  <meta name="twitter:site"        content="@luzmatv">
   <meta name="twitter:title"       content="LuzmaTV — La señal que deja huella">
-  <meta name="twitter:description" content="Talk shows, humor y entretenimiento en vivo desde Chile.">
+  <meta name="twitter:description" content="Canal chileno de talk shows, humor y entretenimiento en vivo. Lun–Vie 10:00 en vivo.">
   <meta name="twitter:image"       content="https://bastian897.github.io/LuzmaTV/assets/luzmatv-logo.png">
+
+  <!-- JSON-LD: Organización + Sitio Web + Canal de TV -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://bastian897.github.io/LuzmaTV/#org",
+        "name": "LuzmaTV",
+        "alternateName": ["Luzma TV", "LuzmaTV Chile"],
+        "url": "https://bastian897.github.io/LuzmaTV/",
+        "logo": { "@type": "ImageObject", "url": "https://bastian897.github.io/LuzmaTV/assets/luzmatv-logo.png" },
+        "description": "LuzmaTV es el canal chileno de talk shows, humor y entretenimiento en vivo. Con programas como Luzma Cachai y Cara a Cara, transmitimos de lunes a viernes desde Santiago, Chile.",
+        "foundingLocation": { "@type": "Place", "name": "Santiago, Chile" },
+        "areaServed": { "@type": "Country", "name": "Chile" },
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": "+56940996090",
+          "email": "Contacto@LuzmaTV.cl",
+          "contactType": "customer service",
+          "availableLanguage": "Spanish"
+        },
+        "sameAs": [
+          "https://kick.com/luzmatv",
+          "https://twitch.tv/luzmatv",
+          "https://instagram.com/luzmatv",
+          "https://tiktok.com/@luzmatv",
+          "https://youtube.com/@luzmatvcl"
+        ]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://bastian897.github.io/LuzmaTV/#website",
+        "url": "https://bastian897.github.io/LuzmaTV/",
+        "name": "LuzmaTV",
+        "description": "Canal chileno de talk shows, humor y entretenimiento en vivo desde Santiago de Chile.",
+        "publisher": { "@id": "https://bastian897.github.io/LuzmaTV/#org" },
+        "inLanguage": "es-CL"
+      },
+      {
+        "@type": "BroadcastService",
+        "name": "LuzmaTV",
+        "broadcastDisplayName": "LuzmaTV",
+        "description": "Canal chileno de talk shows, humor y entretenimiento en vivo.",
+        "areaServed": { "@type": "Country", "name": "Chile" },
+        "broadcastTimezone": "America/Santiago",
+        "provider": { "@id": "https://bastian897.github.io/LuzmaTV/#org" }
+      },
+      {
+        "@type": "TVSeries",
+        "name": "Luzma Cachai",
+        "description": "El live show diario de LuzmaTV. De lunes a viernes de 10:00 a 12:00, Ariel Osses, Vicky More, Rodrigo Muñoz, Claudio Merlin y Lita Melo en vivo y sin filtros desde Santiago.",
+        "genre": ["Talk Show", "Entretenimiento"],
+        "inLanguage": "es-CL",
+        "countryOfOrigin": { "@type": "Country", "name": "Chile" },
+        "productionCompany": { "@id": "https://bastian897.github.io/LuzmaTV/#org" },
+        "actor": [
+          { "@type": "Person", "name": "Ariel Osses" },
+          { "@type": "Person", "name": "Vicky More" },
+          { "@type": "Person", "name": "Rodrigo Muñoz" },
+          { "@type": "Person", "name": "Claudio Merlin" },
+          { "@type": "Person", "name": "Lita Melo" }
+        ]
+      },
+      {
+        "@type": "TVSeries",
+        "name": "Cara a Cara",
+        "description": "Las conversaciones que no se pueden ignorar. Dos visiones, una mesa, sin filtros. Martes y jueves en las tardes por LuzmaTV.",
+        "genre": ["Talk Show", "Debate", "Entrevistas"],
+        "inLanguage": "es-CL",
+        "countryOfOrigin": { "@type": "Country", "name": "Chile" },
+        "productionCompany": { "@id": "https://bastian897.github.io/LuzmaTV/#org" }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "¿Qué es LuzmaTV?",
+            "acceptedAnswer": { "@type": "Answer", "text": "LuzmaTV es un canal chileno de streaming y TV digital con sede en Santiago, Chile. Transmite talk shows, humor y entretenimiento en vivo a través de Kick, Twitch, YouTube, TikTok e Instagram." }
+          },
+          {
+            "@type": "Question",
+            "name": "¿Cómo ver LuzmaTV en vivo?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Puedes ver LuzmaTV en vivo en Kick (kick.com/luzmatv), Twitch (twitch.tv/luzmatv), YouTube (@luzmatvcl), TikTok (@luzmatv) e Instagram (@luzmatv). También está disponible en TV Más." }
+          },
+          {
+            "@type": "Question",
+            "name": "¿A qué hora transmite Luzma Cachai?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Luzma Cachai transmite de lunes a viernes de 10:00 a 12:00 horas (horario de Chile) en vivo por todas las plataformas de LuzmaTV." }
+          },
+          {
+            "@type": "Question",
+            "name": "¿Cuándo es Cara a Cara?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Cara a Cara se transmite los martes y jueves en las tardes por LuzmaTV." }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
 
   <link rel="stylesheet" href="colors_and_type.css">
   <link rel="stylesheet" href="site.css">

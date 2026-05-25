@@ -41,10 +41,6 @@ function Hero({ onWatch, onPrograms }) {
         </div>
 
         <div style={{ marginTop: 48, display: 'flex', gap: 22, flexWrap: 'wrap', alignItems: 'center' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 10, color: '#fff', fontFamily: "'Montserrat'", fontWeight: 800, fontSize: 14, textTransform: 'uppercase', letterSpacing: '.08em' }}>
-            <LiveBadge size="sm" />
-            <span style={{ textShadow: '1.5px 1.5px 0 #111' }}>2.143 viendo ahora</span>
-          </div>
           <div style={{ display: 'flex', gap: 10 }}>
             {['kick', 'tiktok', 'instagram', 'twitch', 'youtube'].map((p) => (
               <a key={p} href={HERO_SOCIAL_URLS[p]} target="_blank" rel="noreferrer"

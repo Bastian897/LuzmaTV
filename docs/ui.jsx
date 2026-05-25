@@ -177,5 +177,24 @@ function Icon({ name, size = 22, color = 'currentColor', stroke = 2.5, fill = 'n
   );
 }
 
+// ---------- Breadcrumb ----------
+function Breadcrumb({ items }) {
+  return (
+    <nav aria-label="Ruta de navegación" style={{ marginBottom: 28 }}>
+      <ol style={{ display: 'flex', alignItems: 'center', gap: 4, flexWrap: 'wrap', listStyle: 'none', margin: 0, padding: 0, fontFamily: "'Montserrat'", fontWeight: 700, fontSize: 11, textTransform: 'uppercase', letterSpacing: '.07em' }}>
+        {items.map((item, i) => (
+          <li key={i} style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
+            {i > 0 && <Icon name="chevronRight" size={11} color="#ccc" />}
+            {item.href
+              ? <a href={item.href} style={{ color: '#0055FF' }}>{item.label}</a>
+              : <span style={{ color: '#5B6479' }}>{item.label}</span>
+            }
+          </li>
+        ))}
+      </ol>
+    </nav>
+  );
+}
+
 // Make available globally to Babel scripts
-Object.assign(window, { Button, Pill, LiveBadge, Section, Star, Icon, ICON_PATHS });
+Object.assign(window, { Button, Pill, LiveBadge, Section, Star, Icon, ICON_PATHS, Breadcrumb });

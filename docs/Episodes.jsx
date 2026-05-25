@@ -27,7 +27,7 @@ function Episodes() {
               <div style={{ position: 'relative', aspectRatio: '16 / 9', background: `linear-gradient(135deg, ${e.color} 0%, #0A0F2C 130%)`, borderBottom: '3px solid #111', overflow: 'hidden' }}>
                 {e.youtubeId && (
                   <img
-                    src={`https://img.youtube.com/vi/${e.youtubeId}/maxresdefault.jpg`}
+                    src={`https://img.youtube.com/vi/${e.youtubeId}/hqdefault.jpg`}
                     alt={e.title}
                     loading="lazy"
                     style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}

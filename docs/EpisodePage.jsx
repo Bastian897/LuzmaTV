@@ -8,7 +8,14 @@ function EpisodePage({ id }) {
     ? LZM_DATA.episodes.filter((e) => e.programId === ep.programId && e.id !== id).slice(0, 3)
     : [];
 
-  useEffectEP(() => { window.scrollTo(0, 0); }, [id]);
+  useEffectEP(() => {
+    window.scrollTo(0, 0);
+    if (ep) {
+      document.title = `${ep.title} — LuzmaTV`;
+      const m = document.querySelector('meta[name="description"]');
+      if (m) m.setAttribute('content', ep.description || `${ep.title} en LuzmaTV. ${ep.duration}.`);
+    }
+  }, [id]);
 
   const onNav = (sectionId) => { window.location.hash = `#${sectionId}`; };
 
@@ -33,11 +40,13 @@ function EpisodePage({ id }) {
       <Header onNav={onNav} live={false} />
 
       <div className="lzm-shell" style={{ padding: '40px 24px 80px', maxWidth: 900 }}>
-        {/* Back */}
-        <a href="#episodios"
-          style={{ display: 'inline-flex', alignItems: 'center', gap: 6, fontFamily: "'Montserrat'", fontWeight: 800, fontSize: 12, textTransform: 'uppercase', letterSpacing: '.06em', color: '#0055FF', marginBottom: 28 }}>
-          <Icon name="chevronLeft" size={15} /> Todos los episodios
-        </a>
+        {/* Breadcrumb */}
+        <Breadcrumb items={[
+          { label: 'Inicio', href: '#' },
+          { label: 'Programas', href: '#programas' },
+          { label: prog?.name || 'Programa', href: prog ? `#/programa/${prog.id}` : '#programas' },
+          { label: ep.title },
+        ]} />
 
         {/* Program badge */}
         {prog && (
@@ -104,7 +113,7 @@ function EpisodePage({ id }) {
               {related.map((r) => (
                 <a key={r.id} href={`#/episodio/${r.id}`} className="lzm-card lzm-pop" style={{ display: 'block' }}>
                   <div style={{ aspectRatio: '16/9', background: `linear-gradient(135deg, ${r.color} 0%, #0A0F2C 130%)`, borderBottom: '3px solid #111', position: 'relative', overflow: 'hidden' }}>
-                    {r.youtubeId && <img src={`https://img.youtube.com/vi/${r.youtubeId}/maxresdefault.jpg`} alt={r.title} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} onError={ev => { ev.target.style.display='none'; }} />}
+                    {r.youtubeId && <img src={`https://img.youtube.com/vi/${r.youtubeId}/hqdefault.jpg`} alt={r.title} loading="lazy" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} onError={ev => { ev.target.style.display='none'; }} />}
                     <div style={{ position: 'absolute', inset: 0, background: 'rgba(0,0,0,.25)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                       <div style={{ width: 44, height: 44, background: '#FDD835', border: '3px solid #111', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '4px 4px 0 #111' }}>
                         <Icon name="play" size={18} color="#111" fill="#111" />
