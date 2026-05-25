@@ -6,7 +6,10 @@ function ProgramPage({ id }) {
   const episodes = prog ? LZM_DATA.episodes.filter((e) => e.programId === id) : [];
   const hosts    = prog ? LZM_DATA.hosts.filter((h) => prog.hostIds.includes(h.id)) : [];
 
-  useEffectPP(() => { window.scrollTo(0, 0); }, [id]);
+  useEffectPP(() => {
+    window.scrollTo(0, 0);
+    setTimeout(() => { if (window.AOS) window.AOS.refreshHard(); }, 80);
+  }, [id]);
 
   const onNav = (sectionId) => { window.location.hash = `#${sectionId}`; };
 

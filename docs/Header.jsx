@@ -35,7 +35,7 @@ function Header({ live = true, onNav }) {
     >
       <div className="lzm-shell" style={{ display: 'flex', alignItems: 'center', height: 76, gap: 24 }}>
         <a href="#inicio" onClick={(e) => { e.preventDefault(); onNav?.('inicio'); }} style={{ display: 'flex', alignItems: 'center' }}>
-          <img src="assets/luzmatv-logo.png" alt="LuzmaTV" style={{ height: 48, border: '3px solid #111', borderRadius: 10, boxShadow: '3px 3px 0 #111', display: 'block' }} />
+          <img src="assets/luzmatv-logo.png" alt="LuzmaTV" style={{ height: 52, display: 'block' }} />
         </a>
 
         <nav style={{ display: 'flex', gap: 22, marginLeft: 12 }} className="lzm-desktop-nav">
