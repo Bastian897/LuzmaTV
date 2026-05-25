@@ -19,8 +19,8 @@ function Hero({ onWatch, onPrograms }) {
       <div style={{ position: 'absolute', bottom: 50,  right: 90  }} className="lzm-wiggle lzm-hero-star-extra"><Star size={52} fill="#E91E8C" rotate={-20} /></div>
       <div style={{ position: 'absolute', top: 260,   right: 140 }} className="lzm-hero-star-extra"><Star size={22} fill="#fff" rotate={35} /></div>
       <div style={{ position: 'absolute', bottom: 180, right: 60  }} className="lzm-spin-slow lzm-hero-star-extra"><Star size={16} fill="#FDD835" rotate={0} /></div>
-      <div style={{ position: 'absolute', top: 110,  right: 520 }} className="lzm-wiggle lzm-hero-star-extra"><Star size={58} fill="#FDD835" rotate={18} /></div>
-      <div style={{ position: 'absolute', top: 340,  right: 490 }} className="lzm-hero-star-extra"><Star size={26} fill="#fff" rotate={-30} /></div>
+      <div style={{ position: 'absolute', top: 160,  right: 280 }} className="lzm-wiggle lzm-hero-star-extra"><Star size={72} fill="#fff" rotate={18} /></div>
+      <div style={{ position: 'absolute', top: 400,  right: 320 }} className="lzm-wiggle lzm-hero-star-extra"><Star size={48} fill="#E91E8C" rotate={-22} /></div>
       <style>{`@media (max-width: 860px) { .lzm-hero-star-extra { display: none !important; } }`}</style>
 
       <div className="lzm-shell" style={{ position: 'relative', padding: '64px 24px 96px', maxWidth: 1100 }}>
