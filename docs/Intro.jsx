@@ -13,7 +13,7 @@ function Intro({ onDone }) {
     document.body.style.overflow = 'hidden';
 
     // Si por alguna razon el video falla / es bloqueado, fallback timeout
-    const fallback = setTimeout(startExit, 5500);
+    const fallback = setTimeout(startExit, 4000);
 
     return () => {
       clearTimeout(fallback);
@@ -66,12 +66,11 @@ function Intro({ onDone }) {
     setTimeout(onDone, 560);
   }
 
-  // Detecta cuando las cortinas estan casi totalmente abiertas (3.0s en el video de 4s)
-  // y arranca el exit en ese momento — no espera al onEnded
+  // Trigger exit cuando faltan ~0.2s para que termine el video (cortinas ya abiertas)
   function onTimeUpdate(e) {
     if (exitStarted.current) return;
     const v = e.target;
-    if (v && v.currentTime >= 3.0) {
+    if (v && v.duration && v.currentTime >= v.duration - 0.25) {
       startExit();
     }
   }
