@@ -25,7 +25,7 @@ function Hero({ onWatch, onPrograms }) {
 
       <div className="lzm-shell" style={{ position: 'relative', padding: '64px 24px 96px', maxWidth: 1100 }}>
         <div style={{ marginBottom: 24, animation: 'lzm-bounce-in 600ms cubic-bezier(.34,1.56,.64,1) both' }}>
-          <img src="assets/luzmatv-logo.png" alt="LuzmaTV"
+          <img id="lzm-hero-logo" src="assets/luzmatv-logo.png" alt="LuzmaTV"
             style={{ height: 'clamp(96px, 14vw, 160px)', border: '5px solid #111', borderRadius: 18, boxShadow: '10px 10px 0 #111', display: 'block' }} />
         </div>
 
