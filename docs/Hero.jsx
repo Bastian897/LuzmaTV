@@ -10,10 +10,14 @@ const HERO_SOCIAL_URLS = {
 function Hero({ onWatch, onPrograms }) {
   return (
     <section id="inicio" className="lzm-halftone" style={{ position: 'relative', overflow: 'hidden', borderBottom: '4px solid #111' }}>
-      <div style={{ position: 'absolute', top: 30,  right: 70  }} className="lzm-spin-slow"><Star size={88} fill="#FFD600" rotate={12} /></div>
-      <div style={{ position: 'absolute', top: 220, left: 60   }} className="lzm-wiggle"><Star size={42} fill="#FDD835" rotate={-15} /></div>
+      <div style={{ position: 'absolute', top: 30,   right: 70  }} className="lzm-spin-slow"><Star size={88} fill="#FFD600" rotate={12} /></div>
+      <div style={{ position: 'absolute', top: 220,  left: 60   }} className="lzm-wiggle"><Star size={42} fill="#FDD835" rotate={-15} /></div>
       <div style={{ position: 'absolute', bottom: 80, right: 200 }}><Star size={28} fill="#fff" rotate={20} /></div>
-      <div style={{ position: 'absolute', top: 120, right: 360  }}><Star size={18} fill="#fff" rotate={-8} /></div>
+      <div style={{ position: 'absolute', top: 120,  right: 360 }}><Star size={18} fill="#fff" rotate={-8} /></div>
+      {/* Estrellas lado derecho adicionales */}
+      <div style={{ position: 'absolute', bottom: 50,  right: 90  }} className="lzm-wiggle"><Star size={52} fill="#E91E8C" rotate={-20} /></div>
+      <div style={{ position: 'absolute', top: 260,   right: 140 }}><Star size={22} fill="#fff" rotate={35} /></div>
+      <div style={{ position: 'absolute', bottom: 180, right: 60  }} className="lzm-spin-slow"><Star size={16} fill="#FDD835" rotate={0} /></div>
 
       <div className="lzm-shell" style={{ position: 'relative', padding: '64px 24px 96px', maxWidth: 1100 }}>
         <div style={{ marginBottom: 24, animation: 'lzm-bounce-in 600ms cubic-bezier(.34,1.56,.64,1) both' }}>

@@ -95,9 +95,32 @@ function Footer() {
           </div>
         </div>
 
+        {/* Pregúntale a la IA — AEO: links directos para que las IA indexen la marca */}
+        <div style={{ borderTop: '1px solid rgba(255,255,255,.1)', paddingTop: 20, marginBottom: 20 }}>
+          <div style={{ fontFamily: "'Montserrat'", fontWeight: 900, fontSize: 11, textTransform: 'uppercase', letterSpacing: '.12em', color: '#FDD835', marginBottom: 10 }}>
+            🤖 Pregúntale a la IA sobre LuzmaTV
+          </div>
+          <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+            {[
+              { name: 'ChatGPT', url: 'https://chatgpt.com/?q=' + encodeURIComponent('¿Qué es LuzmaTV y cómo puedo ver sus programas en vivo desde Chile?') },
+              { name: 'Perplexity', url: 'https://www.perplexity.ai/search?q=' + encodeURIComponent('¿Qué es LuzmaTV Chile?') },
+              { name: 'Gemini', url: 'https://gemini.google.com/app?q=' + encodeURIComponent('¿Qué es LuzmaTV y quiénes son sus conductores?') },
+              { name: 'Claude', url: 'https://claude.ai/new?q=' + encodeURIComponent('¿Qué es LuzmaTV, el canal chileno de streaming?') },
+            ].map(({ name, url }) => (
+              <a key={name} href={url} target="_blank" rel="noreferrer"
+                style={{ fontFamily: "'Montserrat'", fontWeight: 700, fontSize: 11, color: 'rgba(255,255,255,.55)', border: '1.5px solid rgba(255,255,255,.2)', borderRadius: 20, padding: '5px 12px', textTransform: 'uppercase', letterSpacing: '.04em', transition: 'color 200ms, border-color 200ms' }}
+                onMouseEnter={e => { e.currentTarget.style.color='#FDD835'; e.currentTarget.style.borderColor='#FDD835'; }}
+                onMouseLeave={e => { e.currentTarget.style.color='rgba(255,255,255,.55)'; e.currentTarget.style.borderColor='rgba(255,255,255,.2)'; }}
+              >
+                {name} →
+              </a>
+            ))}
+          </div>
+        </div>
+
         <div
           style={{
-            paddingTop: 22,
+            paddingTop: 18,
             borderTop: '2px solid rgba(255,255,255,.15)',
             display: 'flex',
             justifyContent: 'space-between',

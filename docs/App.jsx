@@ -6,6 +6,19 @@ function App() {
 
   useEffectApp(() => {
     if (window.AOS) window.AOS.init({ duration: 500, once: true, offset: 50, easing: 'ease-out-cubic' });
+
+    // Scroll spy: actualiza el hash de la URL mientras el usuario scrollea entre secciones
+    const SECTIONS = ['inicio','programas','envivo','episodios','equipo','grilla','vernos','contacto'];
+    const visible = new Set();
+    const spy = new IntersectionObserver((entries) => {
+      entries.forEach(e => e.isIntersecting ? visible.add(e.target.id) : visible.delete(e.target.id));
+      if (window.location.hash.startsWith('#/')) return;
+      const active = SECTIONS.find(id => visible.has(id));
+      if (active) history.replaceState(null, '', '#' + active);
+    }, { threshold: 0.25 });
+    const attachSpy = () => SECTIONS.forEach(id => { const el = document.getElementById(id); if (el) spy.observe(el); });
+    setTimeout(attachSpy, 300);
+
     const handler = () => {
       const h = window.location.hash;
       setHash(h);
@@ -13,11 +26,12 @@ function App() {
         document.title = 'LuzmaTV — La señal que deja huella | Canal chileno en vivo';
         const m = document.querySelector('meta[name="description"]');
         if (m) m.setAttribute('content', 'LuzmaTV es el canal chileno de talk shows, humor y entretenimiento en vivo. Luzma Cachai (Lun–Vie 10:00), Cara a Cara (Mar y Jue tarde). Míranos en Kick, Twitch, YouTube, TikTok e Instagram.');
+        setTimeout(attachSpy, 300);
       }
       if (window.AOS) window.AOS.refresh();
     };
     window.addEventListener('hashchange', handler);
-    return () => window.removeEventListener('hashchange', handler);
+    return () => { window.removeEventListener('hashchange', handler); spy.disconnect(); };
   }, []);
 
   const onNav = (id) => {

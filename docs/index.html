@@ -30,7 +30,7 @@
   <meta name="twitter:description" content="Canal chileno de talk shows, humor y entretenimiento en vivo. Lun–Vie 10:00 en vivo.">
   <meta name="twitter:image"       content="https://bastian897.github.io/LuzmaTV/assets/luzmatv-logo.png">
 
-  <!-- JSON-LD: Organización + Sitio Web + Canal de TV -->
+  <!-- JSON-LD: Entidad completa LuzmaTV para SEO y AEO -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -39,25 +39,68 @@
         "@type": "Organization",
         "@id": "https://bastian897.github.io/LuzmaTV/#org",
         "name": "LuzmaTV",
-        "alternateName": ["Luzma TV", "LuzmaTV Chile"],
+        "alternateName": ["Luzma TV", "LuzmaTV Chile", "Canal LuzmaTV"],
         "url": "https://bastian897.github.io/LuzmaTV/",
-        "logo": { "@type": "ImageObject", "url": "https://bastian897.github.io/LuzmaTV/assets/luzmatv-logo.png" },
-        "description": "LuzmaTV es el canal chileno de talk shows, humor y entretenimiento en vivo. Con programas como Luzma Cachai y Cara a Cara, transmitimos de lunes a viernes desde Santiago, Chile.",
-        "foundingLocation": { "@type": "Place", "name": "Santiago, Chile" },
+        "logo": { "@type": "ImageObject", "url": "https://bastian897.github.io/LuzmaTV/assets/luzmatv-logo.png", "width": 800, "height": 200 },
+        "description": "LuzmaTV es el canal chileno de streaming y TV digital. Produce y emite talk shows, humor y entretenimiento en vivo desde Santiago, Chile. Su programa estrella es Luzma Cachai, que transmite de lunes a viernes de 10:00 a 12:00. También produce Cara a Cara, un programa de debate los martes y jueves.",
+        "foundingLocation": { "@type": "Place", "name": "Santiago, Chile", "addressCountry": "CL" },
         "areaServed": { "@type": "Country", "name": "Chile" },
         "contactPoint": {
           "@type": "ContactPoint",
           "telephone": "+56940996090",
           "email": "Contacto@LuzmaTV.cl",
           "contactType": "customer service",
-          "availableLanguage": "Spanish"
+          "availableLanguage": { "@type": "Language", "name": "Spanish" }
         },
         "sameAs": [
           "https://kick.com/luzmatv",
           "https://twitch.tv/luzmatv",
           "https://instagram.com/luzmatv",
           "https://tiktok.com/@luzmatv",
-          "https://youtube.com/@luzmatvcl"
+          "https://youtube.com/@luzmatvcl",
+          "https://youtube.com/@luzmatv"
+        ],
+        "employee": [
+          {
+            "@type": "Person",
+            "@id": "https://bastian897.github.io/LuzmaTV/#ariel-osses",
+            "name": "Ariel Osses",
+            "jobTitle": "Conductor de Luzma Cachai",
+            "worksFor": { "@id": "https://bastian897.github.io/LuzmaTV/#org" },
+            "sameAs": ["https://instagram.com/ariel_osses"]
+          },
+          {
+            "@type": "Person",
+            "@id": "https://bastian897.github.io/LuzmaTV/#vicky-more",
+            "name": "Vicky More",
+            "jobTitle": "Conductora de Luzma Cachai",
+            "worksFor": { "@id": "https://bastian897.github.io/LuzmaTV/#org" },
+            "sameAs": ["https://instagram.com/vickymoremusic"]
+          },
+          {
+            "@type": "Person",
+            "@id": "https://bastian897.github.io/LuzmaTV/#rodrigo-munoz",
+            "name": "Rodrigo Muñoz",
+            "jobTitle": "Conductor de Luzma Cachai",
+            "worksFor": { "@id": "https://bastian897.github.io/LuzmaTV/#org" },
+            "sameAs": ["https://instagram.com/chicomunozactor"]
+          },
+          {
+            "@type": "Person",
+            "@id": "https://bastian897.github.io/LuzmaTV/#claudio-merlin",
+            "name": "Claudio Merlin",
+            "jobTitle": "Conductor de Luzma Cachai",
+            "worksFor": { "@id": "https://bastian897.github.io/LuzmaTV/#org" },
+            "sameAs": ["https://instagram.com/claudiomerlinn"]
+          },
+          {
+            "@type": "Person",
+            "@id": "https://bastian897.github.io/LuzmaTV/#lita-melo",
+            "name": "Lita Melo",
+            "jobTitle": "Conductora de Luzma Cachai",
+            "worksFor": { "@id": "https://bastian897.github.io/LuzmaTV/#org" },
+            "sameAs": ["https://instagram.com/litamelocuenta"]
+          }
         ]
       },
       {
@@ -71,37 +114,76 @@
       },
       {
         "@type": "BroadcastService",
+        "@id": "https://bastian897.github.io/LuzmaTV/#broadcast",
         "name": "LuzmaTV",
         "broadcastDisplayName": "LuzmaTV",
-        "description": "Canal chileno de talk shows, humor y entretenimiento en vivo.",
+        "description": "Canal chileno de streaming en vivo con talk shows, humor y entretenimiento. Disponible en Kick, Twitch, YouTube, TikTok e Instagram.",
         "areaServed": { "@type": "Country", "name": "Chile" },
         "broadcastTimezone": "America/Santiago",
         "provider": { "@id": "https://bastian897.github.io/LuzmaTV/#org" }
       },
       {
         "@type": "TVSeries",
+        "@id": "https://bastian897.github.io/LuzmaTV/#luzma-cachai",
         "name": "Luzma Cachai",
-        "description": "El live show diario de LuzmaTV. De lunes a viernes de 10:00 a 12:00, Ariel Osses, Vicky More, Rodrigo Muñoz, Claudio Merlin y Lita Melo en vivo y sin filtros desde Santiago.",
-        "genre": ["Talk Show", "Entretenimiento"],
+        "description": "El programa estrella de LuzmaTV. De lunes a viernes de 10:00 a 12:00 horas, Ariel Osses, Vicky More, Rodrigo Muñoz, Claudio Merlin y Lita Melo se juntan en vivo para hablar de todo — tendencias, invitados, debate y la mejor energía de Chile, sin filtros y sin guión.",
+        "genre": ["Talk Show", "Entretenimiento", "En Vivo"],
         "inLanguage": "es-CL",
         "countryOfOrigin": { "@type": "Country", "name": "Chile" },
         "productionCompany": { "@id": "https://bastian897.github.io/LuzmaTV/#org" },
+        "startDate": "2026",
         "actor": [
-          { "@type": "Person", "name": "Ariel Osses" },
-          { "@type": "Person", "name": "Vicky More" },
-          { "@type": "Person", "name": "Rodrigo Muñoz" },
-          { "@type": "Person", "name": "Claudio Merlin" },
-          { "@type": "Person", "name": "Lita Melo" }
+          { "@id": "https://bastian897.github.io/LuzmaTV/#ariel-osses" },
+          { "@id": "https://bastian897.github.io/LuzmaTV/#vicky-more" },
+          { "@id": "https://bastian897.github.io/LuzmaTV/#rodrigo-munoz" },
+          { "@id": "https://bastian897.github.io/LuzmaTV/#claudio-merlin" },
+          { "@id": "https://bastian897.github.io/LuzmaTV/#lita-melo" }
         ]
       },
       {
         "@type": "TVSeries",
+        "@id": "https://bastian897.github.io/LuzmaTV/#cara-a-cara",
         "name": "Cara a Cara",
-        "description": "Las conversaciones que no se pueden ignorar. Dos visiones, una mesa, sin filtros. Martes y jueves en las tardes por LuzmaTV.",
-        "genre": ["Talk Show", "Debate", "Entrevistas"],
+        "description": "Programa de debate y entrevistas de LuzmaTV. Los martes y jueves en la tarde, Cara a Cara enfrenta dos visiones distintas sobre los temas que dividen a Chile, en una conversación directa, sin guión y sin zonas de confort.",
+        "genre": ["Debate", "Entrevistas", "Talk Show"],
         "inLanguage": "es-CL",
         "countryOfOrigin": { "@type": "Country", "name": "Chile" },
-        "productionCompany": { "@id": "https://bastian897.github.io/LuzmaTV/#org" }
+        "productionCompany": { "@id": "https://bastian897.github.io/LuzmaTV/#org" },
+        "startDate": "2026"
+      },
+      {
+        "@type": "ItemList",
+        "name": "Últimos episodios de Luzma Cachai",
+        "description": "Los episodios más recientes del programa Luzma Cachai en LuzmaTV",
+        "itemListElement": [
+          {
+            "@type": "ListItem", "position": 1,
+            "item": {
+              "@type": "VideoObject",
+              "name": "Luzma Cachai · 20 de Mayo 2026",
+              "description": "Ariel Osses, Vicky More, Rodrigo Muñoz, Claudio Merlin y Lita Melo en el live del 20 de mayo. Conversaciones, tendencias y la energía de siempre en LuzmaTV.",
+              "thumbnailUrl": "https://img.youtube.com/vi/AD7V3krg4fQ/hqdefault.jpg",
+              "uploadDate": "2026-05-20",
+              "duration": "PT2H13M8S",
+              "embedUrl": "https://www.youtube.com/embed/AD7V3krg4fQ",
+              "url": "https://www.youtube.com/watch?v=AD7V3krg4fQ",
+              "publisher": { "@id": "https://bastian897.github.io/LuzmaTV/#org" }
+            }
+          },
+          {
+            "@type": "ListItem", "position": 2,
+            "item": {
+              "@type": "VideoObject",
+              "name": "Luzma Cachai · 19 de Mayo 2026",
+              "description": "Ariel Osses, Vicky More, Rodrigo Muñoz, Claudio Merlin y Lita Melo en el live del 19 de mayo.",
+              "thumbnailUrl": "https://img.youtube.com/vi/3EJyGwxkL-A/hqdefault.jpg",
+              "uploadDate": "2026-05-19",
+              "embedUrl": "https://www.youtube.com/embed/3EJyGwxkL-A",
+              "url": "https://www.youtube.com/watch?v=3EJyGwxkL-A",
+              "publisher": { "@id": "https://bastian897.github.io/LuzmaTV/#org" }
+            }
+          }
+        ]
       },
       {
         "@type": "FAQPage",
@@ -109,22 +191,37 @@
           {
             "@type": "Question",
             "name": "¿Qué es LuzmaTV?",
-            "acceptedAnswer": { "@type": "Answer", "text": "LuzmaTV es un canal chileno de streaming y TV digital con sede en Santiago, Chile. Transmite talk shows, humor y entretenimiento en vivo a través de Kick, Twitch, YouTube, TikTok e Instagram." }
+            "acceptedAnswer": { "@type": "Answer", "text": "LuzmaTV es un canal chileno de streaming y TV digital con sede en Santiago, Chile. Produce y emite talk shows, humor y entretenimiento en vivo. Sus programas principales son Luzma Cachai (de lunes a viernes de 10:00 a 12:00) y Cara a Cara (martes y jueves en la tarde)." }
           },
           {
             "@type": "Question",
             "name": "¿Cómo ver LuzmaTV en vivo?",
-            "acceptedAnswer": { "@type": "Answer", "text": "Puedes ver LuzmaTV en vivo en Kick (kick.com/luzmatv), Twitch (twitch.tv/luzmatv), YouTube (@luzmatvcl), TikTok (@luzmatv) e Instagram (@luzmatv). También está disponible en TV Más." }
+            "acceptedAnswer": { "@type": "Answer", "text": "Puedes ver LuzmaTV en vivo gratuitamente en Kick (kick.com/luzmatv), Twitch (twitch.tv/luzmatv), YouTube (@luzmatvcl), TikTok (@luzmatv) e Instagram (@luzmatv). También está disponible en TV Más." }
           },
           {
             "@type": "Question",
             "name": "¿A qué hora transmite Luzma Cachai?",
-            "acceptedAnswer": { "@type": "Answer", "text": "Luzma Cachai transmite de lunes a viernes de 10:00 a 12:00 horas (horario de Chile) en vivo por todas las plataformas de LuzmaTV." }
+            "acceptedAnswer": { "@type": "Answer", "text": "Luzma Cachai transmite de lunes a viernes de 10:00 a 12:00 horas (horario de Chile, UTC-4). Está conducido por Ariel Osses, Vicky More, Rodrigo Muñoz, Claudio Merlin y Lita Melo." }
           },
           {
             "@type": "Question",
-            "name": "¿Cuándo es Cara a Cara?",
-            "acceptedAnswer": { "@type": "Answer", "text": "Cara a Cara se transmite los martes y jueves en las tardes por LuzmaTV." }
+            "name": "¿Cuándo es Cara a Cara en LuzmaTV?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Cara a Cara se transmite los martes y jueves en las tardes por LuzmaTV. Es un programa de debate donde se enfrentan dos visiones sobre los temas que dividen a Chile." }
+          },
+          {
+            "@type": "Question",
+            "name": "¿Quiénes conducen LuzmaTV?",
+            "acceptedAnswer": { "@type": "Answer", "text": "LuzmaTV cuenta con Ariel Osses (@ariel_osses), Vicky More (@vickymoremusic), Rodrigo Muñoz (@chicomunozactor), Claudio Merlin (@claudiomerlinn) y Lita Melo (@litamelocuenta) como conductores del programa Luzma Cachai." }
+          },
+          {
+            "@type": "Question",
+            "name": "¿Dónde puedo ver los episodios anteriores de LuzmaTV?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Los episodios anteriores de LuzmaTV están disponibles en YouTube en el canal @luzmatvcl. También puedes verlos directamente en el sitio web de LuzmaTV." }
+          },
+          {
+            "@type": "Question",
+            "name": "¿LuzmaTV es gratis?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Sí, LuzmaTV es completamente gratuito. Puedes ver todos sus programas en vivo y los episodios anteriores sin pagar nada, a través de Kick, Twitch, YouTube, TikTok e Instagram." }
           }
         ]
       }
