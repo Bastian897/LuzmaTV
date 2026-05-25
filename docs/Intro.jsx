@@ -1,58 +1,60 @@
-// Intro.jsx — cortinas de teatro con pliegues animados (efecto tela real)
+// Intro.jsx — cortinas de teatro con clip-path ondulado + scaleX (efecto tela)
 const { useState: useStateIntro, useEffect: useEffectIntro, useRef: useRefIntro } = React;
 
+// Patron de terciopelo con pliegues (multi-stop alternando claro/oscuro)
+const VELVET_BG = `
+  linear-gradient(180deg, rgba(0,0,0,.25) 0%, transparent 12%, transparent 88%, rgba(0,0,0,.5) 100%),
+  repeating-linear-gradient(
+    90deg,
+    #1c0306 0px,
+    #3a070f 7px,
+    #6a1320 14px,
+    #8a1f30 18px,
+    #6a1320 22px,
+    #3a070f 28px,
+    #1c0306 34px
+  )
+`;
+
 function CurtainPanel({ side, open }) {
-  const PLEATS = 16;
   const isLeft = side === 'left';
 
-  // Pleats alternan color para que se vean los pliegues incluso quietos
-  const darkBand = 'linear-gradient(90deg, #2a0408 0%, #3a0510 50%, #2a0408 100%)';
-  const lightBand = 'linear-gradient(90deg, #5a0e1c 0%, #7a1828 50%, #5a0e1c 100%)';
+  // 12 puntos a lo largo del borde interno — abierto tiene perfil ondulado (folds de tela)
+  const yPoints = [0, 8, 16, 25, 34, 43, 52, 61, 70, 79, 88, 100];
+  // X positions del borde interno cuando esta abierto (perfil de pliegues)
+  const openXs = isLeft
+    ? [14, 7, 13, 6, 12, 8, 15, 5, 11, 9, 14, 10]
+    : [86, 93, 87, 94, 88, 92, 85, 95, 89, 91, 86, 90];
+
+  const closedX = isLeft ? 100 : 0;
+  const startCorner = isLeft ? '0% 0%' : '100% 0%';
+  const endCorner = isLeft ? '0% 100%' : '100% 100%';
+
+  const closedClip = `polygon(${startCorner}, ${yPoints.map(y => `${closedX}% ${y}%`).join(', ')}, ${endCorner})`;
+  const openClip = `polygon(${startCorner}, ${yPoints.map((y, i) => `${openXs[i]}% ${y}%`).join(', ')}, ${endCorner})`;
 
   return (
     <div style={{
       position: 'absolute', top: 0, bottom: 0, [side]: 0, width: '52%',
-      overflow: 'visible', pointerEvents: 'none',
-    }}>
-      {Array.from({ length: PLEATS }).map((_, i) => {
-        // Para cortina izquierda: el pliegue mas a la derecha (junto al borde interno) abre primero.
-        // Para cortina derecha: el pliegue mas a la izquierda abre primero.
-        const orderFromInner = isLeft ? (PLEATS - 1 - i) : i;
-        const delay = orderFromInner * 38;
-        const dark = i % 2 === 0;
-
-        return (
-          <div key={i} style={{
-            position: 'absolute',
-            top: 0, bottom: 0,
-            left: `${(i / PLEATS) * 100}%`,
-            width: `${(100 / PLEATS) + 0.5}%`,
-            backgroundImage: dark ? darkBand : lightBand,
-            // Sombreado vertical superior/inferior para profundidad
-            boxShadow: 'inset 0 18px 24px rgba(0,0,0,.45), inset 0 -22px 30px rgba(0,0,0,.55)',
-            transformOrigin: isLeft ? '0% 0%' : '100% 0%',
-            transform: open
-              ? `translateX(${isLeft ? '-100%' : '100%'}) scaleX(0.08) skewY(${isLeft ? 1.8 : -1.8}deg)`
-              : 'translateX(0) scaleX(1) skewY(0deg)',
-            transition: `transform 820ms cubic-bezier(.55,0,.2,1) ${delay}ms`,
-            willChange: 'transform',
-            zIndex: dark ? 1 : 2,
-          }} />
-        );
-      })}
-
-      {/* Sombra del borde interno (donde se juntan las dos cortinas) */}
-      <div style={{
-        position: 'absolute', top: 0, bottom: 0,
-        [isLeft ? 'right' : 'left']: 0, width: 50,
-        background: isLeft
-          ? 'linear-gradient(to left, rgba(0,0,0,.7), rgba(0,0,0,0))'
-          : 'linear-gradient(to right, rgba(0,0,0,.7), rgba(0,0,0,0))',
-        zIndex: 3, pointerEvents: 'none',
-        opacity: open ? 0 : 1,
-        transition: 'opacity 400ms ease',
-      }} />
-    </div>
+      backgroundImage: VELVET_BG,
+      clipPath: open ? openClip : closedClip,
+      WebkitClipPath: open ? openClip : closedClip,
+      transformOrigin: isLeft ? '0% 50%' : '100% 50%',
+      transform: open
+        ? `translateX(${isLeft ? '-12%' : '12%'}) scaleX(0.5)`
+        : 'translateX(0) scaleX(1)',
+      transition: [
+        'clip-path 1500ms cubic-bezier(.45,0,.12,1)',
+        '-webkit-clip-path 1500ms cubic-bezier(.45,0,.12,1)',
+        'transform 1500ms cubic-bezier(.45,0,.12,1)',
+      ].join(', '),
+      transitionDelay: !isLeft && open ? '90ms' : '0ms',
+      // Sombra interna fuerte en el borde interno (donde se bunch la tela)
+      boxShadow: isLeft
+        ? 'inset -50px 0 80px rgba(0,0,0,.75)'
+        : 'inset 50px 0 80px rgba(0,0,0,.75)',
+      willChange: 'transform, clip-path',
+    }} />
   );
 }
 
@@ -80,14 +82,13 @@ function Intro({ onDone }) {
     setContentVisible(false);
     setCurtainOpen(true);
 
-    // Liberar scroll al cerrar
-    setTimeout(() => { document.body.style.overflow = ''; }, 1500);
+    setTimeout(() => { document.body.style.overflow = ''; }, 1600);
 
     const el = logoRef.current;
-    if (!el) { setTimeout(onDone, 1500); return; }
+    if (!el) { setTimeout(onDone, 1600); return; }
 
     void el.offsetHeight;
-    el.style.transition = 'transform 880ms cubic-bezier(.77,0,.18,1), opacity 460ms 320ms';
+    el.style.transition = 'transform 900ms cubic-bezier(.77,0,.18,1), opacity 480ms 340ms';
 
     const heroLogo = document.getElementById('lzm-hero-logo');
     if (heroLogo) {
@@ -95,7 +96,7 @@ function Intro({ onDone }) {
       setTimeout(() => {
         heroLogo.style.transition = 'opacity 350ms';
         heroLogo.style.opacity = '1';
-      }, 800);
+      }, 820);
 
       const from = el.getBoundingClientRect();
       const to = heroLogo.getBoundingClientRect();
@@ -108,7 +109,7 @@ function Intro({ onDone }) {
     }
     el.style.opacity = '0';
 
-    setTimeout(onDone, 1500);
+    setTimeout(onDone, 1600);
   }
 
   return (
@@ -119,7 +120,7 @@ function Intro({ onDone }) {
         background: 'transparent',
       }}
     >
-      {/* Riel dorado superior — span completo, no se mueve */}
+      {/* Riel dorado superior fijo */}
       <div style={{
         position: 'absolute', top: 0, left: 0, right: 0, height: 22, zIndex: 4,
         background: 'linear-gradient(180deg, #FFE680 0%, #FFD600 30%, #C99700 70%, #8a6700 100%)',
@@ -127,11 +128,11 @@ function Intro({ onDone }) {
         boxShadow: '0 4px 14px rgba(0,0,0,.5)',
       }} />
 
-      {/* Cortinas con pliegues animados */}
+      {/* Cortinas */}
       <CurtainPanel side="left" open={curtainOpen} />
       <CurtainPanel side="right" open={curtainOpen} />
 
-      {/* Estrellas decorativas (encima de las cortinas) */}
+      {/* Estrellas decorativas */}
       <div style={{
         position: 'absolute', top: 60, left: 70, zIndex: 5,
         opacity: contentVisible ? 1 : 0, transition: 'opacity 400ms',
@@ -157,7 +158,7 @@ function Intro({ onDone }) {
         <Star size={18} fill="#FDD835" rotate={35} />
       </div>
 
-      {/* Logo central — wrapper centrado, inner anima */}
+      {/* Logo central */}
       <div
         ref={logoRef}
         style={{
