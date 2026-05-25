@@ -96,6 +96,22 @@ img { display: block; max-width: 100%; }
   100% { opacity: 1; transform: scale(1) translateY(0); }
 }
 
+/* Cortinas de teatro: efecto tela (pliegue + drape + barrido) */
+@keyframes lzm-curtain-open-left {
+  0%   { transform: translateX(0)    scaleX(1)    skewY(0deg); }
+  18%  { transform: translateX(-1%)  scaleX(0.94) skewY(0.6deg); }
+  45%  { transform: translateX(-8%)  scaleX(0.72) skewY(2deg); }
+  72%  { transform: translateX(-40%) scaleX(0.5)  skewY(3.2deg); }
+  100% { transform: translateX(-105%) scaleX(0.35) skewY(4deg); }
+}
+@keyframes lzm-curtain-open-right {
+  0%   { transform: translateX(0)    scaleX(1)    skewY(0deg); }
+  18%  { transform: translateX(1%)   scaleX(0.94) skewY(-0.6deg); }
+  45%  { transform: translateX(8%)   scaleX(0.72) skewY(-2deg); }
+  72%  { transform: translateX(40%)  scaleX(0.5)  skewY(-3.2deg); }
+  100% { transform: translateX(105%) scaleX(0.35) skewY(-4deg); }
+}
+
 /* Layout shell */
 .lzm-shell { width: 100%; max-width: 1280px; margin: 0 auto; padding: 0 24px; }
 

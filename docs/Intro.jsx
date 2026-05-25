@@ -27,7 +27,7 @@ function Intro({ onDone }) {
     setCurtainOpen(true);
 
     // Liberar scroll al cerrar el intro
-    setTimeout(() => { document.body.style.overflow = ''; }, 900);
+    setTimeout(() => { document.body.style.overflow = ''; }, 1380);
 
     const el = logoRef.current;
     if (!el) { setTimeout(onDone, 1000); return; }
@@ -55,7 +55,7 @@ function Intro({ onDone }) {
     }
     el.style.opacity = '0';
 
-    setTimeout(onDone, 1000);
+    setTimeout(onDone, 1380);
   }
 
   // Cortina de terciopelo rojo con pliegues verticales
@@ -74,7 +74,6 @@ function Intro({ onDone }) {
   const PANEL = {
     position: 'absolute', top: 0, bottom: 0, width: '52%',
     backgroundImage: VELVET_BG,
-    transition: 'transform 1100ms cubic-bezier(.65,0,.18,1)',
     overflow: 'hidden',
     willChange: 'transform',
   };
@@ -97,15 +96,14 @@ function Intro({ onDone }) {
         background: 'transparent',
       }}
     >
-      {/* Cortina izquierda — se pliega y se inclina al abrirse (efecto tela) */}
+      {/* Cortina izquierda — efecto tela con drape (anclada al riel arriba) */}
       <div style={{
         ...PANEL,
         left: 0,
-        transformOrigin: '0% 50%',
-        transform: curtainOpen
-          ? 'translateX(-102%) scaleX(0.78) skewY(1.2deg)'
-          : 'translateX(0) scaleX(1) skewY(0deg)',
-        // Sombra en el borde interno para dar profundidad
+        transformOrigin: '0% 0%',
+        animation: curtainOpen
+          ? 'lzm-curtain-open-left 1300ms cubic-bezier(.55,0,.18,1) forwards'
+          : 'none',
         boxShadow: 'inset -28px 0 38px rgba(0,0,0,.6)',
       }}>
         <div style={ROD} />
@@ -117,15 +115,14 @@ function Intro({ onDone }) {
         </div>
       </div>
 
-      {/* Cortina derecha — espejo de la izquierda con leve delay */}
+      {/* Cortina derecha — espejo, con leve delay para feel mas natural */}
       <div style={{
         ...PANEL,
         right: 0,
-        transformOrigin: '100% 50%',
-        transform: curtainOpen
-          ? 'translateX(102%) scaleX(0.78) skewY(-1.2deg)'
-          : 'translateX(0) scaleX(1) skewY(0deg)',
-        transitionDelay: curtainOpen ? '60ms' : '0ms',
+        transformOrigin: '100% 0%',
+        animation: curtainOpen
+          ? 'lzm-curtain-open-right 1300ms 80ms cubic-bezier(.55,0,.18,1) forwards'
+          : 'none',
         boxShadow: 'inset 28px 0 38px rgba(0,0,0,.6)',
       }}>
         <div style={ROD} />
