@@ -4,7 +4,7 @@ const { useState: useStateL, useEffect: useEffectL } = React;
 const KICK_CHANNEL    = 'luzmatv';
 const TWITCH_CHANNEL  = 'luzmatv';
 // Channel ID de YouTube (formato UCxxxxxx) — verlo en youtube.com > tu canal > Configuración > Información del canal
-const YOUTUBE_CHANNEL_ID = '';
+const YOUTUBE_CHANNEL_ID = 'UCQ0cnYx83lnRaCvMHuiM5QQ';
 
 function LivePlayer() {
   const [platform, setPlatform] = useStateL(null); // null | 'kick' | 'twitch' | 'youtube'
