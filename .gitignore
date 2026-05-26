@@ -1,0 +1,46 @@
+# OS / sistema
+.DS_Store
+Thumbs.db
+.thumbnail
+desktop.ini
+
+# Editor / IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Claude Code / agentes
+.claude/
+.playwright-mcp/
+
+# Secrets / env
+.env
+.env.*
+!.env.example
+
+# Dependencias (no las usamos pero por las dudas)
+node_modules/
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Builds (no usamos build step, pero por si acaso)
+dist/
+build/
+.vercel/
+
+# Screenshots y archivos de testing en la raiz
+# (deja pasar los assets reales en /assets)
+/*.png
+/*.jpg
+/*.jpeg
+/*.webp
+/*.gif
+/*.mp4
+/*.webm
+
+# Logs
+*.log
+npm-debug.log*
