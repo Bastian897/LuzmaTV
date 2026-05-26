@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="es-CL">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>LuzmaTV Admin</title>
+  <link rel="icon" href="assets/luzmatv-logo.png">
+  <link rel="stylesheet" href="colors_and_type.css">
+  <link rel="stylesheet" href="site.css">
+  <link rel="stylesheet" href="admin/admin.css">
+
+  <!-- React + Babel (mismo CDN que el sitio publico) -->
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" crossorigin="anonymous"></script>
+
+  <!-- Supabase JS (UMD) -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js" crossorigin="anonymous"></script>
+</head>
+<body class="lzm-admin-body">
+  <div id="admin-root"></div>
+
+  <script type="text/babel" src="admin/supabase-client.jsx"></script>
+  <script type="text/babel" src="admin/AdminAuth.jsx"></script>
+  <script type="text/babel" src="admin/EpisodeForm.jsx"></script>
+  <script type="text/babel" src="admin/EpisodesList.jsx"></script>
+  <script type="text/babel" src="admin/ProgramForm.jsx"></script>
+  <script type="text/babel" src="admin/ProgramsList.jsx"></script>
+  <script type="text/babel" src="admin/AdminApp.jsx"></script>
+</body>
+</html>
