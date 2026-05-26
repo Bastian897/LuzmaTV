@@ -1,6 +1,9 @@
-// data.jsx — fuente única de datos. Para agregar episodios, programas o rostros: edita solo este archivo.
+// data.jsx — datos estáticos bundled (fallback + hosts/catLabel).
+// programs/episodes se cargan en runtime desde Supabase via lzm-data.jsx.
+// Si Supabase falla o no esta configurado, el sitio usa estos datos.
+// Hosts y catLabel viven solo aqui (no estan en la BD).
 
-const LZM_DATA = {
+const LZM_STATIC = {
   programs: [
     {
       id: 'luzma-cachai', name: 'Luzma Cachai', cat: 'talk', day: 'Lun a Vie', time: '10:00',
@@ -79,4 +82,4 @@ const LZM_DATA = {
   catLabel: { talk: 'Talk Show', humor: 'Humor', entret: 'Entretenimiento', invitado: 'Invitados' },
 };
 
-Object.assign(window, { LZM_DATA });
+Object.assign(window, { LZM_STATIC });

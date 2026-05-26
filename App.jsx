@@ -4,7 +4,15 @@ const { useState: useStateApp, useEffect: useEffectApp } = React;
 function App() {
   const [hash, setHash] = useStateApp(window.location.hash);
   const [showIntro, setShowIntro] = useStateApp(() => !sessionStorage.getItem('lzm-intro'));
+  const [, lzmForce] = useStateApp(0);
   const handleIntroDone = () => { sessionStorage.setItem('lzm-intro', '1'); setShowIntro(false); };
+
+  // Re-render cuando lzm-data.jsx termina de cargar episodes/programs desde Supabase
+  useEffectApp(() => {
+    const onReady = () => lzmForce(v => v + 1);
+    window.addEventListener('lzm-data-ready', onReady);
+    return () => window.removeEventListener('lzm-data-ready', onReady);
+  }, []);
 
   useEffectApp(() => {
     if (window.AOS) window.AOS.init({ duration: 500, once: true, offset: 50, easing: 'ease-out-cubic' });

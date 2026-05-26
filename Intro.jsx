@@ -1,22 +1,76 @@
-// Intro.jsx — video real de cortinas + logo/contenido overlay
+// Intro.jsx — cortinas de teatro con clip-path ondulado + scaleX (efecto tela)
 const { useState: useStateIntro, useEffect: useEffectIntro, useRef: useRefIntro } = React;
+
+// Patron de terciopelo con pliegues (multi-stop alternando claro/oscuro)
+const VELVET_BG = `
+  linear-gradient(180deg, rgba(0,0,0,.25) 0%, transparent 12%, transparent 88%, rgba(0,0,0,.5) 100%),
+  repeating-linear-gradient(
+    90deg,
+    #1c0306 0px,
+    #3a070f 7px,
+    #6a1320 14px,
+    #8a1f30 18px,
+    #6a1320 22px,
+    #3a070f 28px,
+    #1c0306 34px
+  )
+`;
+
+function CurtainPanel({ side, open }) {
+  const isLeft = side === 'left';
+
+  // 12 puntos a lo largo del borde interno — abierto tiene perfil ondulado (folds de tela)
+  const yPoints = [0, 8, 16, 25, 34, 43, 52, 61, 70, 79, 88, 100];
+  // X positions del borde interno cuando esta abierto (perfil de pliegues)
+  const openXs = isLeft
+    ? [14, 7, 13, 6, 12, 8, 15, 5, 11, 9, 14, 10]
+    : [86, 93, 87, 94, 88, 92, 85, 95, 89, 91, 86, 90];
+
+  const closedX = isLeft ? 100 : 0;
+  const startCorner = isLeft ? '0% 0%' : '100% 0%';
+  const endCorner = isLeft ? '0% 100%' : '100% 100%';
+
+  const closedClip = `polygon(${startCorner}, ${yPoints.map(y => `${closedX}% ${y}%`).join(', ')}, ${endCorner})`;
+  const openClip = `polygon(${startCorner}, ${yPoints.map((y, i) => `${openXs[i]}% ${y}%`).join(', ')}, ${endCorner})`;
+
+  return (
+    <div style={{
+      position: 'absolute', top: 0, bottom: 0, [side]: 0, width: '52%',
+      backgroundImage: VELVET_BG,
+      clipPath: open ? openClip : closedClip,
+      WebkitClipPath: open ? openClip : closedClip,
+      transformOrigin: isLeft ? '0% 50%' : '100% 50%',
+      transform: open
+        ? `translateX(${isLeft ? '-12%' : '12%'}) scaleX(0.5)`
+        : 'translateX(0) scaleX(1)',
+      transition: [
+        'clip-path 1500ms cubic-bezier(.45,0,.12,1)',
+        '-webkit-clip-path 1500ms cubic-bezier(.45,0,.12,1)',
+        'transform 1500ms cubic-bezier(.45,0,.12,1)',
+      ].join(', '),
+      transitionDelay: !isLeft && open ? '90ms' : '0ms',
+      // Sombra interna fuerte en el borde interno (donde se bunch la tela)
+      boxShadow: isLeft
+        ? 'inset -50px 0 80px rgba(0,0,0,.75)'
+        : 'inset 50px 0 80px rgba(0,0,0,.75)',
+      willChange: 'transform, clip-path',
+    }} />
+  );
+}
 
 function Intro({ onDone }) {
   const exitStarted = useRefIntro(false);
   const logoRef = useRefIntro(null);
-  const videoRef = useRefIntro(null);
+  const [curtainOpen, setCurtainOpen] = useStateIntro(false);
   const [contentVisible, setContentVisible] = useStateIntro(true);
-  const [overlayFading, setOverlayFading] = useStateIntro(false);
 
   useEffectIntro(() => {
     const prevOverflow = document.body.style.overflow;
     document.body.style.overflow = 'hidden';
 
-    // Si por alguna razon el video falla / es bloqueado, fallback timeout
-    const fallback = setTimeout(startExit, 4000);
-
+    const t = setTimeout(startExit, 1600);
     return () => {
-      clearTimeout(fallback);
+      clearTimeout(t);
       document.body.style.overflow = prevOverflow;
     };
   }, []);
@@ -26,28 +80,23 @@ function Intro({ onDone }) {
     exitStarted.current = true;
 
     setContentVisible(false);
+    setCurtainOpen(true);
 
-    // Liberar scroll inmediato
-    setTimeout(() => { document.body.style.overflow = ''; }, 350);
+    setTimeout(() => { document.body.style.overflow = ''; }, 1600);
 
     const el = logoRef.current;
-    if (!el) {
-      setOverlayFading(true);
-      setTimeout(onDone, 280);
-      return;
-    }
+    if (!el) { setTimeout(onDone, 1600); return; }
 
     void el.offsetHeight;
-    // Animaciones mas rapidas: logo viaja y fade simultaneo, sin esperas
-    el.style.transition = 'transform 480ms cubic-bezier(.77,0,.18,1), opacity 280ms 100ms';
+    el.style.transition = 'transform 900ms cubic-bezier(.77,0,.18,1), opacity 480ms 340ms';
 
     const heroLogo = document.getElementById('lzm-hero-logo');
     if (heroLogo) {
       heroLogo.style.opacity = '0';
       setTimeout(() => {
-        heroLogo.style.transition = 'opacity 250ms';
+        heroLogo.style.transition = 'opacity 350ms';
         heroLogo.style.opacity = '1';
-      }, 380);
+      }, 820);
 
       const from = el.getBoundingClientRect();
       const to = heroLogo.getBoundingClientRect();
@@ -60,83 +109,50 @@ function Intro({ onDone }) {
     }
     el.style.opacity = '0';
 
-    // Fade del backdrop arranca casi inmediato
-    setTimeout(() => setOverlayFading(true), 60);
-
-    setTimeout(onDone, 560);
-  }
-
-  // Trigger exit cuando faltan ~0.2s para que termine el video (cortinas ya abiertas)
-  function onTimeUpdate(e) {
-    if (exitStarted.current) return;
-    const v = e.target;
-    if (v && v.duration && v.currentTime >= v.duration - 0.25) {
-      startExit();
-    }
-  }
-
-  function onVideoEnded() {
-    startExit();
-  }
-
-  // Si el usuario clickea, saltamos
-  function skip() {
-    if (videoRef.current) {
-      try { videoRef.current.pause(); } catch (e) {}
-    }
-    startExit();
+    setTimeout(onDone, 1600);
   }
 
   return (
     <div
-      onClick={skip}
+      onClick={startExit}
       style={{
         position: 'fixed', inset: 0, zIndex: 9999, cursor: 'pointer',
-        backgroundColor: '#000',
-        opacity: overlayFading ? 0 : 1,
-        transition: 'opacity 320ms ease-out',
-        overflow: 'hidden',
+        background: 'transparent',
       }}
     >
-      {/* Video de cortinas */}
-      <video
-        ref={videoRef}
-        src="assets/curtain.webm"
-        autoPlay
-        muted
-        playsInline
-        preload="auto"
-        onTimeUpdate={onTimeUpdate}
-        onEnded={onVideoEnded}
-        style={{
-          position: 'absolute', inset: 0,
-          width: '100%', height: '100%',
-          objectFit: 'cover', objectPosition: 'center',
-          pointerEvents: 'none',
-        }}
-      />
-
-      {/* Estrellas decorativas — encima del video */}
+      {/* Riel dorado superior fijo */}
       <div style={{
-        position: 'absolute', top: 60, left: 70, zIndex: 3,
+        position: 'absolute', top: 0, left: 0, right: 0, height: 22, zIndex: 4,
+        background: 'linear-gradient(180deg, #FFE680 0%, #FFD600 30%, #C99700 70%, #8a6700 100%)',
+        borderBottom: '4px solid #111',
+        boxShadow: '0 4px 14px rgba(0,0,0,.5)',
+      }} />
+
+      {/* Cortinas */}
+      <CurtainPanel side="left" open={curtainOpen} />
+      <CurtainPanel side="right" open={curtainOpen} />
+
+      {/* Estrellas decorativas */}
+      <div style={{
+        position: 'absolute', top: 60, left: 70, zIndex: 5,
         opacity: contentVisible ? 1 : 0, transition: 'opacity 400ms',
       }} className="lzm-wiggle">
         <Star size={42} fill="#FFD600" rotate={-15} />
       </div>
       <div style={{
-        position: 'absolute', top: 80, right: 90, zIndex: 3,
+        position: 'absolute', top: 80, right: 90, zIndex: 5,
         opacity: contentVisible ? 1 : 0, transition: 'opacity 400ms',
       }} className="lzm-spin-slow">
         <Star size={56} fill="#FFD600" rotate={12} />
       </div>
       <div style={{
-        position: 'absolute', bottom: 120, left: 130, zIndex: 3,
+        position: 'absolute', bottom: 100, left: 120, zIndex: 5,
         opacity: contentVisible ? 1 : 0, transition: 'opacity 400ms',
       }}>
         <Star size={22} fill="#fff" rotate={20} />
       </div>
       <div style={{
-        position: 'absolute', bottom: 150, right: 140, zIndex: 3,
+        position: 'absolute', bottom: 130, right: 140, zIndex: 5,
         opacity: contentVisible ? 1 : 0, transition: 'opacity 400ms',
       }}>
         <Star size={18} fill="#FDD835" rotate={35} />
@@ -148,7 +164,7 @@ function Intro({ onDone }) {
         style={{
           position: 'absolute', top: '50%', left: '50%',
           transform: 'translate(-50%, -50%)',
-          zIndex: 4,
+          zIndex: 6,
           willChange: 'transform, opacity',
         }}
       >
@@ -164,16 +180,16 @@ function Intro({ onDone }) {
         </div>
       </div>
 
-      {/* Badge + tagline debajo del logo */}
+      {/* Badge + tagline */}
       <div style={{
         position: 'absolute', top: 'calc(50% + clamp(80px, 13vw, 130px))', left: 0, right: 0,
-        zIndex: 4,
+        zIndex: 6,
         display: 'flex', flexDirection: 'column', alignItems: 'center',
         opacity: contentVisible ? 1 : 0,
         transition: 'opacity 300ms',
         pointerEvents: 'none',
       }}>
-        <div style={{ animation: 'lzm-intro-up 380ms 700ms cubic-bezier(.34,1.56,.64,1) both' }}>
+        <div style={{ animation: 'lzm-intro-up 380ms 580ms cubic-bezier(.34,1.56,.64,1) both' }}>
           <LiveBadge size="md" />
         </div>
         <div style={{
@@ -181,7 +197,7 @@ function Intro({ onDone }) {
           fontFamily: "'Bebas Neue', sans-serif",
           fontSize: 'clamp(18px, 3vw, 26px)',
           color: '#FFD600', letterSpacing: '.14em', textTransform: 'uppercase', textShadow: '2px 2px 0 #111',
-          animation: 'lzm-intro-up 380ms 940ms cubic-bezier(.34,1.56,.64,1) both',
+          animation: 'lzm-intro-up 380ms 820ms cubic-bezier(.34,1.56,.64,1) both',
         }}>
           La señal que deja huella
         </div>
@@ -189,16 +205,16 @@ function Intro({ onDone }) {
 
       {/* Hint */}
       <div style={{
-        position: 'absolute', bottom: 28, left: 0, right: 0, zIndex: 4,
+        position: 'absolute', bottom: 28, left: 0, right: 0, zIndex: 6,
         textAlign: 'center',
         opacity: contentVisible ? 1 : 0, transition: 'opacity 300ms',
       }}>
         <div style={{
           fontFamily: "'Montserrat', sans-serif", fontWeight: 700, fontSize: 10,
           textTransform: 'uppercase', letterSpacing: '.14em', color: 'rgba(255,255,255,.7)',
-          animation: 'lzm-intro-up 380ms 1200ms ease both',
+          animation: 'lzm-intro-up 380ms 1100ms ease both',
         }}>
-          Toca para saltar
+          Toca para continuar
         </div>
       </div>
     </div>

@@ -15,7 +15,39 @@ function EpisodePage({ id }) {
       const m = document.querySelector('meta[name="description"]');
       if (m) m.setAttribute('content', ep.description || `${ep.title} en LuzmaTV. ${ep.duration}.`);
     }
-  }, [id]);
+
+    // JSON-LD VideoObject por episodio (SEO de paginas individuales)
+    const existing = document.getElementById('lzm-episode-ldjson');
+    if (existing) existing.remove();
+    if (ep && ep.youtubeId) {
+      const baseUrl = 'https://bastian897.github.io/LuzmaTV/';
+      const ld = {
+        '@context': 'https://schema.org',
+        '@type': 'VideoObject',
+        name: ep.title,
+        description: ep.description || `${ep.title} — LuzmaTV`,
+        thumbnailUrl: `https://img.youtube.com/vi/${ep.youtubeId}/hqdefault.jpg`,
+        uploadDate: ep.date,
+        embedUrl: `https://www.youtube.com/embed/${ep.youtubeId}`,
+        url: `${baseUrl}#/episodio/${ep.id}`,
+        publisher: { '@id': `${baseUrl}#org` },
+      };
+      if (ep.duration && /^\d+:\d+(:\d+)?$/.test(ep.duration)) {
+        const parts = ep.duration.split(':').map(Number);
+        if (parts.length === 3)      ld.duration = `PT${parts[0]}H${parts[1]}M${parts[2]}S`;
+        else if (parts.length === 2) ld.duration = `PT${parts[0]}M${parts[1]}S`;
+      }
+      const script = document.createElement('script');
+      script.type = 'application/ld+json';
+      script.id = 'lzm-episode-ldjson';
+      script.textContent = JSON.stringify(ld);
+      document.head.appendChild(script);
+    }
+    return () => {
+      const s = document.getElementById('lzm-episode-ldjson');
+      if (s) s.remove();
+    };
+  }, [id, ep && ep.youtubeId]);
 
   const onNav = (sectionId) => { window.location.hash = `#${sectionId}`; };
 
