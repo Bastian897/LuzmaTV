@@ -1,11 +1,13 @@
 // LivePlayer.jsx — live stream embed + chat real (Twitch/Kick iframes oficiales)
 const { useState: useStateL, useEffect: useEffectL } = React;
 
-const KICK_CHANNEL   = 'luzmatv';
-const TWITCH_CHANNEL = 'luzmatv';
+const KICK_CHANNEL    = 'luzmatv';
+const TWITCH_CHANNEL  = 'luzmatv';
+// Channel ID de YouTube (formato UCxxxxxx) — verlo en youtube.com > tu canal > Configuración > Información del canal
+const YOUTUBE_CHANNEL_ID = '';
 
 function LivePlayer() {
-  const [platform, setPlatform] = useStateL(null); // null | 'kick' | 'twitch'
+  const [platform, setPlatform] = useStateL(null); // null | 'kick' | 'twitch' | 'youtube'
   const [viewers,  setViewers]  = useStateL(2143);
 
   useEffectL(() => {
@@ -18,10 +20,10 @@ function LivePlayer() {
   const parent = typeof window !== 'undefined' ? window.location.hostname : 'luzmatv.cl';
   const playerSrc = platform === 'kick'
     ? `https://player.kick.com/${KICK_CHANNEL}`
+    : platform === 'youtube'
+    ? `https://www.youtube.com/embed/live_stream?channel=${YOUTUBE_CHANNEL_ID}&autoplay=1`
     : `https://player.twitch.tv/?channel=${TWITCH_CHANNEL}&parent=${parent}&autoplay=false`;
-  const chatSrc = platform === 'kick'
-    ? `https://kick.com/${KICK_CHANNEL}/chatroom`
-    : `https://www.twitch.tv/embed/${TWITCH_CHANNEL}/chat?parent=${parent}&darkpopout`;
+  const chatSrc = `https://www.twitch.tv/embed/${TWITCH_CHANNEL}/chat?parent=${parent}&darkpopout`;
 
   return (
     <Section id="envivo" eyebrow="Estamos al aire" title="En vivo ahora" background="#0A0F2C">
@@ -71,6 +73,14 @@ function LivePlayer() {
                   <img src="assets/platforms/twitch.svg" style={{ width: 22, height: 22 }} alt="Twitch" />
                   Ver en Twitch
                 </button>
+                {YOUTUBE_CHANNEL_ID && (
+                  <button
+                    onClick={() => setPlatform('youtube')}
+                    style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '14px 24px', background: '#FF0000', border: '3px solid #111', borderRadius: 9999, boxShadow: '6px 6px 0 #111', fontFamily: "'Montserrat'", fontWeight: 900, fontSize: 14, textTransform: 'uppercase', letterSpacing: '.06em', cursor: 'pointer', color: '#fff' }}>
+                    <img src="assets/platforms/youtube.svg" style={{ width: 22, height: 22 }} alt="YouTube" />
+                    Ver en YouTube
+                  </button>
+                )}
               </div>
               <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
                 <Pill color="#111" fg="#fff" shadow={false}>
@@ -97,8 +107,8 @@ function LivePlayer() {
               Chat en vivo
             </span>
             {platform && (
-              <span style={{ fontFamily: "'Montserrat'", fontWeight: 800, fontSize: 11, textTransform: 'uppercase', color: platform === 'kick' ? '#2d9b00' : '#6441a5' }}>
-                {platform === 'kick' ? 'Kick' : 'Twitch'}
+              <span style={{ fontFamily: "'Montserrat'", fontWeight: 800, fontSize: 11, textTransform: 'uppercase', color: platform === 'kick' ? '#2d9b00' : platform === 'youtube' ? '#FF0000' : '#6441a5' }}>
+                {platform === 'kick' ? 'Kick' : platform === 'youtube' ? 'YouTube' : 'Twitch'}
               </span>
             )}
           </div>
@@ -112,6 +122,23 @@ function LivePlayer() {
               scrolling="yes"
               style={{ flex: 1, width: '100%', minHeight: 400, display: 'block', border: 'none' }}
             />
+          ) : platform === 'youtube' ? (
+            <div style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 20, padding: 28, textAlign: 'center' }}>
+              <div style={{ fontSize: 40 }}>💬</div>
+              <div style={{ fontFamily: "'Montserrat'", fontWeight: 800, fontSize: 13, textTransform: 'uppercase', letterSpacing: '.06em', color: '#eee', lineHeight: 1.5 }}>
+                Chat del live<br />en YouTube
+              </div>
+              <button
+                onClick={() => window.open(`https://youtube.com/@luzmatv/live`, 'yt-chat', 'width=380,height=600,resizable=yes')}
+                style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '13px 22px', background: '#FF0000', border: '3px solid #111', borderRadius: 9999, boxShadow: '5px 5px 0 #111', fontFamily: "'Montserrat'", fontWeight: 900, fontSize: 13, textTransform: 'uppercase', letterSpacing: '.06em', cursor: 'pointer', color: '#fff' }}
+              >
+                <img src="assets/platforms/youtube.svg" style={{ width: 18, height: 18 }} alt="" />
+                Abrir chat de YouTube
+              </button>
+              <div style={{ fontFamily: "'Nunito'", fontSize: 12, color: 'rgba(255,255,255,.45)' }}>
+                Se abre en una ventana pequeña
+              </div>
+            </div>
           ) : platform === 'kick' ? (
             <div style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 20, padding: 28, textAlign: 'center' }}>
               <div style={{ fontSize: 40 }}>💬</div>
