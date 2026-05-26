@@ -103,15 +103,32 @@ function LivePlayer() {
             )}
           </div>
 
-          {platform ? (
+          {platform === 'twitch' ? (
             <iframe
-              key={platform}
+              key="twitch-chat"
               src={chatSrc}
-              title={`Chat ${platform}`}
+              title="Chat Twitch"
               frameBorder="0"
               scrolling="yes"
               style={{ flex: 1, width: '100%', minHeight: 400, display: 'block', border: 'none' }}
             />
+          ) : platform === 'kick' ? (
+            <div style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 20, padding: 28, textAlign: 'center' }}>
+              <div style={{ fontSize: 40 }}>💬</div>
+              <div style={{ fontFamily: "'Montserrat'", fontWeight: 800, fontSize: 13, textTransform: 'uppercase', letterSpacing: '.06em', color: '#eee', lineHeight: 1.5 }}>
+                El chat de Kick no permite<br />embeds externos
+              </div>
+              <button
+                onClick={() => window.open(`https://kick.com/${KICK_CHANNEL}/chatroom`, 'kick-chat', 'width=380,height=600,resizable=yes')}
+                style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '13px 22px', background: '#53FC18', border: '3px solid #111', borderRadius: 9999, boxShadow: '5px 5px 0 #111', fontFamily: "'Montserrat'", fontWeight: 900, fontSize: 13, textTransform: 'uppercase', letterSpacing: '.06em', cursor: 'pointer', color: '#111' }}
+              >
+                <img src="assets/platforms/kick.svg" style={{ width: 18, height: 18 }} alt="" />
+                Abrir chat de Kick
+              </button>
+              <div style={{ fontFamily: "'Nunito'", fontSize: 12, color: 'rgba(255,255,255,.45)' }}>
+                Se abre en una ventana pequeña
+              </div>
+            </div>
           ) : (
             <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 24, textAlign: 'center' }}>
               <div>
