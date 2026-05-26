@@ -1,5 +1,5 @@
 // LivePlayer.jsx — live stream embed + chat real (Twitch/Kick iframes oficiales)
-const { useState: useStateL, useEffect: useEffectL, useRef: useRefL } = React;
+const { useState: useStateL, useEffect: useEffectL } = React;
 
 const KICK_CHANNEL   = 'luzmatv';
 const TWITCH_CHANNEL = 'luzmatv';
@@ -7,7 +7,6 @@ const TWITCH_CHANNEL = 'luzmatv';
 function LivePlayer() {
   const [platform, setPlatform] = useStateL(null); // null | 'kick' | 'twitch'
   const [viewers,  setViewers]  = useStateL(2143);
-  const chatRef = useRefL(null);
 
   useEffectL(() => {
     const t = setInterval(() => {
