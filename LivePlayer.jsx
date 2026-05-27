@@ -37,7 +37,14 @@ function LivePlayer() {
         className="lzm-player-grid"
       >
         {/* VIDEO */}
-        <div style={{ background: '#000', border: '3px solid #111', borderRadius: 18, overflow: 'hidden', position: 'relative', aspectRatio: '16/9' }}>
+        <div
+          className={`lzm-video-frame${platform ? '' : ' lzm-no-platform'}`}
+          style={{
+            background: '#000', border: '3px solid #111', borderRadius: 18, overflow: 'hidden',
+            position: 'relative',
+            ...(platform ? { aspectRatio: '16/9' } : {}),
+          }}
+        >
           {platform ? (
             <iframe
               src={playerSrc}
@@ -48,27 +55,30 @@ function LivePlayer() {
               style={{ width: '100%', height: '100%', position: 'absolute', inset: 0, display: 'block' }}
             />
           ) : (
-            /* Pantalla de selección de plataforma */
-            <div style={{
-              position: 'absolute', inset: 0,
+            /* Pantalla de selección de plataforma — flujo natural, sin position:absolute para que crezca en mobile */
+            <div className="lzm-live-selector" style={{
               background: 'radial-gradient(circle at 30% 40%, rgba(233,30,140,.45) 0, transparent 50%), radial-gradient(circle at 70% 70%, rgba(0,170,255,.5) 0, transparent 55%), #0A0F2C',
-              display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column', gap: 28, padding: 24,
+              display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column', gap: 24, padding: '32px 20px',
+              width: '100%', height: '100%', minHeight: 320,
+              boxSizing: 'border-box',
             }}>
               <div style={{ textAlign: 'center', color: '#fff' }}>
                 <LiveBadge />
-                <div style={{ fontFamily: "'Bebas Neue'", fontSize: 'clamp(28px, 4vw, 52px)', lineHeight: 1, textTransform: 'uppercase', marginTop: 14, textShadow: '3px 3px 0 #111' }}>
+                <div style={{ fontFamily: "'Bebas Neue'", fontSize: 'clamp(26px, 4vw, 52px)', lineHeight: 1, textTransform: 'uppercase', marginTop: 14, textShadow: '3px 3px 0 #111' }}>
                   ¿Dónde querés vernos?
                 </div>
               </div>
-              <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap', justifyContent: 'center' }}>
+              <div className="lzm-live-buttons" style={{ display: 'flex', gap: 12, flexWrap: 'wrap', justifyContent: 'center', width: '100%' }}>
                 <button
                   onClick={() => setPlatform('kick')}
+                  className="lzm-live-btn"
                   style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '14px 24px', background: '#53FC18', border: '3px solid #111', borderRadius: 9999, boxShadow: '6px 6px 0 #111', fontFamily: "'Montserrat'", fontWeight: 900, fontSize: 14, textTransform: 'uppercase', letterSpacing: '.06em', cursor: 'pointer', color: '#111' }}>
                   <PlatformBadge slug="kick" tile="#fff" color="#53FC18" size={26} icon={16} />
                   Ver en Kick
                 </button>
                 <button
                   onClick={() => setPlatform('twitch')}
+                  className="lzm-live-btn"
                   style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '14px 24px', background: '#9146FF', border: '3px solid #111', borderRadius: 9999, boxShadow: '6px 6px 0 #111', fontFamily: "'Montserrat'", fontWeight: 900, fontSize: 14, textTransform: 'uppercase', letterSpacing: '.06em', cursor: 'pointer', color: '#fff' }}>
                   <PlatformBadge slug="twitch" tile="#fff" color="#9146FF" size={26} icon={16} />
                   Ver en Twitch
@@ -76,6 +86,7 @@ function LivePlayer() {
                 {YOUTUBE_CHANNEL_ID && (
                   <button
                     onClick={() => setPlatform('youtube')}
+                    className="lzm-live-btn"
                     style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '14px 24px', background: '#FF0000', border: '3px solid #111', borderRadius: 9999, boxShadow: '6px 6px 0 #111', fontFamily: "'Montserrat'", fontWeight: 900, fontSize: 14, textTransform: 'uppercase', letterSpacing: '.06em', cursor: 'pointer', color: '#fff' }}>
                     <PlatformBadge slug="youtube" tile="#fff" color="#FF0000" size={26} icon={16} />
                     Ver en YouTube
@@ -170,8 +181,16 @@ function LivePlayer() {
       </div>
 
       <style>{`
+        .lzm-video-frame.lzm-no-platform { aspect-ratio: 16/9; }
         @media (max-width: 900px) {
           .lzm-player-grid { grid-template-columns: 1fr !important; }
+        }
+        @media (max-width: 700px) {
+          .lzm-video-frame.lzm-no-platform { aspect-ratio: auto; }
+        }
+        @media (max-width: 520px) {
+          .lzm-live-buttons { flex-direction: column; align-items: stretch; }
+          .lzm-live-btn { width: 100%; justify-content: center; padding: 12px 18px !important; font-size: 13px !important; }
         }
       `}</style>
     </Section>
