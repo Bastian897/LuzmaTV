@@ -176,8 +176,8 @@ function Contacto() {
               accent="#43A047"
               icon="bell"
               label="WhatsApp / Teléfono"
-              value="+56 9 4099 6090"
-              href="https://wa.me/56940996090"
+              value="+56 9 7204 1514"
+              href="https://wa.me/56972041514"
             />
             <ContactCard
               accent="#E91E8C"

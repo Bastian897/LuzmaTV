@@ -53,7 +53,7 @@ function Footer() {
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 8, fontFamily: "'Nunito'", fontWeight: 700 }}>
               <a href="mailto:Contacto@LuzmaTV.cl">Contacto@LuzmaTV.cl</a>
-              <a href="https://wa.me/56940996090">+56 9 4099 6090</a>
+              <a href="https://wa.me/56972041514">+56 9 7204 1514</a>
               <a href="#contacto">Prensa & PR</a>
               <a href="#contacto">Trabaja con nosotros</a>
             </div>
@@ -71,7 +71,7 @@ function Footer() {
                 { slug: 'instagram', url: 'https://instagram.com/luzmatv' },
                 { slug: 'youtube',   url: 'https://youtube.com/@luzmatv' },
                 { slug: 'tvmas',     url: 'https://tvmas.cl' },
-                { slug: 'whatsapp',  url: 'https://wa.me/56940996090' },
+                { slug: 'whatsapp',  url: 'https://wa.me/56972041514' },
               ].map(({ slug: p, url }) => (
                 <a
                   key={p}
