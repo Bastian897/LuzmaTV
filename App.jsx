@@ -35,7 +35,7 @@ function App() {
       if (!h.startsWith('#/')) {
         document.title = 'LuzmaTV — La señal que deja huella | Canal chileno en vivo';
         const m = document.querySelector('meta[name="description"]');
-        if (m) m.setAttribute('content', 'LuzmaTV es el canal chileno de talk shows, humor y entretenimiento en vivo. Luzma Cachai (Lun–Vie 10:00), Cara a Cara (Mar y Jue tarde). Míranos en Kick, Twitch, YouTube, TikTok e Instagram.');
+        if (m) m.setAttribute('content', 'LuzmaTV es el canal chileno de talk shows, humor y entretenimiento en vivo. Luzma Cachai (Lun–Vie 10:00), Frente a Frente (Mar y Jue tarde). Míranos en Kick, Twitch, YouTube, TikTok e Instagram.');
         setTimeout(attachSpy, 300);
       }
       if (window.AOS) window.AOS.refresh();

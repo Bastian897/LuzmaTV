@@ -1,5 +1,5 @@
 // LivePlayer.jsx — live stream embed + chat real (Twitch/Kick iframes oficiales)
-const { useState: useStateL, useEffect: useEffectL } = React;
+const { useState: useStateL } = React;
 
 const KICK_CHANNEL    = 'luzmatv';
 const TWITCH_CHANNEL  = 'luzmatv';
@@ -8,14 +8,6 @@ const YOUTUBE_CHANNEL_ID = 'UCQ0cnYx83lnRaCvMHuiM5QQ';
 
 function LivePlayer() {
   const [platform, setPlatform] = useStateL(null); // null | 'kick' | 'twitch' | 'youtube'
-  const [viewers,  setViewers]  = useStateL(2143);
-
-  useEffectL(() => {
-    const t = setInterval(() => {
-      setViewers((v) => Math.max(0, v + Math.floor(Math.random() * 7) - 2));
-    }, 2500);
-    return () => clearInterval(t);
-  }, []);
 
   const parent = typeof window !== 'undefined' ? window.location.hostname : 'luzmatv.cl';
   const playerSrc = platform === 'kick'
@@ -92,11 +84,6 @@ function LivePlayer() {
                     Ver en YouTube
                   </button>
                 )}
-              </div>
-              <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
-                <Pill color="#111" fg="#fff" shadow={false}>
-                  <Icon name="user" size={12} color="#fff" /> {viewers.toLocaleString('es-CL')} viendo
-                </Pill>
               </div>
             </div>
           )}

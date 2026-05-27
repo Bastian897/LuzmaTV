@@ -8,11 +8,11 @@ const SLOTS = [
   },
   {
     time: '18:00\ntarde',
-    shows: [null, 'Cara a Cara', null, 'Cara a Cara', null, null, null],
+    shows: [null, 'Frente a Frente', null, 'Frente a Frente', null, null, null],
   },
 ];
 
-const SHOW_COLORS = { 'Luzma Cachai': '#E91E8C', 'Cara a Cara': '#7B2CBF' };
+const SHOW_COLORS = { 'Luzma Cachai': '#E91E8C', 'Frente a Frente': '#7B2CBF' };
 
 function Schedule() {
   return (
@@ -65,7 +65,7 @@ function Schedule() {
         </span>
         <span style={{ display: 'inline-flex', alignItems: 'center', gap: 8, fontFamily: "'Montserrat'", fontWeight: 700, fontSize: 12, textTransform: 'uppercase', letterSpacing: '.04em' }}>
           <span style={{ width: 18, height: 18, background: '#7B2CBF', border: '2.5px solid #111', borderRadius: 5 }} />
-          Cara a Cara — Mar y Jue · tarde
+          Frente a Frente — Mar y Jue · tarde
         </span>
       </div>
     </Section>

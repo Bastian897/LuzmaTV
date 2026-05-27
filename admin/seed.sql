@@ -5,15 +5,15 @@ insert into public.programs (id, name, cat, day, time, description, long_descrip
   (
     'luzma-cachai', 'Luzma Cachai', 'talk', 'Lun a Vie', '10:00',
     'El live show diario de LuzmaTV. Tendencias, invitados y la mejor energia de Chile.',
-    'Luzma Cachai es el corazon de LuzmaTV. De lunes a viernes de 10:00 a 12:00, Ariel Osses, Vicky More, Rodrigo Munoz, Claudio Merlin y Lita Melo se juntan en vivo para hablar de todo — sin filtros, sin guion y con la energia que hace unica a esta senal.',
+    'Luzma Cachai es el corazon de LuzmaTV. De lunes a viernes de 10:00 a 12:00, Ariel Osses, Vicky More, Rodrigo Munoz, Claudio Merlin, Lita Melo e Ignacio Ruiz se juntan en vivo para hablar de todo — sin filtros, sin guion y con la energia que hace unica a esta senal.',
     '#E91E8C', '🎬', 'active',
-    array['ariel-osses','vicky-more','rodrigo-munoz','claudio-merlin','lita-melo'],
+    array['ariel-osses','vicky-more','rodrigo-munoz','claudio-merlin','lita-melo','ignacio-ruiz'],
     10
   ),
   (
-    'cara-a-cara', 'Cara a Cara', 'invitado', 'Mar y Jue', '18:00',
+    'cara-a-cara', 'Frente a Frente', 'invitado', 'Mar y Jue', '18:00',
     'Las conversaciones que no se pueden ignorar. Dos visiones, una mesa, sin filtros.',
-    'Cara a Cara es el espacio donde los temas que dividen a Chile se ponen sobre la mesa. Cada episodio enfrenta dos visiones distintas en una conversacion directa, sin guion y sin zonas de confort. Martes y jueves en las tardes, por LuzmaTV.',
+    'Frente a Frente es el espacio donde los temas que dividen a Chile se ponen sobre la mesa. Cada episodio enfrenta dos visiones distintas en una conversacion directa, sin guion y sin zonas de confort. Martes y jueves en las tardes, por LuzmaTV.',
     '#7B2CBF', '🎤', 'active',
     array[]::text[],
     20
