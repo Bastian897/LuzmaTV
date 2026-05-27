@@ -52,9 +52,16 @@ function Hero({ onWatch, onPrograms }) {
           <div style={{ display: 'flex', gap: 10 }}>
             {['kick', 'tiktok', 'instagram', 'twitch', 'youtube'].map((p) => (
               <a key={p} href={HERO_SOCIAL_URLS[p]} target="_blank" rel="noreferrer"
+                aria-label={p}
                 className="lzm-pop"
-                style={{ width: 44, height: 44, background: '#fff', border: '3px solid #111', borderRadius: 12, display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '3px 3px 0 #111' }}>
-                <img src={`assets/platforms/${p}.svg`} style={{ width: 22, height: 22 }} alt={p} />
+                style={{ width: 44, height: 44, background: '#fff', border: '3px solid #111', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '3px 3px 0 #111' }}>
+                <span style={{
+                  width: 22, height: 22, display: 'block', background: '#0055FF',
+                  WebkitMaskImage: `url(assets/platforms/${p}-mask.svg)`, maskImage: `url(assets/platforms/${p}-mask.svg)`,
+                  WebkitMaskRepeat: 'no-repeat', maskRepeat: 'no-repeat',
+                  WebkitMaskPosition: 'center', maskPosition: 'center',
+                  WebkitMaskSize: 'contain', maskSize: 'contain',
+                }} />
               </a>
             ))}
           </div>

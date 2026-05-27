@@ -64,20 +64,20 @@ function LivePlayer() {
                 <button
                   onClick={() => setPlatform('kick')}
                   style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '14px 24px', background: '#53FC18', border: '3px solid #111', borderRadius: 9999, boxShadow: '6px 6px 0 #111', fontFamily: "'Montserrat'", fontWeight: 900, fontSize: 14, textTransform: 'uppercase', letterSpacing: '.06em', cursor: 'pointer', color: '#111' }}>
-                  <img src="assets/platforms/kick.svg" style={{ width: 22, height: 22 }} alt="Kick" />
+                  <PlatformBadge slug="kick" tile="#fff" color="#53FC18" size={26} icon={16} />
                   Ver en Kick
                 </button>
                 <button
                   onClick={() => setPlatform('twitch')}
                   style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '14px 24px', background: '#9146FF', border: '3px solid #111', borderRadius: 9999, boxShadow: '6px 6px 0 #111', fontFamily: "'Montserrat'", fontWeight: 900, fontSize: 14, textTransform: 'uppercase', letterSpacing: '.06em', cursor: 'pointer', color: '#fff' }}>
-                  <img src="assets/platforms/twitch.svg" style={{ width: 22, height: 22 }} alt="Twitch" />
+                  <PlatformBadge slug="twitch" tile="#fff" color="#9146FF" size={26} icon={16} />
                   Ver en Twitch
                 </button>
                 {YOUTUBE_CHANNEL_ID && (
                   <button
                     onClick={() => setPlatform('youtube')}
                     style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '14px 24px', background: '#FF0000', border: '3px solid #111', borderRadius: 9999, boxShadow: '6px 6px 0 #111', fontFamily: "'Montserrat'", fontWeight: 900, fontSize: 14, textTransform: 'uppercase', letterSpacing: '.06em', cursor: 'pointer', color: '#fff' }}>
-                    <img src="assets/platforms/youtube.svg" style={{ width: 22, height: 22 }} alt="YouTube" />
+                    <PlatformBadge slug="youtube" tile="#fff" color="#FF0000" size={26} icon={16} />
                     Ver en YouTube
                   </button>
                 )}
@@ -132,7 +132,7 @@ function LivePlayer() {
                 onClick={() => window.open(`https://youtube.com/@luzmatv/live`, 'yt-chat', 'width=380,height=600,resizable=yes')}
                 style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '13px 22px', background: '#FF0000', border: '3px solid #111', borderRadius: 9999, boxShadow: '5px 5px 0 #111', fontFamily: "'Montserrat'", fontWeight: 900, fontSize: 13, textTransform: 'uppercase', letterSpacing: '.06em', cursor: 'pointer', color: '#fff' }}
               >
-                <img src="assets/platforms/youtube.svg" style={{ width: 18, height: 18 }} alt="" />
+                <PlatformBadge slug="youtube" tile="#fff" color="#FF0000" size={22} icon={14} />
                 Abrir chat de YouTube
               </button>
               <div style={{ fontFamily: "'Nunito'", fontSize: 12, color: 'rgba(255,255,255,.45)' }}>
@@ -149,7 +149,7 @@ function LivePlayer() {
                 onClick={() => window.open(`https://kick.com/${KICK_CHANNEL}/chatroom`, 'kick-chat', 'width=380,height=600,resizable=yes')}
                 style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '13px 22px', background: '#53FC18', border: '3px solid #111', borderRadius: 9999, boxShadow: '5px 5px 0 #111', fontFamily: "'Montserrat'", fontWeight: 900, fontSize: 13, textTransform: 'uppercase', letterSpacing: '.06em', cursor: 'pointer', color: '#111' }}
               >
-                <img src="assets/platforms/kick.svg" style={{ width: 18, height: 18 }} alt="" />
+                <PlatformBadge slug="kick" tile="#fff" color="#53FC18" size={22} icon={14} />
                 Abrir chat de Kick
               </button>
               <div style={{ fontFamily: "'Nunito'", fontSize: 12, color: 'rgba(255,255,255,.45)' }}>

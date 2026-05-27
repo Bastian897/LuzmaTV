@@ -78,17 +78,24 @@ function Footer() {
                   href={url}
                   target="_blank"
                   rel="noreferrer"
+                  aria-label={p}
                   className="lzm-pop"
                   style={{
                     width: 38, height: 38,
                     background: '#fff',
                     border: '3px solid #111',
-                    borderRadius: 10,
+                    borderRadius: '50%',
                     display: 'flex', alignItems: 'center', justifyContent: 'center',
                     boxShadow: '3px 3px 0 #111',
                   }}
                 >
-                  <img src={`assets/platforms/${p}.svg`} style={{ width: 20, height: 20 }} alt={p} />
+                  <span style={{
+                    width: 20, height: 20, display: 'block', background: '#0A0F2C',
+                    WebkitMaskImage: `url(assets/platforms/${p}-mask.svg)`, maskImage: `url(assets/platforms/${p}-mask.svg)`,
+                    WebkitMaskRepeat: 'no-repeat', maskRepeat: 'no-repeat',
+                    WebkitMaskPosition: 'center', maskPosition: 'center',
+                    WebkitMaskSize: 'contain', maskSize: 'contain',
+                  }} />
                 </a>
               ))}
             </div>

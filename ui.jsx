@@ -1,6 +1,41 @@
 // ui.jsx — shared primitives for the LuzmaTV website
 const { useState, useEffect, useRef } = React;
 
+// ---------- PlatformMark — single-color brand silhouette via CSS mask ----------
+function PlatformMark({ slug, color = '#111', size = 22, style = {} }) {
+  const url = `assets/platforms/${slug}-mask.svg`;
+  return (
+    <span
+      aria-hidden="true"
+      style={{
+        width: size, height: size, display: 'inline-block', flexShrink: 0,
+        background: color,
+        WebkitMaskImage: `url(${url})`, maskImage: `url(${url})`,
+        WebkitMaskRepeat: 'no-repeat', maskRepeat: 'no-repeat',
+        WebkitMaskPosition: 'center', maskPosition: 'center',
+        WebkitMaskSize: 'contain', maskSize: 'contain',
+        ...style,
+      }}
+    />
+  );
+}
+
+// ---------- PlatformBadge — round tile with the silhouette inside ----------
+function PlatformBadge({ slug, tile = '#fff', color = '#111', size = 26, icon = 16, style = {} }) {
+  return (
+    <span
+      aria-hidden="true"
+      style={{
+        width: size, height: size, borderRadius: '50%', background: tile,
+        display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+        flexShrink: 0, ...style,
+      }}
+    >
+      <PlatformMark slug={slug} color={color} size={icon} />
+    </span>
+  );
+}
+
 // ---------- Star SVG ----------
 function Star({ size = 36, fill = '#FFD600', stroke = 6, rotate = 0, style = {}, className = '' }) {
   return (
@@ -197,4 +232,4 @@ function Breadcrumb({ items }) {
 }
 
 // Make available globally to Babel scripts
-Object.assign(window, { Button, Pill, LiveBadge, Section, Star, Icon, ICON_PATHS, Breadcrumb });
+Object.assign(window, { Button, Pill, LiveBadge, Section, Star, Icon, ICON_PATHS, Breadcrumb, PlatformMark, PlatformBadge });
