@@ -5,7 +5,7 @@ function Platforms() {
     { slug: 'twitch',    name: 'Twitch',    handle: '/luzmatv',      url: 'https://twitch.tv/luzmatv',       bg: '#9146FF', fg: '#fff', tag: 'Streams diarios' },
     { slug: 'tiktok',    name: 'TikTok',    handle: '@luzmatv',      url: 'https://tiktok.com/@luzmatv',     bg: '#111',    fg: '#fff', tag: '+100k seguidores' },
     { slug: 'instagram', name: 'Instagram', handle: '@luzmatv',      url: 'https://instagram.com/luzmatv',   bg: 'linear-gradient(135deg,#FFD600 0%,#E91E8C 50%,#7B2CBF 100%)', fg: '#fff', tag: 'Stories diarias' },
-    { slug: 'youtube',   name: 'YouTube',   handle: 'próximamente',  url: 'https://youtube.com/@luzmatv',    bg: '#FF0000', fg: '#fff', tag: 'Episodios completos' },
+    { slug: 'youtube',   name: 'YouTube',   handle: '@luzmatv',      url: 'https://youtube.com/@luzmatv',    bg: '#FF0000', fg: '#fff', tag: 'Episodios completos' },
     { slug: 'tvmas',     name: 'TV Más',    handle: 'Canal abierto', url: 'https://tvmas.cl',                bg: '#111', fg: '#FFD600', tag: 'Lun a Vie · 22hs' },
   ];
 
