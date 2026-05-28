@@ -74,7 +74,7 @@ export default async function handler(req, res) {
 
     res.setHeader(
       'Cache-Control',
-      'public, s-maxage=3600, stale-while-revalidate=86400'
+      'public, s-maxage=86400, stale-while-revalidate=86400'
     );
     res.status(200).json({ episodes, source: 'rss', count: episodes.length });
   } catch (err) {
