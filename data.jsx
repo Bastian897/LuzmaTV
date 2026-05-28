@@ -8,9 +8,9 @@ const LZM_STATIC = {
     {
       id: 'luzma-cachai', name: 'Luzma Cachai', cat: 'talk', day: 'Lun a Vie', time: '10:00',
       desc: 'El live show diario de LuzmaTV. Tendencias, invitados y la mejor energía de Chile.',
-      longDesc: 'Luzma Cachai es el corazón de LuzmaTV. De lunes a viernes de 10:00 a 12:00, Ariel Osses, Vicky More, Rodrigo Muñoz, Claudio Merlin, Lita Melo e Ignacio Ruiz se juntan en vivo para hablar de todo — sin filtros, sin guión y con la energía que hace única a esta señal.',
+      longDesc: 'Luzma Cachai es el corazón de LuzmaTV. De lunes a viernes de 10:00 a 12:00, Ariel Osses, Vicky More, Claudio Merlin, Lita Melo e Ignacio Ruiz se juntan en vivo para hablar de todo — sin filtros, sin guión y con la energía que hace única a esta señal.',
       color: '#E91E8C', emoji: '🎬', status: 'active',
-      hostIds: ['ariel-osses', 'vicky-more', 'rodrigo-munoz', 'claudio-merlin', 'lita-melo', 'ignacio-ruiz'],
+      hostIds: ['ariel-osses', 'vicky-more', 'claudio-merlin', 'lita-melo', 'ignacio-ruiz'],
     },
     {
       id: 'cara-a-cara', name: 'Frente a Frente', cat: 'invitado', day: 'Mar y Jue', time: '18:00',
@@ -74,7 +74,6 @@ const LZM_STATIC = {
   hosts: [
     { id: 'ariel-osses',   name: 'Ariel Osses',   role: 'Conductor · Luzma Cachai', bg: '#E91E8C', initials: 'AO', ig: 'ariel_osses',      sign: '🎬' },
     { id: 'vicky-more',    name: 'Vicky More',    role: 'Luzma Cachai',              bg: '#FDD835', initials: 'VM', ig: 'vickymoremusic',    sign: '🌟' },
-    { id: 'rodrigo-munoz', name: 'Rodrigo Muñoz', role: 'Luzma Cachai',              bg: '#0055FF', initials: 'RM', ig: 'chicomunozactor',   sign: '🎭' },
     { id: 'claudio-merlin',name: 'Claudio Merlin',role: 'Luzma Cachai',              bg: '#43A047', initials: 'CM', ig: 'claudiomerlinn',    sign: '🎤' },
     { id: 'lita-melo',     name: 'Lita Melo',     role: 'Luzma Cachai',              bg: '#E53935', initials: 'LM', ig: 'litamelocuenta',    sign: '💃' },
     { id: 'ignacio-ruiz',  name: 'Ignacio Ruiz',  role: 'Luzma Cachai',              bg: '#7B2CBF', initials: 'IR', ig: 'ignacioruizcarrasco', sign: '🎙️' },

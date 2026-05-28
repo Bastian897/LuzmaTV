@@ -5,9 +5,9 @@ insert into public.programs (id, name, cat, day, time, description, long_descrip
   (
     'luzma-cachai', 'Luzma Cachai', 'talk', 'Lun a Vie', '10:00',
     'El live show diario de LuzmaTV. Tendencias, invitados y la mejor energia de Chile.',
-    'Luzma Cachai es el corazon de LuzmaTV. De lunes a viernes de 10:00 a 12:00, Ariel Osses, Vicky More, Rodrigo Munoz, Claudio Merlin, Lita Melo e Ignacio Ruiz se juntan en vivo para hablar de todo — sin filtros, sin guion y con la energia que hace unica a esta senal.',
+    'Luzma Cachai es el corazon de LuzmaTV. De lunes a viernes de 10:00 a 12:00, Ariel Osses, Vicky More, Claudio Merlin, Lita Melo e Ignacio Ruiz se juntan en vivo para hablar de todo — sin filtros, sin guion y con la energia que hace unica a esta senal.',
     '#E91E8C', '🎬', 'active',
-    array['ariel-osses','vicky-more','rodrigo-munoz','claudio-merlin','lita-melo','ignacio-ruiz'],
+    array['ariel-osses','vicky-more','claudio-merlin','lita-melo','ignacio-ruiz'],
     10
   ),
   (
