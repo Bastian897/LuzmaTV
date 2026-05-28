@@ -40,11 +40,6 @@ function Episodes() {
                     <Icon name="play" size={22} color="#111" fill="#111" />
                   </div>
                 </div>
-                {e.isNew && (
-                  <span style={{ position: 'absolute', top: 10, left: 10 }}>
-                    <Pill color="#FFD600" size="xs">⭐ NUEVO</Pill>
-                  </span>
-                )}
                 <span style={{ position: 'absolute', bottom: 10, right: 10, padding: '3px 8px', background: 'rgba(0,0,0,.8)', color: '#fff', fontFamily: "'Montserrat'", fontWeight: 900, fontSize: 11, borderRadius: 5 }}>
                   {e.duration}
                 </span>
@@ -56,7 +51,7 @@ function Episodes() {
                 </div>
                 <div style={{ fontFamily: "'Nunito'", fontWeight: 800, fontSize: 15, color: '#111', lineHeight: 1.25 }}>{e.title}</div>
                 <div style={{ marginTop: 8, fontFamily: "'Nunito'", fontSize: 12, color: '#5B6479' }}>
-                  {e.views !== '—' ? `${e.views} visualizaciones · ` : ''}{e.duration}
+                  {e.date || ''}
                 </div>
               </div>
             </a>

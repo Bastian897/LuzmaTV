@@ -44,6 +44,7 @@ export default async function handler(req, res) {
     const now = Date.now();
     const SEVEN_DAYS = 7 * 24 * 60 * 60 * 1000;
 
+    const seen = new Set();
     const episodes = entries.map((entry) => {
       const videoId    = xmlText(entry, 'yt:videoId');
       const title      = decode(xmlText(entry, 'title'));
@@ -56,19 +57,20 @@ export default async function handler(req, res) {
           : `${title} — LuzmaTV`;
       const isNew = published ? now - new Date(published).getTime() < SEVEN_DAYS : false;
 
+      if (!videoId || seen.has(videoId)) return null;
+      seen.add(videoId);
       return {
         id:          `luzma-cachai-${videoId}`,
         programId:   PROGRAM_ID,
         title,
         youtubeId:   videoId,
         duration:    '—',
-        views:       '—',
         color:       PROGRAM_COLOR,
         isNew,
         date,
         description,
       };
-    }).filter((e) => e.youtubeId);
+    }).filter(Boolean);
 
     res.setHeader(
       'Cache-Control',
