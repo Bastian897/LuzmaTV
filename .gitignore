@@ -44,3 +44,5 @@ build/
 # Logs
 *.log
 npm-debug.log*
+
+.vercel
