@@ -1,11 +1,18 @@
-// api/episodes.js — devuelve los ultimos videos del canal LuzmaTV via RSS publico de YouTube.
-// Sin API key, sin quota, sin billing. Cacheado 1h en el edge de Vercel.
+// api/episodes.js — episodios desde RSS de playlists de YouTube (sin API key).
+// Agregar playlist por programa en SOURCES cuando esten disponibles.
 
-const CHANNEL_ID    = 'UCQ0cnYx83lnRaCvMHuiM5QQ';
-const MAX_RESULTS   = 10;
-const PROGRAM_ID    = 'luzma-cachai';
-const PROGRAM_COLOR = '#E91E8C';
-const RSS_URL       = `https://www.youtube.com/feeds/videos.xml?channel_id=${CHANNEL_ID}`;
+const SOURCES = [
+  {
+    rss:       'https://www.youtube.com/feeds/videos.xml?playlist_id=PLvSpPskFuJqJGJBhwyNrEFxlHYi3FV784',
+    programId: 'luzma-cachai',
+    color:     '#E91E8C',
+  },
+  // Descomentar cuando creen las playlists en YouTube Studio:
+  // { rss: 'https://www.youtube.com/feeds/videos.xml?playlist_id=PLAYLIST_ID_FRENTE', programId: 'cara-a-cara', color: '#7B2CBF' },
+  // { rss: 'https://www.youtube.com/feeds/videos.xml?playlist_id=PLAYLIST_ID_DIA_UNO', programId: 'dia-uno',     color: '#FF7043' },
+];
+
+const MAX_PER_SOURCE = 15;
 
 function xmlText(xml, tag) {
   const m = xml.match(new RegExp(`<${tag}[^>]*>([\\s\\S]*?)<\\/${tag}>`, 'i'));
@@ -17,11 +24,6 @@ function allMatches(xml, tag) {
   return xml.match(re) || [];
 }
 
-function attr(xml, tag, attrName) {
-  const m = xml.match(new RegExp(`<${tag}[^>]*${attrName}="([^"]*)"`, 'i'));
-  return m ? m[1] : '';
-}
-
 function decode(str) {
   return str
     .replace(/&amp;/g, '&')
@@ -31,52 +33,62 @@ function decode(str) {
     .replace(/&#39;/g, "'");
 }
 
-export default async function handler(req, res) {
-  try {
-    const rssRes = await fetch(RSS_URL, {
-      headers: { 'User-Agent': 'LuzmaTV-Site/1.0' },
-    });
-    if (!rssRes.ok) throw new Error(`RSS ${rssRes.status}`);
-    const xml = await rssRes.text();
+async function fetchSource(source) {
+  const res = await fetch(source.rss, { headers: { 'User-Agent': 'LuzmaTV-Site/1.0' } });
+  if (!res.ok) throw new Error(`RSS ${source.programId} ${res.status}`);
+  const xml = await res.text();
 
-    const entries = allMatches(xml, 'entry').slice(0, MAX_RESULTS);
+  const now = Date.now();
+  const SEVEN_DAYS = 7 * 24 * 60 * 60 * 1000;
 
-    const now = Date.now();
-    const SEVEN_DAYS = 7 * 24 * 60 * 60 * 1000;
-
-    const seen = new Set();
-    const episodes = entries.map((entry) => {
-      const videoId    = xmlText(entry, 'yt:videoId');
-      const title      = decode(xmlText(entry, 'title'));
-      const published  = xmlText(entry, 'published');       // ISO 8601
-      const date       = published.slice(0, 10);
-      const rawDesc    = decode(xmlText(entry, 'media:description'));
-      const description =
-        rawDesc.length > 0
-          ? rawDesc.slice(0, 220) + (rawDesc.length > 220 ? '…' : '')
-          : `${title} — LuzmaTV`;
+  return allMatches(xml, 'entry')
+    .slice(0, MAX_PER_SOURCE)
+    .map((entry) => {
+      const videoId   = xmlText(entry, 'yt:videoId');
+      if (!videoId) return null;
+      const title     = decode(xmlText(entry, 'title'));
+      const published = xmlText(entry, 'published');
+      const date      = published.slice(0, 10);
+      const rawDesc   = decode(xmlText(entry, 'media:description'));
+      const description = rawDesc.length > 0
+        ? rawDesc.slice(0, 220) + (rawDesc.length > 220 ? '…' : '')
+        : `${title} — LuzmaTV`;
       const isNew = published ? now - new Date(published).getTime() < SEVEN_DAYS : false;
 
-      if (!videoId || seen.has(videoId)) return null;
-      seen.add(videoId);
       return {
-        id:          `luzma-cachai-${videoId}`,
-        programId:   PROGRAM_ID,
+        id:        `${source.programId}-${videoId}`,
+        programId: source.programId,
         title,
-        youtubeId:   videoId,
-        duration:    '—',
-        color:       PROGRAM_COLOR,
+        youtubeId: videoId,
+        duration:  '—',
+        color:     source.color,
         isNew,
         date,
         description,
       };
-    }).filter(Boolean);
+    })
+    .filter(Boolean);
+}
 
-    res.setHeader(
-      'Cache-Control',
-      'public, s-maxage=86400, stale-while-revalidate=86400'
-    );
-    res.status(200).json({ episodes, source: 'rss', count: episodes.length });
+export default async function handler(req, res) {
+  try {
+    const results = await Promise.allSettled(SOURCES.map(fetchSource));
+
+    const seen = new Set();
+    const episodes = results
+      .flatMap((r) => r.status === 'fulfilled' ? r.value : [])
+      .filter((e) => {
+        if (seen.has(e.youtubeId)) return false;
+        seen.add(e.youtubeId);
+        return true;
+      });
+
+    if (results.every((r) => r.status === 'rejected')) {
+      throw new Error(results.map((r) => r.reason?.message).join(', '));
+    }
+
+    res.setHeader('Cache-Control', 'public, s-maxage=86400, stale-while-revalidate=86400');
+    res.status(200).json({ episodes, source: 'rss-playlist', count: episodes.length });
   } catch (err) {
     res.status(502).json({ error: err.message || 'rss fetch failed' });
   }
