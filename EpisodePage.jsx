@@ -20,7 +20,7 @@ function EpisodePage({ id }) {
     const existing = document.getElementById('lzm-episode-ldjson');
     if (existing) existing.remove();
     if (ep && ep.youtubeId) {
-      const baseUrl = 'https://bastian897.github.io/LuzmaTV/';
+      const baseUrl = 'https://luzmatv.vercel.app/';
       const ld = {
         '@context': 'https://schema.org',
         '@type': 'VideoObject',

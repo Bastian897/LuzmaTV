@@ -83,8 +83,6 @@ Cada push a `master` redespliega solo.
 - `EpisodePage.jsx` inyecta un `VideoObject` runtime por episodio.
 - Meta tags Open Graph + Twitter Card.
 
-> **TODO antes de salir a producción con el dominio nuevo**: actualizar todas las URLs canónicas que aún apuntan a `bastian897.github.io/LuzmaTV/` en `index.html`, `sitemap.xml`, `robots.txt` y `EpisodePage.jsx`.
-
 ## Decisiones de arquitectura
 
 - **Sin build step**: el código del repo es exactamente lo que se sirve. Diff = deploy.
