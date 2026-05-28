@@ -1,4 +1,4 @@
-// api/episodes.js — episodios desde RSS de playlists de YouTube (sin API key).
+// api/episodes.js - episodios desde RSS de playlists de YouTube (sin API key).
 // Agregar playlist por programa en SOURCES cuando esten disponibles.
 
 const SOURCES = [
@@ -52,7 +52,7 @@ async function fetchSource(source) {
       const rawDesc   = decode(xmlText(entry, 'media:description'));
       const description = rawDesc.length > 0
         ? rawDesc.slice(0, 220) + (rawDesc.length > 220 ? '…' : '')
-        : `${title} — LuzmaTV`;
+        : `${title} - LuzmaTV`;
       const isNew = published ? now - new Date(published).getTime() < SEVEN_DAYS : false;
 
       return {
@@ -60,7 +60,7 @@ async function fetchSource(source) {
         programId: source.programId,
         title,
         youtubeId: videoId,
-        duration:  '—',
+        duration:  '-',
         color:     source.color,
         isNew,
         date,

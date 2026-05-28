@@ -40,7 +40,7 @@ function Hero({ onWatch, onPrograms }) {
         </h1>
 
         <p style={{ fontFamily: "'Nunito', sans-serif", fontWeight: 700, color: '#fff', fontSize: 20, maxWidth: 560, margin: '28px 0 36px', textShadow: '2px 2px 0 #111' }}>
-          Todo pasa en LuzmaTV — en vivo, sin filtros y con la energía de los cabros que están conectados desde Santiago hasta la última región.
+          Todo pasa en LuzmaTV - en vivo, sin filtros y con la energía de los cabros que están conectados desde Santiago hasta la última región.
         </p>
 
         <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap', alignItems: 'center' }}>

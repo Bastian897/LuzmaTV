@@ -1,4 +1,4 @@
-// ProgramPage.jsx — página individual de programa
+// ProgramPage.jsx - página individual de programa
 const { useEffect: useEffectPP } = React;
 
 function ProgramPage({ id }) {
@@ -9,7 +9,7 @@ function ProgramPage({ id }) {
   useEffectPP(() => {
     window.scrollTo(0, 0);
     if (prog) {
-      document.title = `${prog.name} — LuzmaTV`;
+      document.title = `${prog.name} - LuzmaTV`;
       const m = document.querySelector('meta[name="description"]');
       if (m) m.setAttribute('content', prog.longDesc || prog.desc);
     }
@@ -76,7 +76,7 @@ function ProgramPage({ id }) {
               </a>
             </div>
 
-            {/* Derecha — caja decorativa */}
+            {/* Derecha - caja decorativa */}
             <div style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center' }}>
               <div style={{
                 background: '#111',
@@ -164,7 +164,7 @@ function ProgramPage({ id }) {
                         <Icon name="play" size={20} color="#111" fill="#111" />
                       </div>
                     </div>
-                    {ep.duration && ep.duration !== '—' && (
+                    {ep.duration && ep.duration !== '-' && (
                       <span style={{ position: 'absolute', bottom: 10, right: 10, padding: '3px 8px', background: 'rgba(0,0,0,.8)', color: '#fff', fontFamily: "'Montserrat'", fontWeight: 900, fontSize: 11, borderRadius: 5 }}>
                         {ep.duration}
                       </span>

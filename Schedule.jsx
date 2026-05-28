@@ -1,4 +1,4 @@
-// Schedule.jsx — grilla de programación real
+// Schedule.jsx - grilla de programación real
 const DAYS = ['Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb', 'Dom'];
 
 const SLOTS = [
@@ -61,11 +61,11 @@ function Schedule() {
       <div style={{ marginTop: 20, display: 'flex', gap: 14, flexWrap: 'wrap', alignItems: 'center' }}>
         <span style={{ display: 'inline-flex', alignItems: 'center', gap: 8, fontFamily: "'Montserrat'", fontWeight: 700, fontSize: 12, textTransform: 'uppercase', letterSpacing: '.04em' }}>
           <span style={{ width: 18, height: 18, background: '#E91E8C', border: '2.5px solid #111', borderRadius: 5 }} />
-          Luzma Cachai — Lun a Vie · 10:00 a 12:00 hs
+          Luzma Cachai - Lun a Vie · 10:00 a 12:00 hs
         </span>
         <span style={{ display: 'inline-flex', alignItems: 'center', gap: 8, fontFamily: "'Montserrat'", fontWeight: 700, fontSize: 12, textTransform: 'uppercase', letterSpacing: '.04em' }}>
           <span style={{ width: 18, height: 18, background: '#7B2CBF', border: '2.5px solid #111', borderRadius: 5 }} />
-          Frente a Frente — Mar y Jue · tarde
+          Frente a Frente - Mar y Jue · tarde
         </span>
       </div>
     </Section>

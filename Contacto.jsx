@@ -203,7 +203,7 @@ function Contacto() {
                 Horario
               </div>
               <div style={{ fontFamily: "'Bebas Neue'", fontSize: 30, lineHeight: 1, textTransform: 'uppercase', marginBottom: 10 }}>
-                Lun a Vie<br/>10:00 — 19:00
+                Lun a Vie<br/>10:00 - 19:00
               </div>
               <div style={{ fontFamily: "'Nunito'", fontWeight: 700, fontSize: 13, opacity: .9 }}>
                 Para urgencias de transmisión, escribe por WhatsApp.
