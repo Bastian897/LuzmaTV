@@ -88,11 +88,19 @@ function ProgramPage({ id }) {
                 alignItems: 'center', justifyContent: 'center',
                 gap: 8,
                 flexShrink: 0,
+                overflow: 'hidden',
+                position: 'relative',
               }}>
-                <div style={{ fontSize: 72, lineHeight: 1 }}>{prog.emoji}</div>
-                <div style={{ fontFamily: "'Bebas Neue'", fontSize: 13, color: prog.color, letterSpacing: '.15em', textTransform: 'uppercase' }}>
-                  {catLabel}
-                </div>
+                {prog.logoImg ? (
+                  <img src={prog.logoImg} alt={prog.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                ) : (
+                  <>
+                    <div style={{ fontSize: 72, lineHeight: 1 }}>{prog.emoji}</div>
+                    <div style={{ fontFamily: "'Bebas Neue'", fontSize: 13, color: prog.color, letterSpacing: '.15em', textTransform: 'uppercase' }}>
+                      {catLabel}
+                    </div>
+                  </>
+                )}
               </div>
             </div>
           </div>
