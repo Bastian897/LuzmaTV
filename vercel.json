@@ -4,7 +4,13 @@
   "trailingSlash": false,
   "headers": [
     {
-      "source": "/(.*)\\.(jsx|css|svg|png|jpg|jpeg|webp|webm|mp4|woff2?)",
+      "source": "/(.*)\\.(jsx|css)",
+      "headers": [
+        { "key": "Cache-Control", "value": "no-cache" }
+      ]
+    },
+    {
+      "source": "/(.*)\\.(svg|png|jpg|jpeg|webp|webm|mp4|woff2?)",
       "headers": [
         { "key": "Cache-Control", "value": "public, max-age=3600, stale-while-revalidate=86400" }
       ]
