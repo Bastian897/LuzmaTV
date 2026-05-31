@@ -170,7 +170,7 @@ function Contacto() {
               icon="mail"
               label="Email"
               value="Contacto@LuzmaTV.cl"
-              href="mailto:Contacto@LuzmaTV.cl"
+              href="https://mail.google.com/mail/?view=cm&to=Contacto@LuzmaTV.cl"
             />
             <ContactCard
               accent="#43A047"
@@ -256,7 +256,7 @@ function ContactCard({ accent, icon, label, value, href }) {
       </div>
     </div>
   );
-  return href ? <a href={href} className="lzm-pop" style={{ textDecoration: 'none' }}>{inner}</a> : inner;
+  return href ? <a href={href} className="lzm-pop" style={{ textDecoration: 'none' }} target="_blank" rel="noreferrer">{inner}</a> : inner;
 }
 
 Object.assign(window, { Contacto });

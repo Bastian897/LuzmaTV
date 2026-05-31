@@ -52,7 +52,7 @@ function Footer() {
               Contacto
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 8, fontFamily: "'Nunito'", fontWeight: 700 }}>
-              <a href="mailto:Contacto@LuzmaTV.cl">Contacto@LuzmaTV.cl</a>
+              <a href="https://mail.google.com/mail/?view=cm&to=Contacto@LuzmaTV.cl" target="_blank" rel="noreferrer">Contacto@LuzmaTV.cl</a>
               <a href="https://wa.me/56972041514">+56 9 7204 1514</a>
               <a href="#contacto">Prensa & PR</a>
               <a href="#contacto">Trabaja con nosotros</a>
