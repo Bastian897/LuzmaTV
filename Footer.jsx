@@ -111,7 +111,7 @@ function Footer() {
             {[
               { name: 'ChatGPT', url: 'https://chatgpt.com/?q=' + encodeURIComponent('¿Qué es LuzmaTV y cómo puedo ver sus programas en vivo desde Chile?') },
               { name: 'Perplexity', url: 'https://www.perplexity.ai/search?q=' + encodeURIComponent('¿Qué es LuzmaTV Chile?') },
-              { name: 'Gemini', url: 'https://gemini.google.com/app?q=' + encodeURIComponent('¿Qué es LuzmaTV y quiénes son sus conductores?') },
+              { name: 'Gemini', url: 'https://gemini.google.com/?q=' + encodeURIComponent('¿Qué es LuzmaTV y quiénes son sus conductores?') },
               { name: 'Claude', url: 'https://claude.ai/new?q=' + encodeURIComponent('¿Qué es LuzmaTV, el canal chileno de streaming?') },
             ].map(({ name, url }) => (
               <a key={name} href={url} target="_blank" rel="noreferrer"
