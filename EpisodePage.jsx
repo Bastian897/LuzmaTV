@@ -123,7 +123,7 @@ function EpisodePage({ id }) {
               <div style={{ fontFamily: "'Bebas Neue'", fontSize: 'clamp(22px, 4vw, 36px)', color: '#fff', textAlign: 'center', padding: '0 32px', textShadow: '3px 3px 0 #111', lineHeight: 1.1 }}>
                 Video próximamente en YouTube
               </div>
-              <a href="https://youtube.com/@luzmatv" target="_blank" rel="noreferrer">
+              <a href="https://www.youtube.com/@luzmatvcl" target="_blank" rel="noreferrer">
                 <Button variant="primary">Suscribirse al canal →</Button>
               </a>
             </div>

@@ -67,10 +67,10 @@ function Footer() {
               {[
                 { slug: 'kick',      url: 'https://kick.com/luzmatv' },
                 { slug: 'twitch',    url: 'https://twitch.tv/luzmatv' },
-                { slug: 'tiktok',    url: 'https://tiktok.com/@luzmatv' },
-                { slug: 'instagram', url: 'https://instagram.com/luzmatv' },
-                { slug: 'youtube',   url: 'https://youtube.com/@luzmatv' },
-                { slug: 'tvmas',     url: 'https://tvmas.cl' },
+                { slug: 'tiktok',    url: 'https://www.tiktok.com/@luzmatv_oficial' },
+                { slug: 'instagram', url: 'https://www.instagram.com/luzma.tv/' },
+                { slug: 'youtube',   url: 'https://www.youtube.com/@luzmatvcl' },
+                { slug: 'tvmas',     url: 'https://tvmas.tv' },
                 { slug: 'whatsapp',  url: 'https://wa.me/56972041514' },
               ].map(({ slug: p, url }) => (
                 <a

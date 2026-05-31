@@ -1,10 +1,10 @@
 // Hero.jsx
 const HERO_SOCIAL_URLS = {
   kick:      'https://kick.com/luzmatv',
-  tiktok:    'https://tiktok.com/@luzmatv',
-  instagram: 'https://instagram.com/luzmatv',
+  tiktok:    'https://www.tiktok.com/@luzmatv_oficial',
+  instagram: 'https://www.instagram.com/luzma.tv/',
   twitch:    'https://twitch.tv/luzmatv',
-  youtube:   'https://youtube.com/@luzmatv',
+  youtube:   'https://www.youtube.com/@luzmatvcl',
 };
 
 function Hero({ onWatch, onPrograms }) {

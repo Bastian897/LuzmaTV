@@ -127,7 +127,7 @@ function LivePlayer() {
                 Chat del live<br />en YouTube
               </div>
               <button
-                onClick={() => window.open(`https://youtube.com/@luzmatv/live`, 'yt-chat', 'width=380,height=600,resizable=yes')}
+                onClick={() => window.open(`https://www.youtube.com/@luzmatvcl/live`, 'yt-chat', 'width=380,height=600,resizable=yes')}
                 style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '13px 22px', background: '#FF0000', border: '3px solid #111', borderRadius: 9999, boxShadow: '5px 5px 0 #111', fontFamily: "'Montserrat'", fontWeight: 900, fontSize: 13, textTransform: 'uppercase', letterSpacing: '.06em', cursor: 'pointer', color: '#fff' }}
               >
                 <PlatformBadge slug="youtube" tile="#fff" color="#FF0000" size={22} icon={14} />
