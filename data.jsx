@@ -10,6 +10,7 @@ const LZM_STATIC = {
       desc: 'El live show diario de LuzmaTV. Tendencias, invitados y la mejor energía de Chile.',
       longDesc: 'Luzma Cachai es el corazón de LuzmaTV. De lunes a viernes de 10:00 a 12:00, Ariel Osses, Vicky More, Claudio Merlin, Lita Melo e Ignacio Ruiz se juntan en vivo para hablar de todo - sin filtros, sin guión y con la energía que hace única a esta señal.',
       color: '#E91E8C', emoji: '🎬', status: 'active', logoImg: 'assets/luzma-cachai-logo.jpg',
+      ig: 'luzmacachai',
       hostIds: ['ariel-osses', 'vicky-more', 'claudio-merlin', 'lita-melo', 'ignacio-ruiz'],
     },
     {

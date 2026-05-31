@@ -156,7 +156,16 @@ function ProgramPage({ id }) {
 
         {/* Episodios */}
         <div>
-          <div className="lzm-section-eyebrow" style={{ marginBottom: 18 }}>Episodios</div>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 18, flexWrap: 'wrap' }}>
+            <div className="lzm-section-eyebrow" style={{ margin: 0 }}>Episodios</div>
+            {prog.ig && (
+              <a href={`https://www.instagram.com/${prog.ig}/`} target="_blank" rel="noreferrer"
+                style={{ display: 'inline-flex', alignItems: 'center', gap: 7, fontFamily: "'Montserrat'", fontWeight: 900, fontSize: 11, textTransform: 'uppercase', letterSpacing: '.06em', color: '#fff', background: 'linear-gradient(135deg,#FFD600 0%,#E91E8C 50%,#7B2CBF 100%)', border: '2.5px solid #111', borderRadius: 9999, padding: '5px 14px', boxShadow: '3px 3px 0 #111', textDecoration: 'none' }}>
+                <img src="assets/platforms/instagram.svg" style={{ width: 14, height: 14 }} alt="" />
+                @{prog.ig}
+              </a>
+            )}
+          </div>
           {episodes.length > 0 ? (
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))', gap: 18 }}>
               {episodes.map((ep, i) => (
