@@ -24,7 +24,6 @@ function HostsRow() {
               />
               {/* Overlay sutil */}
               <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,.5) 0%, transparent 60%)' }} />
-              <div style={{ position: 'absolute', top: 10, right: 10, fontSize: 24, filter: 'drop-shadow(2px 2px 0 rgba(0,0,0,.5))' }}>{h.sign}</div>
             </div>
 
             <div style={{ padding: 14 }}>
