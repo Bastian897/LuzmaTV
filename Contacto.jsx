@@ -8,6 +8,11 @@ function Contacto() {
   const submit = (e) => {
     e.preventDefault();
     if (form.nombre && form.email.includes('@') && form.mensaje.length > 4) {
+      const subject = encodeURIComponent(`[${form.asunto}] Contacto desde LuzmaTV.cl`);
+      const body = encodeURIComponent(
+        `Nombre: ${form.nombre}\nEmail: ${form.email}\n\n${form.mensaje}`
+      );
+      window.open(`mailto:Contacto@LuzmaTV.cl?subject=${subject}&body=${body}`, '_blank');
       setSent(true);
     }
   };
