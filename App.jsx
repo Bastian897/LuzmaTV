@@ -92,7 +92,7 @@ function App() {
         }}
       >
         <img
-          src="assets/platforms/whatsapp.svg"
+          src="assets/platforms/whatsapp-logo.webp"
           alt="WhatsApp"
           style={{ width: 30, height: 30, display: 'block' }}
         />
