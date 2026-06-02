@@ -81,7 +81,7 @@ const SHOOT_STARS = [
   { img: 'assets/stars/vicky.webp',   name: 'Vicky',   dur: 6.2, delay: 1.4, top: '58%', size: 62, color: '#FDD835' },
   { img: 'assets/stars/claudio.webp', name: 'Claudio', dur: 4.8, delay: 2.8, top: '28%', size: 66, color: '#43A047' },
   { img: 'assets/stars/lita.webp',    name: 'Lita',    dur: 5.8, delay: 0.6, top: '72%', size: 56, color: '#E53935' },
-  { img: 'assets/stars/ignacio.webp', name: 'Ignacio', dur: 4.4, delay: 3.5, top: '42%', size: 64, color: '#7B2CBF' },
+  { img: 'assets/stars/ignacio2.webp', name: 'Ignacio', dur: 4.4, delay: 3.5, top: '42%', size: 64, color: '#7B2CBF' },
   { img: 'assets/stars/paty.webp',    name: 'Paty',    dur: 5.3, delay: 1.0, top: '63%', size: 70, color: '#FF7043' },
 ];
 
