@@ -8,13 +8,12 @@ const HERO_SOCIAL_URLS = {
 };
 
 const SHOOT_STARS = [
-  { img: 'assets/stars/ariel.webp',   name: 'Ariel',   dur: 5.0, delay: 0.0, top: '10%', size: 68, dir:  1, color: '#E91E8C' },
-  { img: 'assets/stars/vicky.webp',   name: 'Vicky',   dur: 6.2, delay: 1.4, top: '58%', size: 62, dir: -1, color: '#FDD835' },
-  { img: 'assets/stars/claudio.webp', name: 'Claudio', dur: 4.8, delay: 2.8, top: '28%', size: 66, dir:  1, color: '#43A047' },
-  { img: 'assets/stars/lita.webp',    name: 'Lita',    dur: 5.8, delay: 0.6, top: '72%', size: 56, dir: -1, color: '#E53935' },
-  { img: 'assets/stars/ignacio.webp', name: 'Ignacio', dur: 4.4, delay: 3.5, top: '42%', size: 64, dir:  1, color: '#7B2CBF' },
-  { img: 'assets/stars/rodrigo.webp', name: 'Rodrigo', dur: 7.0, delay: 2.0, top: '18%', size: 60, dir: -1, color: '#0055FF' },
-  { img: 'assets/stars/paty.webp',    name: 'Paty',    dur: 5.3, delay: 1.0, top: '63%', size: 70, dir:  1, color: '#FF7043' },
+  { img: 'assets/stars/ariel.webp',   name: 'Ariel',   dur: 5.0, delay: 0.0, top: '10%', size: 68, color: '#E91E8C' },
+  { img: 'assets/stars/vicky.webp',   name: 'Vicky',   dur: 6.2, delay: 1.4, top: '58%', size: 62, color: '#FDD835' },
+  { img: 'assets/stars/claudio.webp', name: 'Claudio', dur: 4.8, delay: 2.8, top: '28%', size: 66, color: '#43A047' },
+  { img: 'assets/stars/lita.webp',    name: 'Lita',    dur: 5.8, delay: 0.6, top: '72%', size: 56, color: '#E53935' },
+  { img: 'assets/stars/ignacio.webp', name: 'Ignacio', dur: 4.4, delay: 3.5, top: '42%', size: 64, color: '#7B2CBF' },
+  { img: 'assets/stars/paty.webp',    name: 'Paty',    dur: 5.3, delay: 1.0, top: '63%', size: 70, color: '#FF7043' },
 ];
 
 function Hero({ onWatch, onPrograms }) {
@@ -39,7 +38,7 @@ function Hero({ onWatch, onPrograms }) {
         }
       `}</style>
 
-      {/* Estrellas fugaces */}
+      {/* Estrellas fugaces — alternate invierte la dirección en cada vuelta */}
       {SHOOT_STARS.map((s, i) => (
         <div
           key={s.name}
@@ -48,15 +47,13 @@ function Hero({ onWatch, onPrograms }) {
           style={{
             position: 'absolute',
             top: s.top,
-            [s.dir === 1 ? 'left' : 'right']: `-${s.size + 8}px`,
+            left: `-${s.size + 8}px`,
             width: s.size,
             height: s.size,
             borderRadius: '50%',
             border: `3px solid ${s.color}`,
-            boxShadow: s.dir === 1
-              ? `0 0 0 2px #fff, -22px 3px 30px rgba(255,255,255,.55), -48px 6px 18px rgba(255,255,255,.2)`
-              : `0 0 0 2px #fff,  22px 3px 30px rgba(255,255,255,.55),  48px 6px 18px rgba(255,255,255,.2)`,
-            animation: `lzm-shoot-${s.dir === 1 ? 'ltr' : 'rtl'} ${s.dur}s linear ${s.delay}s infinite`,
+            boxShadow: `0 0 0 2px #fff, 0 0 28px 8px rgba(255,255,255,.45)`,
+            animation: `lzm-shoot-ltr ${s.dur}s linear ${s.delay}s infinite alternate`,
             pointerEvents: 'none',
             zIndex: 1,
           }}
