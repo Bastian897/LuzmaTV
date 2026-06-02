@@ -96,8 +96,8 @@ function Hero({ onWatch, onPrograms }) {
       `}</style>
 
       {/* Estrellas fugaces */}
-      {SHOOT_STARS.map((s, i) => (
-        <ShootingStar key={s.name} s={s} mobileHide={i >= 4} />
+      {SHOOT_STARS.map((s) => (
+        <ShootingStar key={s.name} s={s} mobileHide={false} />
       ))}
 
       {/* Estrellas decorativas siempre visibles */}

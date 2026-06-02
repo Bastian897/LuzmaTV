@@ -80,12 +80,12 @@ function App() {
           bottom: 24,
           left: 24,
           zIndex: 999,
-          width: 56,
-          height: 56,
+          width: 64,
+          height: 64,
           borderRadius: '50%',
-          background: '#fff',
-          border: '3px solid #111',
-          boxShadow: '4px 4px 0 #111',
+          background: 'transparent',
+          border: 'none',
+          boxShadow: '3px 3px 0 #111',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
@@ -94,7 +94,7 @@ function App() {
         <img
           src="assets/platforms/whatsapp-logo.webp"
           alt="WhatsApp"
-          style={{ width: 30, height: 30, display: 'block' }}
+          style={{ width: 64, height: 64, display: 'block', borderRadius: '50%' }}
         />
       </a>
 
