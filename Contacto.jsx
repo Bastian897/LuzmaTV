@@ -186,29 +186,6 @@ function Contacto() {
               value={<span>Santiago<br/>Región Metropolitana</span>}
             />
 
-            <div style={{
-              background: '#0055FF',
-              color: '#fff',
-              border: '4px solid #111',
-              borderRadius: 16,
-              padding: 22,
-              boxShadow: '6px 6px 0 #111',
-              position: 'relative',
-              overflow: 'hidden',
-            }}>
-              <div style={{ position: 'absolute', top: -12, right: -12 }}>
-                <Star size={60} fill="#FFD600" rotate={18} />
-              </div>
-              <div style={{ fontFamily: "'Montserrat'", fontWeight: 900, fontSize: 11, textTransform: 'uppercase', letterSpacing: '.1em', color: '#FDD835', marginBottom: 10 }}>
-                Horario
-              </div>
-              <div style={{ fontFamily: "'Bebas Neue'", fontSize: 30, lineHeight: 1, textTransform: 'uppercase', marginBottom: 10 }}>
-                Lun a Vie<br/>10:00 - 19:00
-              </div>
-              <div style={{ fontFamily: "'Nunito'", fontWeight: 700, fontSize: 13, opacity: .9 }}>
-                Para urgencias de transmisión, escribe por WhatsApp.
-              </div>
-            </div>
           </div>
         </div>
       </div>

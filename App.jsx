@@ -67,6 +67,37 @@ function App() {
   return (
     <div>
       {showIntro && <Intro onDone={handleIntroDone} />}
+
+      {/* Botón flotante WhatsApp */}
+      <a
+        href="https://wa.me/56972041514"
+        target="_blank"
+        rel="noreferrer"
+        aria-label="Escríbenos por WhatsApp"
+        className="lzm-pop"
+        style={{
+          position: 'fixed',
+          bottom: 24,
+          left: 24,
+          zIndex: 999,
+          width: 56,
+          height: 56,
+          borderRadius: '50%',
+          background: '#fff',
+          border: '3px solid #111',
+          boxShadow: '4px 4px 0 #111',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}
+      >
+        <img
+          src="assets/platforms/whatsapp.svg"
+          alt="WhatsApp"
+          style={{ width: 30, height: 30, display: 'block' }}
+        />
+      </a>
+
       <Header onNav={onNav} live={true} />
       <Hero onWatch={() => onNav('envivo')} onPrograms={() => onNav('programas')} />
       <LivePlayer />
