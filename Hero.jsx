@@ -1,4 +1,68 @@
 // Hero.jsx
+const { useEffect: useEffectStar, useRef: useRefStar } = React;
+
+const Y_DELTAS = [-140, -100, -65, -30, 0, 30, 65, 100, 140];
+
+function ShootingStar({ s, mobileHide }) {
+  const ref = useRefStar(null);
+
+  useEffectStar(() => {
+    const el = ref.current;
+    if (!el) return;
+    let currentAnim = null;
+    let fromRight = Math.random() < 0.5;
+    let tid = null;
+
+    function run() {
+      const dy = Y_DELTAS[Math.floor(Math.random() * Y_DELTAS.length)];
+      const sx = fromRight ? 'calc(100vw + 80px)' : '-80px';
+      const ex = fromRight ? '-80px' : 'calc(100vw + 80px)';
+      fromRight = !fromRight;
+
+      currentAnim = el.animate([
+        { transform: `translate(${sx}, 0px)`,    opacity: 0 },
+        { transform: `translate(${sx}, 0px)`,    opacity: 0.9, offset: 0.08 },
+        { transform: `translate(${ex}, ${dy}px)`, opacity: 0.9, offset: 0.92 },
+        { transform: `translate(${ex}, ${dy}px)`, opacity: 0 },
+      ], { duration: s.dur * 1000, easing: 'linear', fill: 'forwards' });
+
+      currentAnim.onfinish = run;
+    }
+
+    tid = setTimeout(run, s.delay * 1000);
+    return () => {
+      clearTimeout(tid);
+      if (currentAnim) { currentAnim.onfinish = null; currentAnim.cancel(); }
+    };
+  }, []);
+
+  return (
+    <div
+      ref={ref}
+      aria-hidden="true"
+      className={mobileHide ? 'lzm-shoot-mobile-hide' : ''}
+      style={{
+        position: 'absolute',
+        top: s.top,
+        left: 0,
+        width: s.size,
+        height: s.size,
+        borderRadius: '50%',
+        border: `3px solid ${s.color}`,
+        boxShadow: `0 0 0 2px #fff, 0 0 26px 8px rgba(255,255,255,.45)`,
+        opacity: 0,
+        pointerEvents: 'none',
+        zIndex: 1,
+        willChange: 'transform, opacity',
+      }}
+    >
+      <div style={{ width: '100%', height: '100%', borderRadius: '50%', overflow: 'hidden' }}>
+        <img src={s.img} alt="" loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+      </div>
+    </div>
+  );
+}
+
 const HERO_SOCIAL_URLS = {
   kick:      'https://kick.com/luzmatv',
   tiktok:    'https://www.tiktok.com/@luzmatv_oficial',
@@ -20,48 +84,15 @@ function Hero({ onWatch, onPrograms }) {
   return (
     <section id="inicio" className="lzm-halftone" style={{ position: 'relative', overflow: 'hidden', borderBottom: '4px solid #111' }}>
       <style>{`
-        @keyframes lzm-shoot-ltr {
-          0%   { transform: translateX(0)      translateY(0);    opacity: 0; }
-          7%   { opacity: 0.9; }
-          93%  { opacity: 0.9; }
-          100% { transform: translateX(110vw)  translateY(-55px); opacity: 0; }
-        }
-        @keyframes lzm-shoot-rtl {
-          0%   { transform: translateX(0)      translateY(0);    opacity: 0; }
-          7%   { opacity: 0.9; }
-          93%  { opacity: 0.9; }
-          100% { transform: translateX(-110vw) translateY(-55px); opacity: 0; }
-        }
         @media (max-width: 860px) {
-          .lzm-hero-star-extra { display: none !important; }
-          .lzm-shoot-mobile-hide { display: none !important; }
+          .lzm-hero-star-extra    { display: none !important; }
+          .lzm-shoot-mobile-hide  { display: none !important; }
         }
       `}</style>
 
-      {/* Estrellas fugaces — alternate invierte la dirección en cada vuelta */}
+      {/* Estrellas fugaces */}
       {SHOOT_STARS.map((s, i) => (
-        <div
-          key={s.name}
-          aria-hidden="true"
-          className={i >= 4 ? 'lzm-shoot-mobile-hide' : ''}
-          style={{
-            position: 'absolute',
-            top: s.top,
-            left: `-${s.size + 8}px`,
-            width: s.size,
-            height: s.size,
-            borderRadius: '50%',
-            border: `3px solid ${s.color}`,
-            boxShadow: `0 0 0 2px #fff, 0 0 28px 8px rgba(255,255,255,.45)`,
-            animation: `lzm-shoot-ltr ${s.dur}s linear ${s.delay}s infinite alternate`,
-            pointerEvents: 'none',
-            zIndex: 1,
-          }}
-        >
-          <div style={{ width: '100%', height: '100%', borderRadius: '50%', overflow: 'hidden' }}>
-            <img src={s.img} alt="" loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
-          </div>
-        </div>
+        <ShootingStar key={s.name} s={s} mobileHide={i >= 4} />
       ))}
 
       {/* Estrellas decorativas siempre visibles */}
