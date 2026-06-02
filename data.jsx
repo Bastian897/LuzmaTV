@@ -17,7 +17,7 @@ const LZM_STATIC = {
       id: 'cara-a-cara', name: 'Frente a Frente', cat: 'invitado', day: 'Mar y Jue', time: '18:00',
       desc: 'Las conversaciones que no se pueden ignorar. Dos visiones, una mesa, sin filtros.',
       longDesc: 'Frente a Frente es el espacio donde los temas que dividen a Chile se ponen sobre la mesa. Cada episodio enfrenta dos visiones distintas en una conversación directa, sin guión y sin zonas de confort. Martes y jueves en las tardes, por LuzmaTV.',
-      color: '#7B2CBF', emoji: '🎤', status: 'active', logoImg: 'assets/frente-a-frente-logo.webp', logoRatio: '16/9', hostIds: [],
+      color: '#7B2CBF', emoji: '🎤', status: 'active', logoImg: 'assets/frente-a-frente-logo.webp', logoPosition: 'right center', hostIds: [],
     },
     {
       id: 'dia-uno', name: 'Día Uno', cat: 'entret', day: 'Por confirmar', time: '-',

@@ -47,9 +47,9 @@ function Programs() {
           const isSoon = p.status === 'soon';
           return (
             <div key={p.id} className="lzm-pop lzm-card" style={{ display: 'flex', flexDirection: 'column', opacity: isSoon ? 0.82 : 1 }} data-aos="fade-up" data-aos-delay={i * 60}>
-              <div style={{ position: 'relative', aspectRatio: p.logoRatio || '4 / 3', background: p.color, borderBottom: '3px solid #111', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 72, overflow: 'hidden' }}>
+              <div style={{ position: 'relative', aspectRatio: '4 / 3', background: p.color, borderBottom: '3px solid #111', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 72, overflow: 'hidden' }}>
                 {p.logoImg
-                  ? <img src={p.logoImg} alt={p.name} loading="lazy" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} />
+                  ? <img src={p.logoImg} alt={p.name} loading="lazy" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: p.logoPosition || 'center' }} />
                   : <span style={{ filter: 'drop-shadow(3px 3px 0 #111)' }}>{p.emoji}</span>
                 }
 
