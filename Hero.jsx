@@ -1,7 +1,9 @@
 // Hero.jsx
 const { useEffect: useEffectStar, useRef: useRefStar } = React;
 
-const Y_DELTAS = [-140, -100, -65, -30, 0, 30, 65, 100, 140];
+// Desplazamientos verticales en % de la altura del hero (~500px)
+// Valores grandes = diagonal más notoria
+const Y_DELTAS = [-220, -160, -100, -50, 0, 50, 100, 160, 220];
 
 function ShootingStar({ s, mobileHide }) {
   const ref = useRefStar(null);
@@ -14,17 +16,20 @@ function ShootingStar({ s, mobileHide }) {
     let tid = null;
 
     function run() {
+      // Cancelar animación anterior antes de crear la nueva
+      if (currentAnim) { currentAnim.onfinish = null; currentAnim.cancel(); }
+
       const dy = Y_DELTAS[Math.floor(Math.random() * Y_DELTAS.length)];
       const sx = fromRight ? 'calc(100vw + 80px)' : '-80px';
       const ex = fromRight ? '-80px' : 'calc(100vw + 80px)';
       fromRight = !fromRight;
 
       currentAnim = el.animate([
-        { transform: `translate(${sx}, 0px)`,    opacity: 0 },
-        { transform: `translate(${sx}, 0px)`,    opacity: 0.9, offset: 0.08 },
+        { transform: `translate(${sx}, 0px)`,     opacity: 0 },
+        { transform: `translate(${sx}, 0px)`,     opacity: 0.9, offset: 0.08 },
         { transform: `translate(${ex}, ${dy}px)`, opacity: 0.9, offset: 0.92 },
         { transform: `translate(${ex}, ${dy}px)`, opacity: 0 },
-      ], { duration: s.dur * 1000, easing: 'linear', fill: 'forwards' });
+      ], { duration: s.dur * 1000, easing: 'linear', fill: 'none' });
 
       currentAnim.onfinish = run;
     }
