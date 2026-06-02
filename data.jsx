@@ -1,4 +1,4 @@
-// data.jsx - datos estáticos bundled (fallback + hosts/catLabel).
+﻿// data.jsx - datos estáticos bundled (fallback + hosts/catLabel).
 // programs/episodes se cargan en runtime desde Supabase via lzm-data.jsx.
 // Si Supabase falla o no esta configurado, el sitio usa estos datos.
 // Hosts y catLabel viven solo aqui (no estan en la BD).
@@ -9,7 +9,7 @@ const LZM_STATIC = {
       id: 'luzma-cachai', name: 'Luzma Cachai', cat: 'talk', day: 'Lun a Vie', time: '10:00',
       desc: 'El live show diario de LuzmaTV. Tendencias, invitados y la mejor energía de Chile.',
       longDesc: 'Luzma Cachai es el corazón de LuzmaTV. De lunes a viernes de 10:00 a 12:00, Ariel Osses, Vicky More, Claudio Merlin, Lita Melo e Ignacio Ruiz se juntan en vivo para hablar de todo - sin filtros, sin guión y con la energía que hace única a esta señal.',
-      color: '#E91E8C', emoji: '🎬', status: 'active', logoImg: 'assets/luzma-cachai-logo.jpg',
+      color: '#E91E8C', emoji: '🎬', status: 'active', logoImg: 'assets/luzma-cachai-logo.webp',
       ig: 'luzmacachai',
       hostIds: ['ariel-osses', 'vicky-more', 'claudio-merlin', 'lita-melo', 'ignacio-ruiz'],
     },
@@ -17,7 +17,7 @@ const LZM_STATIC = {
       id: 'cara-a-cara', name: 'Frente a Frente', cat: 'invitado', day: 'Mar y Jue', time: '18:00',
       desc: 'Las conversaciones que no se pueden ignorar. Dos visiones, una mesa, sin filtros.',
       longDesc: 'Frente a Frente es el espacio donde los temas que dividen a Chile se ponen sobre la mesa. Cada episodio enfrenta dos visiones distintas en una conversación directa, sin guión y sin zonas de confort. Martes y jueves en las tardes, por LuzmaTV.',
-      color: '#7B2CBF', emoji: '🎤', status: 'active', hostIds: [],
+      color: '#7B2CBF', emoji: '🎤', status: 'active', logoImg: 'assets/frente-a-frente-logo.webp', hostIds: [],
     },
     {
       id: 'dia-uno', name: 'Día Uno', cat: 'entret', day: 'Por confirmar', time: '-',

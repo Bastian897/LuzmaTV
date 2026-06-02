@@ -1,4 +1,4 @@
-// Intro.jsx — video real de cortinas + logo/contenido overlay
+﻿// Intro.jsx — video real de cortinas + logo/contenido overlay
 const { useState: useStateIntro, useEffect: useEffectIntro, useRef: useRefIntro } = React;
 
 function Intro({ onDone }) {
@@ -154,7 +154,7 @@ function Intro({ onDone }) {
       >
         <div style={{ animation: 'lzm-intro-logo 580ms cubic-bezier(.34,1.56,.64,1) both' }}>
           <img
-            src="assets/luzmatv-logo.png"
+            src="assets/luzmatv-logo.webp"
             alt="LuzmaTV"
             style={{
               height: 'clamp(110px, 22vw, 190px)', display: 'block',

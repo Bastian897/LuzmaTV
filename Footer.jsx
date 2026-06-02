@@ -1,4 +1,4 @@
-// Footer.jsx
+﻿// Footer.jsx
 function Footer() {
   return (
     <footer
@@ -28,7 +28,7 @@ function Footer() {
           }}
         >
           <div>
-            <img src="assets/luzmatv-logo.png" alt="LuzmaTV" style={{ height: 72, marginBottom: 14, border: '3px solid #111', borderRadius: 12, boxShadow: '5px 5px 0 #111', display: 'block' }} />
+            <img src="assets/luzmatv-logo.webp" alt="LuzmaTV" style={{ height: 72, marginBottom: 14, border: '3px solid #111', borderRadius: 12, boxShadow: '5px 5px 0 #111', display: 'block' }} />
             <div style={{ fontFamily: "'Bebas Neue'", fontSize: 28, lineHeight: 1, color: '#FDD835', textTransform: 'uppercase' }}>
               La señal que<br />deja huella
             </div>
