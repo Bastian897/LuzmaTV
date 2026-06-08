@@ -99,8 +99,6 @@ function EpisodePage({ id }) {
           <span>{dateStr}</span>
           <span style={{ color: '#D0D5E0' }}>·</span>
           <span>{ep.duration}</span>
-          <span style={{ color: '#D0D5E0' }}>·</span>
-          <span>{ep.views} visualizaciones</span>
         </div>
 
         {/* Video */}
@@ -155,7 +153,6 @@ function EpisodePage({ id }) {
                   </div>
                   <div style={{ padding: 14 }}>
                     <div style={{ fontFamily: "'Nunito'", fontWeight: 800, fontSize: 14, color: '#111', lineHeight: 1.3 }}>{r.title}</div>
-                    <div style={{ fontFamily: "'Nunito'", fontSize: 12, color: '#5B6479', marginTop: 6 }}>{r.views} vistas</div>
                   </div>
                 </a>
               ))}
