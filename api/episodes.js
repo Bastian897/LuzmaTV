@@ -85,7 +85,9 @@ export default async function handler(req, res) {
         if (seen.has(e.youtubeId)) return false;
         seen.add(e.youtubeId);
         return true;
-      });
+      })
+      // Mezcla los episodios de todos los programas por fecha (mas reciente primero)
+      .sort((a, b) => b.date.localeCompare(a.date));
 
     if (results.every((r) => r.status === 'rejected')) {
       throw new Error(results.map((r) => r.reason?.message).join(', '));
