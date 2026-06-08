@@ -7,8 +7,12 @@ const SOURCES = [
     programId: 'luzma-cachai',
     color:     '#E91E8C',
   },
+  {
+    rss:       'https://www.youtube.com/feeds/videos.xml?playlist_id=PLvSpPskFuJqJgqP-AM38aKZKod0FEW9qK',
+    programId: 'cara-a-cara',
+    color:     '#7B2CBF',
+  },
   // Descomentar cuando creen las playlists en YouTube Studio:
-  // { rss: 'https://www.youtube.com/feeds/videos.xml?playlist_id=PLAYLIST_ID_FRENTE', programId: 'cara-a-cara', color: '#7B2CBF' },
   // { rss: 'https://www.youtube.com/feeds/videos.xml?playlist_id=PLAYLIST_ID_DIA_UNO', programId: 'dia-uno',     color: '#FF7043' },
 ];
 
