@@ -23,7 +23,7 @@ const LZM_STATIC = {
       id: 'dia-uno', name: 'Día Uno', cat: 'entret', day: 'Por confirmar', time: '-',
       desc: 'El próximo gran proyecto de LuzmaTV. Vale la pena esperar.',
       longDesc: 'Día Uno es el nuevo proyecto que viene a marcar el inicio de algo grande en LuzmaTV. Todavía no podemos decir mucho - pero cuando llegue, lo van a saber.',
-      color: '#FF7043', emoji: '🌅', status: 'soon', hostIds: [],
+      color: '#FF7043', emoji: '🌅', status: 'soon', logoImg: 'assets/dia-uno-logo.png', hostIds: [],
     },
   ],
 
