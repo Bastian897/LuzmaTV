@@ -9,7 +9,7 @@ function NotFound() {
     if (m) m.setAttribute('content', 'La página que buscas no existe. Vuelve al inicio de LuzmaTV o míranos en YouTube e Instagram.');
   }, []);
 
-  const onNav = (id) => { window.location.hash = `#${id}`; };
+  const onNav = (id) => { window.location.href = `/#${id}`; };
 
   return (
     <div>
