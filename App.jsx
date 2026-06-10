@@ -62,6 +62,9 @@ function App() {
     const id = hash.slice('#/programa/'.length);
     return <ProgramPage id={id} />;
   }
+  if (hash.startsWith('#/')) {
+    return <NotFound />;
+  }
 
   // Página principal
   return (
