@@ -66,6 +66,12 @@ function App() {
     return <NotFound />;
   }
 
+  // Cualquier ruta de archivo desconocida (ej: /asdf) cae aquí gracias al
+  // rewrite catch-all de vercel.json hacia index.html
+  if (window.location.pathname !== '/' && window.location.pathname !== '/index.html') {
+    return <NotFound />;
+  }
+
   // Página principal
   return (
     <div>
