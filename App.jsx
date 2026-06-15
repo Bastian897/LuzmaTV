@@ -41,15 +41,15 @@ function App() {
       if (p === '/' || p === '/index.html') {
         const title = 'LuzmaTV - La señal que deja huella | Canal chileno en vivo';
         const description = 'LuzmaTV es el canal chileno de talk shows, humor y entretenimiento en vivo. Luzma Cachai (Lun–Vie 10:00), Frente a Frente (Mar y Jue tarde). Míranos en Kick, Twitch, YouTube, TikTok e Instagram.';
-        const ogImage = 'https://luzmatv.vercel.app/assets/luzmatv-og-image.jpg';
+        const ogImage = 'https://www.luzmatv.cl/assets/luzmatv-og-image.jpg';
         document.title = title;
         const setMeta = (selector, attr, value) => {
           const el = document.querySelector(selector);
           if (el) el.setAttribute(attr, value);
         };
         setMeta('meta[name="description"]', 'content', description);
-        setMeta('link[rel="canonical"]', 'href', 'https://luzmatv.vercel.app/');
-        setMeta('meta[property="og:url"]', 'content', 'https://luzmatv.vercel.app/');
+        setMeta('link[rel="canonical"]', 'href', 'https://www.luzmatv.cl/');
+        setMeta('meta[property="og:url"]', 'content', 'https://www.luzmatv.cl/');
         setMeta('meta[property="og:title"]', 'content', title);
         setMeta('meta[property="og:description"]', 'content', 'Canal chileno de talk shows, humor y entretenimiento en vivo. Luzma Cachai, Frente a Frente y más. Míranos en Kick, Twitch, YouTube, TikTok e Instagram.');
         setMeta('meta[property="og:image"]', 'content', ogImage);

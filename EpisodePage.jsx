@@ -10,7 +10,7 @@ function EpisodePage({ id }) {
 
   useEffectEP(() => {
     window.scrollTo(0, 0);
-    const baseUrl = 'https://luzmatv.vercel.app/';
+    const baseUrl = 'https://www.luzmatv.cl/';
     if (!ep) {
       document.title = 'Episodio no encontrado - LuzmaTV';
       const m = document.querySelector('meta[name="description"]');

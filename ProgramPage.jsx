@@ -14,7 +14,7 @@ function ProgramPage({ id }) {
       if (m) m.setAttribute('content', 'El programa que buscas no existe. Vuelve al inicio de LuzmaTV o revisa todos los programas disponibles.');
     }
     if (prog) {
-      const baseUrl = 'https://luzmatv.vercel.app/';
+      const baseUrl = 'https://www.luzmatv.cl/';
       const title = `${prog.name} - LuzmaTV`;
       const description = prog.longDesc || prog.desc;
       const pageUrl = `${baseUrl}programa/${prog.id}`;
