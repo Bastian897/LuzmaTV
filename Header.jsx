@@ -34,7 +34,7 @@ function Header({ live = true, onNav }) {
       }}
     >
       <div className="lzm-shell" style={{ display: 'flex', alignItems: 'center', height: 76, gap: 24 }}>
-        <a href="#inicio" onClick={(e) => { e.preventDefault(); onNav?.('inicio'); }} style={{ display: 'flex', alignItems: 'center' }}>
+        <a href="/#inicio" onClick={(e) => { e.preventDefault(); onNav?.('inicio'); }} style={{ display: 'flex', alignItems: 'center' }}>
           <img src="assets/luzmatv-logo-transparent.webp" alt="LuzmaTV" style={{ height: 52, display: 'block' }} />
         </a>
 
@@ -42,7 +42,7 @@ function Header({ live = true, onNav }) {
           {nav.map(([id, label], i) => (
             <a
               key={id}
-              href={`#${id}`}
+              href={`/#${id}`}
               onClick={(e) => { e.preventDefault(); onNav?.(id); }}
               style={{
                 fontFamily: "'Montserrat', sans-serif",
@@ -63,7 +63,7 @@ function Header({ live = true, onNav }) {
         <div style={{ flex: 1 }} />
 
         {live && (
-          <a href="#envivo" onClick={(e) => { e.preventDefault(); onNav?.('envivo'); }} style={{ display: 'inline-flex' }}>
+          <a href="/#envivo" onClick={(e) => { e.preventDefault(); onNav?.('envivo'); }} style={{ display: 'inline-flex' }}>
             <LiveBadge size="sm" />
           </a>
         )}
@@ -96,7 +96,7 @@ function Header({ live = true, onNav }) {
               {nav.map(([id, label]) => (
                 <a
                   key={id}
-                  href={`#${id}`}
+                  href={`/#${id}`}
                   onClick={(e) => { e.preventDefault(); setOpen(false); onNav?.(id); }}
                   style={{
                     fontFamily: "'Bebas Neue', sans-serif",

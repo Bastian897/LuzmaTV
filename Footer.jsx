@@ -39,11 +39,11 @@ function Footer() {
               Sitio
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 8, fontFamily: "'Nunito'", fontWeight: 700 }}>
-              <a href="#programas">Programas</a>
-              <a href="#envivo">En vivo</a>
-              <a href="#episodios">Episodios</a>
-              <a href="#equipo">Equipo</a>
-              <a href="#grilla">Grilla</a>
+              <a href="/#programas" onClick={lzmNavClick('/#programas')}>Programas</a>
+              <a href="/#envivo" onClick={lzmNavClick('/#envivo')}>En vivo</a>
+              <a href="/#episodios" onClick={lzmNavClick('/#episodios')}>Episodios</a>
+              <a href="/#equipo" onClick={lzmNavClick('/#equipo')}>Equipo</a>
+              <a href="/#grilla" onClick={lzmNavClick('/#grilla')}>Grilla</a>
             </div>
           </div>
 
@@ -54,8 +54,8 @@ function Footer() {
             <div style={{ display: 'flex', flexDirection: 'column', gap: 8, fontFamily: "'Nunito'", fontWeight: 700 }}>
               <a href="https://mail.google.com/mail/?view=cm&to=Contacto@LuzmaTV.cl" target="_blank" rel="noreferrer">Contacto@LuzmaTV.cl</a>
               <a href="https://wa.me/56972041514">+56 9 7204 1514</a>
-              <a href="#contacto">Prensa & PR</a>
-              <a href="#contacto">Trabaja con nosotros</a>
+              <a href="/#contacto" onClick={lzmNavClick('/#contacto')}>Prensa & PR</a>
+              <a href="/#contacto" onClick={lzmNavClick('/#contacto')}>Trabaja con nosotros</a>
             </div>
           </div>
 

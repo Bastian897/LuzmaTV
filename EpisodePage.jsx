@@ -10,17 +10,38 @@ function EpisodePage({ id }) {
 
   useEffectEP(() => {
     window.scrollTo(0, 0);
-    if (ep) {
-      document.title = `${ep.title} — LuzmaTV`;
+    const baseUrl = 'https://luzmatv.vercel.app/';
+    if (!ep) {
+      document.title = 'Episodio no encontrado - LuzmaTV';
       const m = document.querySelector('meta[name="description"]');
-      if (m) m.setAttribute('content', ep.description || `${ep.title} en LuzmaTV. ${ep.duration}.`);
+      if (m) m.setAttribute('content', 'El episodio que buscas no existe. Vuelve al inicio de LuzmaTV o revisa todos los episodios disponibles.');
+    }
+    if (ep) {
+      const title = `${ep.title} — LuzmaTV`;
+      const description = ep.description || `${ep.title} en LuzmaTV. ${ep.duration}.`;
+      const pageUrl = `${baseUrl}episodio/${ep.id}`;
+      const thumb = ep.youtubeId ? `https://img.youtube.com/vi/${ep.youtubeId}/hqdefault.jpg` : `${baseUrl}assets/luzmatv-og-image.jpg`;
+
+      document.title = title;
+      const setMeta = (selector, attr, value) => {
+        const el = document.querySelector(selector);
+        if (el) el.setAttribute(attr, value);
+      };
+      setMeta('meta[name="description"]', 'content', description);
+      setMeta('link[rel="canonical"]', 'href', pageUrl);
+      setMeta('meta[property="og:url"]', 'content', pageUrl);
+      setMeta('meta[property="og:title"]', 'content', title);
+      setMeta('meta[property="og:description"]', 'content', description);
+      setMeta('meta[property="og:image"]', 'content', thumb);
+      setMeta('meta[name="twitter:title"]', 'content', title);
+      setMeta('meta[name="twitter:description"]', 'content', description);
+      setMeta('meta[name="twitter:image"]', 'content', thumb);
     }
 
     // JSON-LD VideoObject por episodio (SEO de paginas individuales)
     const existing = document.getElementById('lzm-episode-ldjson');
     if (existing) existing.remove();
     if (ep && ep.youtubeId) {
-      const baseUrl = 'https://luzmatv.vercel.app/';
       const ld = {
         '@context': 'https://schema.org',
         '@type': 'VideoObject',
@@ -29,7 +50,7 @@ function EpisodePage({ id }) {
         thumbnailUrl: `https://img.youtube.com/vi/${ep.youtubeId}/hqdefault.jpg`,
         uploadDate: ep.date,
         embedUrl: `https://www.youtube.com/embed/${ep.youtubeId}`,
-        url: `${baseUrl}#/episodio/${ep.id}`,
+        url: `${baseUrl}episodio/${ep.id}`,
         publisher: { '@id': `${baseUrl}#org` },
       };
       if (ep.duration && /^\d+:\d+(:\d+)?$/.test(ep.duration)) {
@@ -49,7 +70,7 @@ function EpisodePage({ id }) {
     };
   }, [id, ep && ep.youtubeId]);
 
-  const onNav = (sectionId) => { window.location.hash = `#${sectionId}`; };
+  const onNav = (sectionId) => { lzmNavigate(`/#${sectionId}`); };
 
   if (!ep) {
     return (
@@ -58,7 +79,7 @@ function EpisodePage({ id }) {
         <div style={{ padding: '100px 24px', textAlign: 'center', fontFamily: "'Nunito'" }}>
           <div style={{ fontSize: 64, marginBottom: 16 }}>😕</div>
           <h1 style={{ fontFamily: "'Bebas Neue'", fontSize: 48 }}>Episodio no encontrado</h1>
-          <a href="#episodios"><Button variant="primary" style={{ marginTop: 24 }}>Ver todos los episodios</Button></a>
+          <a href="/#episodios" onClick={lzmNavClick('/#episodios')}><Button variant="primary" style={{ marginTop: 24 }}>Ver todos los episodios</Button></a>
         </div>
         <Footer />
       </div>
@@ -74,16 +95,16 @@ function EpisodePage({ id }) {
       <div className="lzm-shell" style={{ padding: '40px 24px 80px', maxWidth: 900 }}>
         {/* Breadcrumb */}
         <Breadcrumb items={[
-          { label: 'Inicio', href: '#' },
-          { label: 'Programas', href: '#programas' },
-          { label: prog?.name || 'Programa', href: prog ? `#/programa/${prog.id}` : '#programas' },
+          { label: 'Inicio', href: '/' },
+          { label: 'Programas', href: '/#programas' },
+          { label: prog?.name || 'Programa', href: prog ? `/programa/${prog.id}` : '/#programas' },
           { label: ep.title },
         ]} />
 
         {/* Program badge */}
         {prog && (
           <div style={{ marginBottom: 14 }}>
-            <a href={`#/programa/${prog.id}`}>
+            <a href={`/programa/${prog.id}`} onClick={lzmNavClick(`/programa/${prog.id}`)}>
               <Pill color={prog.color}>{prog.emoji} {prog.name}</Pill>
             </a>
           </div>
@@ -141,7 +162,7 @@ function EpisodePage({ id }) {
             </div>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(240px, 1fr))', gap: 14 }}>
               {related.map((r) => (
-                <a key={r.id} href={`#/episodio/${r.id}`} className="lzm-card lzm-pop" style={{ display: 'block' }}>
+                <a key={r.id} href={`/episodio/${r.id}`} onClick={lzmNavClick(`/episodio/${r.id}`)} className="lzm-card lzm-pop" style={{ display: 'block' }}>
                   <div style={{ aspectRatio: '16/9', background: `linear-gradient(135deg, ${r.color} 0%, #0A0F2C 130%)`, borderBottom: '3px solid #111', position: 'relative', overflow: 'hidden' }}>
                     {r.youtubeId && <img src={`https://img.youtube.com/vi/${r.youtubeId}/hqdefault.jpg`} alt={r.title} loading="lazy" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} onError={ev => { ev.target.style.display='none'; }} />}
                     <div style={{ position: 'absolute', inset: 0, background: 'rgba(0,0,0,.25)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>

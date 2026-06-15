@@ -69,7 +69,7 @@ function NotFound() {
           </p>
 
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 14, justifyContent: 'center', marginBottom: 36 }}>
-            <a href="#inicio" onClick={(e) => { e.preventDefault(); onNav('inicio'); }} style={{ textDecoration: 'none' }}>
+            <a href="/#inicio" onClick={(e) => { e.preventDefault(); onNav('inicio'); }} style={{ textDecoration: 'none' }}>
               <Button variant="primary" size="lg">Volver al inicio</Button>
             </a>
             <a href="https://www.youtube.com/@luzmatvcl" target="_blank" rel="noreferrer" style={{ textDecoration: 'none' }}>

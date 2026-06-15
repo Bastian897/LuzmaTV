@@ -1,6 +1,54 @@
 // ui.jsx — shared primitives for the LuzmaTV website
 const { useState, useEffect, useRef } = React;
 
+// ---------- Navegación SPA con rutas reales (/episodio/x, /programa/x) ----------
+// Permite que /episodio/<id> y /programa/<id> sean URLs reales y crawleables,
+// mientras se mantiene la navegación instantánea sin recarga completa.
+function lzmNavigate(href) {
+  if (!href) return;
+  if (/^https?:\/\//.test(href) || href.startsWith('//')) { window.location.href = href; return; }
+
+  let pathname, hash;
+  if (href.startsWith('#')) {
+    pathname = '/';
+    hash = href.slice(1);
+  } else {
+    const hashIdx = href.indexOf('#');
+    pathname = hashIdx === -1 ? href : href.slice(0, hashIdx);
+    hash = hashIdx === -1 ? '' : href.slice(hashIdx + 1);
+    if (pathname === '') pathname = '/';
+  }
+
+  const samePathname = pathname === window.location.pathname;
+  const newUrl = pathname + (hash ? '#' + hash : '');
+
+  if (!samePathname) {
+    window.history.pushState(null, '', newUrl);
+    window.dispatchEvent(new Event('lzm-pathchange'));
+  } else if (hash) {
+    window.history.replaceState(null, '', '#' + hash);
+  } else {
+    window.history.replaceState(null, '', pathname);
+  }
+
+  setTimeout(() => {
+    if (hash) {
+      const el = document.getElementById(hash);
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } else {
+      window.scrollTo({ top: 0, behavior: 'instant' });
+    }
+  }, samePathname ? 50 : 200);
+}
+
+function lzmNavClick(href) {
+  return (e) => {
+    if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button === 1) return;
+    e.preventDefault();
+    lzmNavigate(href);
+  };
+}
+
 // ---------- PlatformMark — single-color brand silhouette via CSS mask ----------
 function PlatformMark({ slug, color = '#111', size = 22, style = {} }) {
   const url = `assets/platforms/${slug}-mask.svg`;
@@ -221,7 +269,7 @@ function Breadcrumb({ items }) {
           <li key={i} style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
             {i > 0 && <Icon name="chevronRight" size={11} color="#ccc" />}
             {item.href
-              ? <a href={item.href} style={{ color: '#0055FF' }}>{item.label}</a>
+              ? <a href={item.href} onClick={lzmNavClick(item.href)} style={{ color: '#0055FF' }}>{item.label}</a>
               : <span style={{ color: '#5B6479' }}>{item.label}</span>
             }
           </li>
@@ -232,4 +280,4 @@ function Breadcrumb({ items }) {
 }
 
 // Make available globally to Babel scripts
-Object.assign(window, { Button, Pill, LiveBadge, Section, Star, Icon, ICON_PATHS, Breadcrumb, PlatformMark, PlatformBadge });
+Object.assign(window, { Button, Pill, LiveBadge, Section, Star, Icon, ICON_PATHS, Breadcrumb, PlatformMark, PlatformBadge, lzmNavigate, lzmNavClick });

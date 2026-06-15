@@ -7,7 +7,7 @@ function Episodes() {
       title="Últimos episodios"
       background="#fff"
       action={
-        <Button variant="ghost" size="sm" as="a" href="#/programa/luzma-cachai">
+        <Button variant="ghost" size="sm" as="a" href="/programa/luzma-cachai" onClick={lzmNavClick('/programa/luzma-cachai')}>
           Ver todos <Icon name="chevronRight" size={14} />
         </Button>
       }
@@ -19,7 +19,8 @@ function Episodes() {
           return (
             <a
               key={e.id}
-              href={`#/episodio/${e.id}`}
+              href={`/episodio/${e.id}`}
+              onClick={lzmNavClick(`/episodio/${e.id}`)}
               className="lzm-pop lzm-card"
               style={{ display: 'block', flex: '0 0 300px' }}
             >

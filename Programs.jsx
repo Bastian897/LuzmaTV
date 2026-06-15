@@ -83,7 +83,8 @@ function Programs() {
                   </div>
                 ) : (
                   <a
-                    href={`#/programa/${p.id}`}
+                    href={`/programa/${p.id}`}
+                    onClick={lzmNavClick(`/programa/${p.id}`)}
                     style={{ marginTop: 10, alignSelf: 'flex-start', fontFamily: "'Montserrat'", fontWeight: 900, fontSize: 11, textTransform: 'uppercase', letterSpacing: '.08em', background: '#111', color: '#FDD835', border: '2.5px solid #111', borderRadius: 9999, padding: '7px 14px', display: 'inline-block' }}
                   >
                     Ver episodios →
