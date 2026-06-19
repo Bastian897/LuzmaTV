@@ -9,9 +9,73 @@ const CATEGORIES = [
   { id: 'invitado', label: 'Invitados',       color: '#E91E8C' },
 ];
 
+function ProgramCard({ p, i }) {
+  const isSoon = p.status === 'soon';
+  const isPast = p.status === 'past';
+  return (
+    <div key={p.id} className="lzm-pop lzm-card" style={{ display: 'flex', flexDirection: 'column', opacity: isSoon ? 0.82 : 1 }} data-aos="fade-up" data-aos-delay={i * 60}>
+      <div style={{ position: 'relative', aspectRatio: '4 / 3', background: isPast ? '#888' : p.color, borderBottom: '3px solid #111', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 72, overflow: 'hidden' }}>
+        {p.logoImg
+          ? <img src={p.logoImg} alt={p.name} loading="lazy" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: p.logoPosition || 'center', filter: isPast ? 'grayscale(60%)' : 'none' }} />
+          : <span style={{ filter: 'drop-shadow(3px 3px 0 #111)' }}>{p.emoji}</span>
+        }
+
+        {!p.logoImg && (
+          <span style={{ position: 'absolute', top: 10, left: 10 }}>
+            {isSoon
+              ? <Pill color="#111" fg="#fff">🕐 Próximamente</Pill>
+              : isPast
+                ? <Pill color="#555" fg="#fff">📼 Programa pasado</Pill>
+                : <Pill color="#FDD835">📡 Al aire</Pill>
+            }
+          </span>
+        )}
+
+        {isPast && p.logoImg && (
+          <span style={{ position: 'absolute', top: 10, left: 10 }}>
+            <Pill color="#555" fg="#fff">📼 Programa pasado</Pill>
+          </span>
+        )}
+
+        {!isSoon && !isPast && !p.logoImg && (
+          <span style={{ position: 'absolute', bottom: 10, right: 10 }}>
+            <Pill color="#fff" size="xs">{p.time} hs</Pill>
+          </span>
+        )}
+      </div>
+
+      <div style={{ padding: 16, display: 'flex', flexDirection: 'column', gap: 6, flex: 1 }}>
+        <div style={{ fontFamily: "'Bebas Neue'", fontSize: 28, lineHeight: 1, textTransform: 'uppercase', color: isPast ? '#666' : '#111' }}>{p.name}</div>
+        <div style={{ fontFamily: "'Montserrat'", fontWeight: 800, fontSize: 11, textTransform: 'uppercase', letterSpacing: '.08em', color: '#5B6479' }}>
+          {isPast ? 'Programa finalizado' : `${p.day}${!isSoon ? ` · ${p.time} hs` : ''}`}
+        </div>
+        <div style={{ fontFamily: "'Nunito'", fontSize: 13, color: '#2A2A2A', marginTop: 4, flex: 1 }}>{p.desc}</div>
+
+        {isSoon ? (
+          <div style={{ marginTop: 10, alignSelf: 'flex-start', fontFamily: "'Montserrat'", fontWeight: 900, fontSize: 11, textTransform: 'uppercase', letterSpacing: '.08em', color: '#5B6479', padding: '7px 14px', border: '2.5px dashed #bbb', borderRadius: 9999 }}>
+            Próximamente
+          </div>
+        ) : (
+          <a
+            href={`/programa/${p.id}`}
+            onClick={lzmNavClick(`/programa/${p.id}`)}
+            style={{ marginTop: 10, alignSelf: 'flex-start', fontFamily: "'Montserrat'", fontWeight: 900, fontSize: 11, textTransform: 'uppercase', letterSpacing: '.08em', background: isPast ? '#555' : '#111', color: '#FDD835', border: `2.5px solid ${isPast ? '#555' : '#111'}`, borderRadius: 9999, padding: '7px 14px', display: 'inline-block' }}
+          >
+            Ver episodios →
+          </a>
+        )}
+      </div>
+    </div>
+  );
+}
+
 function Programs() {
   const [cat, setCat] = useStatePrg('all');
-  const list = cat === 'all' ? LZM_DATA.programs : LZM_DATA.programs.filter((p) => p.cat === cat);
+
+  const activePrograms = LZM_DATA.programs.filter((p) => p.status !== 'past');
+  const pastPrograms   = LZM_DATA.programs.filter((p) => p.status === 'past');
+
+  const filtered = cat === 'all' ? activePrograms : activePrograms.filter((p) => p.cat === cat);
 
   return (
     <Section id="programas" eyebrow="Nuestra Familia" title="Programas de la casa" background="#FFF8E7">
@@ -43,58 +107,20 @@ function Programs() {
       </div>
 
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: 32 }}>
-        {list.map((p, i) => {
-          const isSoon = p.status === 'soon';
-          return (
-            <div key={p.id} className="lzm-pop lzm-card" style={{ display: 'flex', flexDirection: 'column', opacity: isSoon ? 0.82 : 1 }} data-aos="fade-up" data-aos-delay={i * 60}>
-              <div style={{ position: 'relative', aspectRatio: '4 / 3', background: p.color, borderBottom: '3px solid #111', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 72, overflow: 'hidden' }}>
-                {p.logoImg
-                  ? <img src={p.logoImg} alt={p.name} loading="lazy" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: p.logoPosition || 'center' }} />
-                  : <span style={{ filter: 'drop-shadow(3px 3px 0 #111)' }}>{p.emoji}</span>
-                }
-
-                {/* Badge AL AIRE o PRÓXIMAMENTE — oculto si hay logo propio */}
-                {!p.logoImg && (
-                  <span style={{ position: 'absolute', top: 10, left: 10 }}>
-                    {isSoon
-                      ? <Pill color="#111" fg="#fff">🕐 Próximamente</Pill>
-                      : <Pill color="#FDD835">📡 Al aire</Pill>
-                    }
-                  </span>
-                )}
-
-                {!isSoon && !p.logoImg && (
-                  <span style={{ position: 'absolute', bottom: 10, right: 10 }}>
-                    <Pill color="#fff" size="xs">{p.time} hs</Pill>
-                  </span>
-                )}
-              </div>
-
-              <div style={{ padding: 16, display: 'flex', flexDirection: 'column', gap: 6, flex: 1 }}>
-                <div style={{ fontFamily: "'Bebas Neue'", fontSize: 28, lineHeight: 1, textTransform: 'uppercase' }}>{p.name}</div>
-                <div style={{ fontFamily: "'Montserrat'", fontWeight: 800, fontSize: 11, textTransform: 'uppercase', letterSpacing: '.08em', color: '#5B6479' }}>
-                  {p.day}{!isSoon && ` · ${p.time} hs`}
-                </div>
-                <div style={{ fontFamily: "'Nunito'", fontSize: 13, color: '#2A2A2A', marginTop: 4, flex: 1 }}>{p.desc}</div>
-
-                {isSoon ? (
-                  <div style={{ marginTop: 10, alignSelf: 'flex-start', fontFamily: "'Montserrat'", fontWeight: 900, fontSize: 11, textTransform: 'uppercase', letterSpacing: '.08em', color: '#5B6479', padding: '7px 14px', border: '2.5px dashed #bbb', borderRadius: 9999 }}>
-                    Próximamente
-                  </div>
-                ) : (
-                  <a
-                    href={`/programa/${p.id}`}
-                    onClick={lzmNavClick(`/programa/${p.id}`)}
-                    style={{ marginTop: 10, alignSelf: 'flex-start', fontFamily: "'Montserrat'", fontWeight: 900, fontSize: 11, textTransform: 'uppercase', letterSpacing: '.08em', background: '#111', color: '#FDD835', border: '2.5px solid #111', borderRadius: 9999, padding: '7px 14px', display: 'inline-block' }}
-                  >
-                    Ver episodios →
-                  </a>
-                )}
-              </div>
-            </div>
-          );
-        })}
+        {filtered.map((p, i) => <ProgramCard key={p.id} p={p} i={i} />)}
       </div>
+
+      {pastPrograms.length > 0 && (
+        <div style={{ marginTop: 64 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 28 }}>
+            <div style={{ fontFamily: "'Bebas Neue'", fontSize: 32, letterSpacing: '.04em', color: '#555' }}>Programas Pasados</div>
+            <div style={{ flex: 1, height: 3, background: '#ddd', borderRadius: 9999 }} />
+          </div>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: 32 }}>
+            {pastPrograms.map((p, i) => <ProgramCard key={p.id} p={p} i={i} />)}
+          </div>
+        </div>
+      )}
     </Section>
   );
 }

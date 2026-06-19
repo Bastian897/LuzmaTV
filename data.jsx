@@ -8,10 +8,10 @@ const LZM_STATIC = {
     {
       id: 'comunidad-am', name: 'Comunidad AM', cat: 'talk', day: 'Lun a Vie', time: '10:00',
       desc: 'El nuevo live show de LuzmaTV. De lunes a viernes con toda la energía de la mañana.',
-      longDesc: 'Comunidad AM llega a tomar el horario matinal de LuzmaTV. De lunes a viernes de 10:00 a 12:00, Vicky More, Ignacio Ruiz y Paty Maldonado se juntan en vivo para hablar de todo - sin filtros, sin guión y con la energía que hace única a esta señal.',
+      longDesc: 'Comunidad AM llega a tomar el horario matinal de LuzmaTV. De lunes a viernes de 10:00 a 12:00, Vicky More e Ignacio Ruiz se juntan en vivo para hablar de todo - sin filtros, sin guión y con la energía que hace única a esta señal.',
       color: '#E91E8C', emoji: '🎬', status: 'active', logoImg: 'assets/comunidad-am-logo.jpg',
-      ig: 'luzmatv',
-      hostIds: ['vicky-more', 'ignacio-ruiz', 'paty-maldonado'],
+      ig: 'am_comunidad',
+      hostIds: ['vicky-more', 'ignacio-ruiz'],
     },
     {
       id: 'luzma-cachai', name: 'Luzma Cachai', cat: 'talk', day: 'Lun a Vie', time: '10:00',
@@ -83,7 +83,7 @@ const LZM_STATIC = {
   hosts: [
     { id: 'vicky-more',    name: 'Vicky More',    role: 'Comunidad AM',              bg: '#FDD835', initials: 'VM', ig: 'vickymoremusic',    sign: '🌟' },
     { id: 'ignacio-ruiz',  name: 'Ignacio Ruiz',  role: 'Comunidad AM',              bg: '#E91E8C', initials: 'IR', ig: 'ignacioruizcarrasco', sign: '🎙️' },
-    { id: 'paty-maldonado',name: 'Paty Maldonado',role: 'Comunidad AM · Frente a Frente', bg: '#7B2CBF', initials: 'PM', ig: 'lamaldito', sign: '🔥' },
+    { id: 'paty-maldonado',name: 'Paty Maldonado',role: 'Conductora · Frente a Frente', bg: '#7B2CBF', initials: 'PM', ig: 'lamaldito', sign: '🔥' },
   ],
 
   catLabel: { talk: 'Talk Show', humor: 'Humor', entret: 'Entretenimiento', invitado: 'Invitados' },
