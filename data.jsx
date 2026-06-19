@@ -83,7 +83,7 @@ const LZM_STATIC = {
   hosts: [
     { id: 'vicky-more',    name: 'Vicky More',    role: 'Comunidad AM',              bg: '#FDD835', initials: 'VM', ig: 'vickymoremusic',    sign: '🌟' },
     { id: 'ignacio-ruiz',  name: 'Ignacio Ruiz',  role: 'Comunidad AM',              bg: '#E91E8C', initials: 'IR', ig: 'ignacioruizcarrasco', sign: '🎙️' },
-    { id: 'paty-maldonado',name: 'Paty Maldonado',role: 'Conductora · Frente a Frente', bg: '#7B2CBF', initials: 'PM', ig: 'lamaldito', sign: '🔥' },
+    { id: 'paty-maldonado',name: 'Paty Maldonado',role: 'Conductora · Frente a Frente', bg: '#7B2CBF', initials: 'PM', ig: 'lamaldito', sign: '🔥', photo: 'assets/hosts/paty-maldonado-2.webp' },
   ],
 
   catLabel: { talk: 'Talk Show', humor: 'Humor', entret: 'Entretenimiento', invitado: 'Invitados' },

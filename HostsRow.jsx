@@ -16,7 +16,7 @@ function HostsRow() {
             {/* Foto real */}
             <div style={{ aspectRatio: '1 / 1', position: 'relative', background: h.bg, borderBottom: '3px solid #111', overflow: 'hidden' }}>
               <img
-                src={`assets/hosts/${h.id}.webp`}
+                src={h.photo || `assets/hosts/${h.id}.webp`}
                 alt={h.name}
                 loading="lazy"
                 style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top' }}
