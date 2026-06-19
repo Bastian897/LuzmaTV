@@ -4,15 +4,15 @@ const DAYS = ['Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb', 'Dom'];
 const SLOTS = [
   {
     time: '10:00\n12:00',
-    shows: ['Luzma Cachai', 'Luzma Cachai', 'Luzma Cachai', 'Luzma Cachai', 'Luzma Cachai', null, null],
+    shows: ['Comunidad AM', 'Comunidad AM', 'Comunidad AM', 'Comunidad AM', 'Comunidad AM', null, 'Día Uno'],
   },
   {
-    time: '18:00\ntarde',
-    shows: [null, 'Frente a Frente', null, 'Frente a Frente', null, null, null],
+    time: '21:00',
+    shows: [null, null, null, 'Frente a Frente', null, null, null],
   },
 ];
 
-const SHOW_COLORS = { 'Luzma Cachai': '#E91E8C', 'Frente a Frente': '#7B2CBF' };
+const SHOW_COLORS = { 'Comunidad AM': '#E91E8C', 'Frente a Frente': '#7B2CBF', 'Día Uno': '#FF7043' };
 
 function Schedule() {
   return (
@@ -61,11 +61,15 @@ function Schedule() {
       <div style={{ marginTop: 20, display: 'flex', gap: 14, flexWrap: 'wrap', alignItems: 'center' }}>
         <span style={{ display: 'inline-flex', alignItems: 'center', gap: 8, fontFamily: "'Montserrat'", fontWeight: 700, fontSize: 12, textTransform: 'uppercase', letterSpacing: '.04em' }}>
           <span style={{ width: 18, height: 18, background: '#E91E8C', border: '2.5px solid #111', borderRadius: 5 }} />
-          Luzma Cachai - Lun a Vie · 10:00 a 12:00 hs
+          Comunidad AM - Lun a Vie · 10:00 a 12:00 hs
+        </span>
+        <span style={{ display: 'inline-flex', alignItems: 'center', gap: 8, fontFamily: "'Montserrat'", fontWeight: 700, fontSize: 12, textTransform: 'uppercase', letterSpacing: '.04em' }}>
+          <span style={{ width: 18, height: 18, background: '#FF7043', border: '2.5px solid #111', borderRadius: 5 }} />
+          Día Uno - Dom · 10:00 hs
         </span>
         <span style={{ display: 'inline-flex', alignItems: 'center', gap: 8, fontFamily: "'Montserrat'", fontWeight: 700, fontSize: 12, textTransform: 'uppercase', letterSpacing: '.04em' }}>
           <span style={{ width: 18, height: 18, background: '#7B2CBF', border: '2.5px solid #111', borderRadius: 5 }} />
-          Frente a Frente - Mar y Jue · tarde
+          Frente a Frente - Jue · 21:00 hs
         </span>
       </div>
     </Section>

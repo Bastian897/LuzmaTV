@@ -22,16 +22,16 @@ const LZM_STATIC = {
       hostIds: [],
     },
     {
-      id: 'cara-a-cara', name: 'Frente a Frente', cat: 'invitado', day: 'Mar y Jue', time: '18:00',
+      id: 'cara-a-cara', name: 'Frente a Frente', cat: 'invitado', day: 'Jue', time: '21:00',
       desc: 'Las conversaciones que no se pueden ignorar. Dos visiones, una mesa, sin filtros.',
-      longDesc: 'Frente a Frente es el espacio donde los temas que dividen a Chile se ponen sobre la mesa. Cada episodio enfrenta dos visiones distintas en una conversación directa, sin guión y sin zonas de confort. Martes y jueves en las tardes, por LuzmaTV.',
+      longDesc: 'Frente a Frente es el espacio donde los temas que dividen a Chile se ponen sobre la mesa. Cada episodio enfrenta dos visiones distintas en una conversación directa, sin guión y sin zonas de confort. Todos los jueves a las 21:00, por LuzmaTV.',
       color: '#7B2CBF', emoji: '🎤', status: 'active', logoImg: 'assets/frente-a-frente-logo.webp', logoPosition: 'right center', hostIds: ['paty-maldonado'],
     },
     {
-      id: 'dia-uno', name: 'Día Uno', cat: 'entret', day: 'Por confirmar', time: '-',
-      desc: 'El próximo gran proyecto de LuzmaTV. Vale la pena esperar.',
-      longDesc: 'Día Uno es el nuevo proyecto que viene a marcar el inicio de algo grande en LuzmaTV. Todavía no podemos decir mucho - pero cuando llegue, lo van a saber.',
-      color: '#FF7043', emoji: '🌅', status: 'soon', logoImg: 'assets/dia-uno-logo.webp', logoFit: 'contain', hostIds: [],
+      id: 'dia-uno', name: 'Día Uno', cat: 'entret', day: 'Dom', time: '10:00',
+      desc: 'El podcast de emprendimiento de LuzmaTV. Historias reales desde el día uno.',
+      longDesc: 'Día Uno es el podcast de emprendimiento de LuzmaTV. Cada capítulo explora las historias de quienes se atrevieron a empezar desde cero — los fracasos, los aprendizajes y los momentos que lo cambiaron todo. Nuevos capítulos cada domingo a las 10:00.',
+      color: '#FF7043', emoji: '🌅', status: 'active', logoImg: 'assets/dia-uno-logo.webp', logoFit: 'contain', hostIds: [],
     },
   ],
 
