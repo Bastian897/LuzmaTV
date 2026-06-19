@@ -16,7 +16,7 @@ function ProgramCard({ p, i }) {
     <div key={p.id} className="lzm-pop lzm-card" style={{ display: 'flex', flexDirection: 'column', opacity: isSoon ? 0.82 : 1 }} data-aos="fade-up" data-aos-delay={i * 60}>
       <div style={{ position: 'relative', aspectRatio: '4 / 3', background: isPast ? '#888' : p.color, borderBottom: '3px solid #111', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 72, overflow: 'hidden' }}>
         {p.logoImg
-          ? <img src={p.logoImg} alt={p.name} loading="lazy" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: p.logoPosition || 'center', filter: isPast ? 'grayscale(60%)' : 'none' }} />
+          ? <img src={p.logoImg} alt={p.name} loading="lazy" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: p.logoFit || 'cover', objectPosition: p.logoPosition || 'center', filter: isPast ? 'grayscale(60%)' : 'none' }} />
           : <span style={{ filter: 'drop-shadow(3px 3px 0 #111)' }}>{p.emoji}</span>
         }
 
@@ -28,12 +28,6 @@ function ProgramCard({ p, i }) {
                 ? <Pill color="#555" fg="#fff">📼 Programa pasado</Pill>
                 : <Pill color="#FDD835">📡 Al aire</Pill>
             }
-          </span>
-        )}
-
-        {isPast && p.logoImg && (
-          <span style={{ position: 'absolute', top: 10, left: 10 }}>
-            <Pill color="#555" fg="#fff">📼 Programa pasado</Pill>
           </span>
         )}
 

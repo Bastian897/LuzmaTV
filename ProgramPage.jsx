@@ -111,7 +111,7 @@ function ProgramPage({ id }) {
                 position: 'relative',
               }}>
                 {prog.logoImg ? (
-                  <img src={prog.logoImg} alt={prog.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                  <img src={prog.logoImg} alt={prog.name} style={{ width: '100%', height: '100%', objectFit: prog.logoFit || 'cover' }} />
                 ) : (
                   <>
                     <div style={{ fontSize: 72, lineHeight: 1 }}>{prog.emoji}</div>
