@@ -1,12 +1,7 @@
 // Community.jsx — social wall
 
 function Community() {
-  const posts = [
-    { user: '@sofi_94',     text: 'el live de anoche estuvo BRÍGIDO',        color: '#E91E8C', platform: 'tiktok',    likes: '1.2K' },
-    { user: '@maca_p',      text: 'sigo a la familia luzma hace 2 años ❤️',   color: '#FDD835', platform: 'instagram', likes: '847' },
-    { user: '@guatonpro',   text: 'mejor canal sin discusión',                color: '#43A047', platform: 'kick',      likes: '512' },
-    { user: '@andreaT',     text: '#LaSeñalQueDejaHuella siempre arriba',     color: '#29B6F6', platform: 'tiktok',    likes: '2.4K' },
-  ];
+  const posts = [];
 
   return (
     <Section
@@ -17,7 +12,7 @@ function Community() {
     >
       <div>
         <div className="lzm-section-eyebrow">Wall de fans · <code style={{ background: 'transparent', border: 0, padding: 0, color: '#0055FF' }}>#LaSeñalQueDejaHuella</code></div>
-        <div
+        {posts.length > 0 && <div
           style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
@@ -54,7 +49,7 @@ function Community() {
               </div>
             </div>
           ))}
-        </div>
+        </div>}
       </div>
     </Section>
   );
