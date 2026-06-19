@@ -3,6 +3,11 @@
 
 const SOURCES = [
   {
+    rss:       'https://www.youtube.com/feeds/videos.xml?playlist_id=PLU_hE3zhtRpc',
+    programId: 'comunidad-am',
+    color:     '#E91E8C',
+  },
+  {
     rss:       'https://www.youtube.com/feeds/videos.xml?playlist_id=PLvSpPskFuJqJGJBhwyNrEFxlHYi3FV784',
     programId: 'luzma-cachai',
     color:     '#E91E8C',
