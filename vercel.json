@@ -3,6 +3,7 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "rewrites": [
+    { "source": "/google6696308fb27ab26f.html", "destination": "/google6696308fb27ab26f.html" },
     { "source": "/(.*)", "destination": "/" }
   ],
   "headers": [
