@@ -22,9 +22,9 @@ const LZM_STATIC = {
       hostIds: [],
     },
     {
-      id: 'cara-a-cara', name: 'Frente a Frente', cat: 'invitado', day: 'Jue', time: '21:00',
+      id: 'cara-a-cara', name: 'Frente a Frente', cat: 'invitado', day: 'Mar y Jue', time: '21:00',
       desc: 'Las conversaciones que no se pueden ignorar. Dos visiones, una mesa, sin filtros.',
-      longDesc: 'Frente a Frente es el espacio donde los temas que dividen a Chile se ponen sobre la mesa. Cada episodio enfrenta dos visiones distintas en una conversación directa, sin guión y sin zonas de confort. Todos los jueves a las 21:00, por LuzmaTV.',
+      longDesc: 'Frente a Frente es el espacio donde los temas que dividen a Chile se ponen sobre la mesa. Cada episodio enfrenta dos visiones distintas en una conversación directa, sin guión y sin zonas de confort. Todos los martes y jueves a las 21:00, por LuzmaTV.',
       color: '#7B2CBF', emoji: '🎤', status: 'active', logoImg: 'assets/frente-a-frente-logo.webp', logoPosition: 'right center', hostIds: ['paty-maldonado'],
     },
     {
