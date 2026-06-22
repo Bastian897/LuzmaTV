@@ -7,12 +7,16 @@ const SLOTS = [
     shows: ['Comunidad AM', 'Comunidad AM', 'Comunidad AM', 'Comunidad AM', 'Comunidad AM', null, 'Día Uno'],
   },
   {
+    time: '20:30',
+    shows: [null, null, null, null, 'Conversa IN', null, null],
+  },
+  {
     time: '21:00',
     shows: [null, 'Frente a Frente', null, 'Frente a Frente', null, null, null],
   },
 ];
 
-const SHOW_COLORS = { 'Comunidad AM': '#E91E8C', 'Frente a Frente': '#7B2CBF', 'Día Uno': '#FF7043' };
+const SHOW_COLORS = { 'Comunidad AM': '#E91E8C', 'Frente a Frente': '#7B2CBF', 'Día Uno': '#FF7043', 'Conversa IN': '#001F6B' };
 
 function Schedule() {
   return (
@@ -70,6 +74,10 @@ function Schedule() {
         <span style={{ display: 'inline-flex', alignItems: 'center', gap: 8, fontFamily: "'Montserrat'", fontWeight: 700, fontSize: 12, textTransform: 'uppercase', letterSpacing: '.04em' }}>
           <span style={{ width: 18, height: 18, background: '#7B2CBF', border: '2.5px solid #111', borderRadius: 5 }} />
           Frente a Frente - Mar y Jue · 21:00 hs
+        </span>
+        <span style={{ display: 'inline-flex', alignItems: 'center', gap: 8, fontFamily: "'Montserrat'", fontWeight: 700, fontSize: 12, textTransform: 'uppercase', letterSpacing: '.04em' }}>
+          <span style={{ width: 18, height: 18, background: '#001F6B', border: '2.5px solid #111', borderRadius: 5 }} />
+          Conversa IN - Vie · 20:30 hs
         </span>
       </div>
     </Section>
