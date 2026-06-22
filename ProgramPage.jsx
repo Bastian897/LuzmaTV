@@ -1,6 +1,13 @@
 // ProgramPage.jsx - página individual de programa
 const { useEffect: useEffectPP } = React;
 
+function heroInk(hex) {
+  try {
+    const r = parseInt(hex.slice(1,3),16), g = parseInt(hex.slice(3,5),16), b = parseInt(hex.slice(5,7),16);
+    return (r*299 + g*587 + b*114) / 1000 < 140 ? '#fff' : '#111';
+  } catch { return '#111'; }
+}
+
 function ProgramPage({ id }) {
   const prog     = LZM_DATA.programs.find((p) => p.id === id);
   const episodes = prog ? LZM_DATA.episodes.filter((e) => e.programId === id) : [];
@@ -80,7 +87,7 @@ function ProgramPage({ id }) {
                 </div>
               )}
 
-              <h1 style={{ fontFamily: "'Bebas Neue'", fontSize: 'clamp(56px, 9vw, 108px)', lineHeight: .88, textTransform: 'uppercase', margin: '0 0 22px', color: '#111', textShadow: '5px 5px 0 rgba(0,0,0,.18)' }}>
+              <h1 style={{ fontFamily: "'Bebas Neue'", fontSize: 'clamp(56px, 9vw, 108px)', lineHeight: .88, textTransform: 'uppercase', margin: '0 0 22px', color: heroInk(prog.color), textShadow: '5px 5px 0 rgba(0,0,0,.18)' }}>
                 {prog.name}
               </h1>
 
