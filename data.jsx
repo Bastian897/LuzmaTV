@@ -28,6 +28,13 @@ const LZM_STATIC = {
       color: '#7B2CBF', emoji: '🎤', status: 'active', logoImg: 'assets/frente-a-frente-logo.webp', logoPosition: 'right center', hostIds: ['paty-maldonado'],
     },
     {
+      id: 'conversa-in', name: 'Conversa IN', cat: 'invitado', day: 'Vie', time: '20:30',
+      desc: 'Con Gonzalo Cáceres. Todo se dice y nada se guarda. Cada viernes a las 20:30.',
+      longDesc: 'Conversa IN con Gonzalo Cáceres es el espacio donde todo se dice y nada se guarda. Cada viernes a las 20:30, Gonzalo Cáceres conduce conversaciones sin filtros sobre los temas que más importan en Chile.',
+      color: '#001F6B', emoji: '🎙️', status: 'active', logoImg: 'assets/conversa-in-logo.png', logoFit: 'cover',
+      hostIds: ['gonzalo-caceres'],
+    },
+    {
       id: 'dia-uno', name: 'Día Uno', cat: 'entret', day: 'Dom', time: '10:00',
       desc: 'El podcast de emprendimiento de LuzmaTV. Historias reales desde el día uno.',
       longDesc: 'Día Uno es el podcast de emprendimiento de LuzmaTV. Cada capítulo explora las historias de quienes se atrevieron a empezar desde cero — los fracasos, los aprendizajes y los momentos que lo cambiaron todo. Nuevos capítulos cada domingo a las 10:00.',
@@ -84,6 +91,7 @@ const LZM_STATIC = {
     { id: 'vicky-more',    name: 'Vicky More',    role: 'Comunidad AM',              bg: '#FDD835', initials: 'VM', ig: 'vickymoremusic',    sign: '🌟' },
     { id: 'ignacio-ruiz',  name: 'Ignacio Ruiz',  role: 'Comunidad AM',              bg: '#E91E8C', initials: 'IR', ig: 'ignacioruizcarrasco', sign: '🎙️' },
     { id: 'paty-maldonado',name: 'Paty Maldonado',role: 'Conductora · Frente a Frente', bg: '#7B2CBF', initials: 'PM', ig: 'lamaldito', sign: '🔥', photo: 'assets/hosts/paty-maldonado-2.webp' },
+    { id: 'gonzalo-caceres', name: 'Gonzalo Cáceres', role: 'Conductor · Conversa IN', bg: '#001F6B', initials: 'GC', ig: 'gonzalocaceresoficial', sign: '🎙️', photo: 'assets/hosts/gonzalo-caceres.jpg' },
   ],
 
   catLabel: { talk: 'Talk Show', humor: 'Humor', entret: 'Entretenimiento', invitado: 'Invitados' },

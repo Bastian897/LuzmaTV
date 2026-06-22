@@ -62,7 +62,7 @@ function ShootingStar({ s, mobileHide }) {
       }}
     >
       <div style={{ width: '100%', height: '100%', borderRadius: '50%', overflow: 'hidden' }}>
-        <img src={s.img} alt="" loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+        <img src={s.img} alt="" loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: s.pos || 'center', display: 'block' }} />
       </div>
     </div>
   );
@@ -80,6 +80,7 @@ const SHOOT_STARS = [
   { img: 'assets/stars/vicky.webp',   name: 'Vicky',   dur: 6.2, delay: 0.4, top: '20%', size: 68, color: '#FDD835' },
   { img: 'assets/stars/ignacio2.webp', name: 'Ignacio', dur: 4.8, delay: 2.0, top: '52%', size: 64, color: '#E91E8C' },
   { img: 'assets/stars/paty.webp',    name: 'Paty',    dur: 5.5, delay: 1.0, top: '72%', size: 70, color: '#7B2CBF' },
+  { img: 'assets/stars/gonzalo.jpg',  name: 'Gonzalo', dur: 5.2, delay: 3.5, top: '38%', size: 66, color: '#1565C0', pos: 'center 20%' },
 ];
 
 function Hero({ onWatch, onPrograms }) {

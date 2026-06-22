@@ -98,7 +98,7 @@ function App() {
     <div>
       {showIntro && <Intro onDone={handleIntroDone} />}
 
-      {/* Botón flotante WhatsApp */}
+      {/* Botón flotante WhatsApp — Liquid Glass */}
       <a
         href="https://wa.me/56972041514"
         target="_blank"
@@ -113,19 +113,24 @@ function App() {
           width: 64,
           height: 64,
           borderRadius: '50%',
-          background: 'transparent',
-          border: 'none',
-          boxShadow: '3px 3px 0 #111',
+          background: 'rgba(255, 255, 255, 0.18)',
+          backdropFilter: 'blur(22px) saturate(180%)',
+          WebkitBackdropFilter: 'blur(22px) saturate(180%)',
+          border: '1.5px solid rgba(255, 255, 255, 0.38)',
+          boxShadow: '0 8px 32px rgba(0, 0, 0, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.5)',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
         }}
       >
-        <img
-          src="assets/platforms/whatsapp-logo.webp"
-          alt="WhatsApp"
-          style={{ width: 64, height: 64, display: 'block', borderRadius: '50%' }}
-        />
+        <span style={{
+          width: 38, height: 38, display: 'block', background: '#25D366',
+          WebkitMaskImage: 'url(assets/platforms/whatsapp-mask.svg)',
+          maskImage: 'url(assets/platforms/whatsapp-mask.svg)',
+          WebkitMaskRepeat: 'no-repeat', maskRepeat: 'no-repeat',
+          WebkitMaskPosition: 'center', maskPosition: 'center',
+          WebkitMaskSize: 'contain', maskSize: 'contain',
+        }} />
       </a>
 
       <Header onNav={onNav} live={true} />
