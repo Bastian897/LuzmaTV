@@ -17,6 +17,11 @@ const SOURCES = [
     programId: 'cara-a-cara',
     color:     '#7B2CBF',
   },
+  {
+    rss:       'https://www.youtube.com/feeds/videos.xml?playlist_id=PLvSpPskFuJqK5f7pWWT921X-e60b7ugU9',
+    programId: 'conversa-in',
+    color:     '#001F6B',
+  },
   // Descomentar cuando creen las playlists en YouTube Studio:
   // { rss: 'https://www.youtube.com/feeds/videos.xml?playlist_id=PLAYLIST_ID_DIA_UNO', programId: 'dia-uno',     color: '#FF7043' },
 ];
