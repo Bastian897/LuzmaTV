@@ -9,7 +9,7 @@ const LZM_STATIC = {
       id: 'comunidad-am', name: 'Comunidad AM', cat: 'talk', day: 'Lun a Vie', time: '10:00',
       desc: 'El nuevo live show de LuzmaTV. De lunes a viernes con toda la energía de la mañana.',
       longDesc: 'Comunidad AM llega a tomar el horario matinal de LuzmaTV. De lunes a viernes de 10:00 a 12:00, Vicky More e Ignacio Ruiz se juntan en vivo para hablar de todo - sin filtros, sin guión y con la energía que hace única a esta señal.',
-      color: '#E91E8C', emoji: '🎬', status: 'active', logoImg: 'assets/comunidad-am-logo.jpg', logoPosition: 'center 3%',
+      color: '#E91E8C', emoji: '🎬', status: 'active', logoImg: 'assets/comunidad-am-logo.jpg', logoPosition: 'center 25%',
       ig: 'am_comunidad',
       hostIds: ['vicky-more', 'ignacio-ruiz'],
     },
