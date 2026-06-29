@@ -22,8 +22,11 @@ const SOURCES = [
     programId: 'conversa-in',
     color:     '#001F6B',
   },
-  // Descomentar cuando creen las playlists en YouTube Studio:
-  // { rss: 'https://www.youtube.com/feeds/videos.xml?playlist_id=PLAYLIST_ID_DIA_UNO', programId: 'dia-uno',     color: '#FF7043' },
+  {
+    rss:       'https://www.youtube.com/feeds/videos.xml?playlist_id=PLvSpPskFuJqJ9TnALspz-5m9l-fxZjd9X',
+    programId: 'dia-uno',
+    color:     '#FF7043',
+  },
 ];
 
 const MAX_PER_SOURCE = 15;
@@ -103,7 +106,7 @@ export default async function handler(req, res) {
       throw new Error(results.map((r) => r.reason?.message).join(', '));
     }
 
-    res.setHeader('Cache-Control', 'public, s-maxage=86400, stale-while-revalidate=86400');
+    res.setHeader('Cache-Control', 'public, s-maxage=3600, stale-while-revalidate=3600');
     res.status(200).json({ episodes, source: 'rss-playlist', count: episodes.length });
   } catch (err) {
     res.status(502).json({ error: err.message || 'rss fetch failed' });

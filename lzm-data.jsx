@@ -2,7 +2,7 @@
 // El sitio SIEMPRE arranca con LZM_STATIC, luego se hidrata en background.
 // El archivo acumulativo (LS_ARCHIVE_KEY) crece con cada fetch y nunca descarta episodios viejos.
 
-const LS_FETCH_KEY   = 'lzm-fetch-ts-v2';       // timestamp del ultimo fetch exitoso
+const LS_FETCH_KEY   = 'lzm-fetch-ts-v3';       // timestamp del ultimo fetch exitoso
 const LS_ARCHIVE_KEY = 'lzm-episodes-archive-v1'; // mapa youtubeId → episode (crece siempre)
 const FETCH_TTL_MS   = 60 * 60 * 1000;            // re-fetch cada 1 hora
 
@@ -86,11 +86,14 @@ async function lzmFetchYoutube() {
   // 6a. Cargar archivo acumulativo e inicializar con episodios estaticos
   let archive = archiveLoad();
 
-  // Sembrar con los estaticos solo si el archivo esta vacio (primera visita)
+  // Sembrar con estaticos: agrega los que no esten ya en el archivo (no sobreescribe datos de API)
   const staticEps = (window.LZM_STATIC && window.LZM_STATIC.episodes) || [];
-  if (Object.keys(archive).length === 0 && staticEps.length > 0) {
-    archive = archiveMerge({}, staticEps);
-    archive = archiveLoad(); // re-leer como mapa tras guardar
+  if (staticEps.length > 0) {
+    const newStatics = staticEps.filter((ep) => !archive[ep.youtubeId]);
+    if (newStatics.length > 0) {
+      archiveMerge(archive, newStatics);
+      archive = archiveLoad();
+    }
   }
 
   const archiveList = archiveToList(archive);
